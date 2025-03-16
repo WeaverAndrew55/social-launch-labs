@@ -246,8 +246,69 @@ const PackagesCarouselSection = ({
         
         {/* Main content container - packages and process side by side */}
         <div className="max-w-7xl mx-auto mb-16 lg:grid lg:grid-cols-3 lg:gap-12 lg:items-start">
-          {/* Left column: Packages - takes 2/3 of width on large screens */}
-          <div className="lg:col-span-2 mb-12 lg:mb-0">
+          {/* Left column: Process - takes 1/3 of width on large screens */}
+          <div className="lg:col-span-1 mb-12 lg:mb-0 order-2 lg:order-1">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <div className="p-6 md:p-8">
+                {/* Process section heading */}
+                <div className="mb-6">
+                  {processSubtitle && (
+                    <div className="inline-block bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-2">
+                      {processSubtitle}
+                    </div>
+                  )}
+                  {processTitle && <h2 className="text-2xl font-bold text-gray-900 mb-3">{processTitle}</h2>}
+                  {processDescription && <p className="text-gray-600">{processDescription}</p>}
+                </div>
+                
+                {/* Process steps - vertical layout with connecting line */}
+                <div className="relative pt-4">
+                  {/* Connecting line */}
+                  <div className="absolute top-0 bottom-0 left-5 w-px bg-gray-200"></div>
+                  
+                  {/* Process steps */}
+                  <div className="space-y-8">
+                    {processSteps.map((step, index) => (
+                      <div key={index} className="relative flex items-start">
+                        {/* Step number circle */}
+                        <div 
+                          className={`flex-shrink-0 w-10 h-10 rounded-full z-10 flex items-center justify-center text-white font-semibold ${getProcessNumberBgColor(activePackageColor)} transition-colors duration-300`}
+                        >
+                          {step.number}
+                        </div>
+                        
+                        {/* Step content */}
+                        <div className="ml-4">
+                          <div className="flex items-center mb-1">
+                            <span className="text-gray-800 font-bold">{step.title}</span>
+                            <span className="ml-2 text-gray-500">{step.icon}</span>
+                          </div>
+                          <p className="text-sm text-gray-600">{step.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* CTA Button */}
+                <div className="mt-8 pt-6 border-t border-gray-100">
+                  <Link
+                    to="/contact"
+                    className={`block w-full text-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white ${getButtonClass(activePackageColor)} transition-colors duration-300 hover:opacity-90`}
+                  >
+                    Start Your Journey
+                  </Link>
+                  
+                  <div className="mt-4 text-center text-sm text-gray-500">
+                    Free consultation - No obligation
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Right column: Packages - takes 2/3 of width on large screens */}
+          <div className="lg:col-span-2 order-1 lg:order-2">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
               {/* Tab navigation */}
               <div className="flex flex-nowrap border-b overflow-x-auto">
@@ -402,67 +463,6 @@ const PackagesCarouselSection = ({
                     ></button>
                   );
                 })}
-              </div>
-            </div>
-          </div>
-          
-          {/* Right column: Process - takes 1/3 of width on large screens */}
-          <div className="lg:col-span-1">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="p-6 md:p-8">
-                {/* Process section heading */}
-                <div className="mb-6">
-                  {processSubtitle && (
-                    <div className="inline-block bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-2">
-                      {processSubtitle}
-                    </div>
-                  )}
-                  {processTitle && <h2 className="text-2xl font-bold text-gray-900 mb-3">{processTitle}</h2>}
-                  {processDescription && <p className="text-gray-600">{processDescription}</p>}
-                </div>
-                
-                {/* Process steps - vertical layout with connecting line */}
-                <div className="relative pt-4">
-                  {/* Connecting line */}
-                  <div className="absolute top-0 bottom-0 left-5 w-px bg-gray-200"></div>
-                  
-                  {/* Process steps */}
-                  <div className="space-y-8">
-                    {processSteps.map((step, index) => (
-                      <div key={index} className="relative flex items-start">
-                        {/* Step number circle */}
-                        <div 
-                          className={`flex-shrink-0 w-10 h-10 rounded-full z-10 flex items-center justify-center text-white font-semibold ${getProcessNumberBgColor(activePackageColor)} transition-colors duration-300`}
-                        >
-                          {step.number}
-                        </div>
-                        
-                        {/* Step content */}
-                        <div className="ml-4">
-                          <div className="flex items-center mb-1">
-                            <span className="text-gray-800 font-bold">{step.title}</span>
-                            <span className="ml-2 text-gray-500">{step.icon}</span>
-                          </div>
-                          <p className="text-sm text-gray-600">{step.description}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                
-                {/* CTA Button */}
-                <div className="mt-8 pt-6 border-t border-gray-100">
-                  <Link
-                    to="/contact"
-                    className={`block w-full text-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white ${getButtonClass(activePackageColor)} transition-colors duration-300 hover:opacity-90`}
-                  >
-                    Start Your Journey
-                  </Link>
-                  
-                  <div className="mt-4 text-center text-sm text-gray-500">
-                    Free consultation - No obligation
-                  </div>
-                </div>
               </div>
             </div>
           </div>
