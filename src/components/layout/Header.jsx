@@ -19,7 +19,7 @@ const Header = ({ transparent = false }) => {
   const baseStyles = "fixed w-full top-0 z-50 transition-all duration-300";
   const bgStyles = transparent 
     ? "bg-transparent text-white" 
-    : "bg-white text-neutral-800 shadow-sm";
+    : "bg-neutral-800 text-neutral-200 shadow-md";
   
   return (
     <header className={`${baseStyles} ${bgStyles}`}>
@@ -27,7 +27,7 @@ const Header = ({ transparent = false }) => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className={`text-2xl font-heading font-bold ${transparent ? 'text-white' : 'text-primary-800'}`}>
+            <span className={`text-2xl font-heading font-bold ${transparent ? 'text-white' : 'text-white'}`}>
               Social Launch Labs
             </span>
           </Link>
@@ -38,7 +38,7 @@ const Header = ({ transparent = false }) => {
               <li>
                 <Link 
                   to="/" 
-                  className={`font-medium hover:text-primary-600 transition-colors ${transparent ? 'text-white hover:text-primary-200' : 'text-neutral-700'}`}
+                  className={`font-medium hover:text-primary-500 transition-colors ${transparent ? 'text-white hover:text-primary-200' : 'text-neutral-400 hover:text-white'}`}
                 >
                   Home
                 </Link>
@@ -46,7 +46,7 @@ const Header = ({ transparent = false }) => {
               <li>
                 <Link 
                   to="/services" 
-                  className={`font-medium hover:text-primary-600 transition-colors ${transparent ? 'text-white hover:text-primary-200' : 'text-neutral-700'}`}
+                  className={`font-medium hover:text-primary-500 transition-colors ${transparent ? 'text-white hover:text-primary-200' : 'text-neutral-400 hover:text-white'}`}
                 >
                   Services
                 </Link>
@@ -54,7 +54,7 @@ const Header = ({ transparent = false }) => {
               <li>
                 <Link 
                   to="/packages" 
-                  className={`font-medium hover:text-primary-600 transition-colors ${transparent ? 'text-white hover:text-primary-200' : 'text-neutral-700'}`}
+                  className={`font-medium hover:text-primary-500 transition-colors ${transparent ? 'text-white hover:text-primary-200' : 'text-neutral-400 hover:text-white'}`}
                 >
                   Packages
                 </Link>
@@ -62,7 +62,7 @@ const Header = ({ transparent = false }) => {
               <li>
                 <Link 
                   to="/contact" 
-                  className={`font-medium hover:text-primary-600 transition-colors ${transparent ? 'text-white hover:text-primary-200' : 'text-neutral-700'}`}
+                  className={`font-medium hover:text-primary-500 transition-colors ${transparent ? 'text-white hover:text-primary-200' : 'text-neutral-400 hover:text-white'}`}
                 >
                   Contact
                 </Link>
@@ -79,7 +79,7 @@ const Header = ({ transparent = false }) => {
             {isMenuOpen ? (
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
-                className={`h-6 w-6 ${transparent ? 'text-white' : 'text-neutral-800'}`} 
+                className={`h-6 w-6 ${transparent ? 'text-white' : 'text-neutral-400'}`} 
                 fill="none" 
                 viewBox="0 0 24 24" 
                 stroke="currentColor"
@@ -89,7 +89,7 @@ const Header = ({ transparent = false }) => {
             ) : (
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
-                className={`h-6 w-6 ${transparent ? 'text-white' : 'text-neutral-800'}`} 
+                className={`h-6 w-6 ${transparent ? 'text-white' : 'text-neutral-400'}`} 
                 fill="none" 
                 viewBox="0 0 24 24" 
                 stroke="currentColor"
@@ -111,13 +111,13 @@ const Header = ({ transparent = false }) => {
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-95"
       >
-        <div className="md:hidden bg-white shadow-lg absolute w-full">
+        <div className="md:hidden bg-neutral-800 shadow-lg absolute w-full">
           <nav className="px-4 pt-2 pb-4">
             <ul className="space-y-2">
               <li>
                 <Link 
                   to="/" 
-                  className="block py-2 text-neutral-700 hover:text-primary-600 font-medium"
+                  className="block py-2 text-neutral-400 hover:text-white font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Home
@@ -126,7 +126,7 @@ const Header = ({ transparent = false }) => {
               <li>
                 <Link 
                   to="/services" 
-                  className="block py-2 text-neutral-700 hover:text-primary-600 font-medium"
+                  className="block py-2 text-neutral-400 hover:text-white font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Services
@@ -135,7 +135,7 @@ const Header = ({ transparent = false }) => {
               <li>
                 <Link 
                   to="/packages" 
-                  className="block py-2 text-neutral-700 hover:text-primary-600 font-medium"
+                  className="block py-2 text-neutral-400 hover:text-white font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Packages
@@ -144,7 +144,7 @@ const Header = ({ transparent = false }) => {
               <li>
                 <Link 
                   to="/contact" 
-                  className="block py-2 text-neutral-700 hover:text-primary-600 font-medium"
+                  className="block py-2 text-neutral-400 hover:text-white font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contact
