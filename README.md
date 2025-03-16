@@ -1,12 +1,93 @@
-# React + Vite
+# Social Launch Labs
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern website for a social media marketing agency built with React, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Responsive design for all device sizes
+- Modern UI with Tailwind CSS
+- Component-based architecture with React
+- Multiple page routes with React Router
+- Detailed package pages for different service offerings
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/social-launch-labs.git
+   cd social-launch-labs
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+
+3. Start the development server
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Building for Production
+
+To build the project for production, run:
+
+```bash
+npm run build
+```
+
+The built files will be in the `dist` directory.
+
+## Deploying to GitHub Pages
+
+The project is configured for GitHub Pages deployment. To deploy:
+
+1. Create a GitHub repository for the project
+2. Add the repository as a remote
+   ```bash
+   git remote add origin https://github.com/yourusername/social-launch-labs.git
+   ```
+
+3. Push your code to the repository
+   ```bash
+   git push -u origin main
+   ```
+
+4. Deploy to GitHub Pages
+   ```bash
+   npm run deploy
+   ```
+
+5. Your site will be available at `https://yourusername.github.io/social-launch-labs/`
+
+## Project Structure
+
+- `src/components`: Reusable UI components
+  - `layout`: Layout components (Header, Footer, etc.)
+  - `sections`: Page section components
+  - `ui`: UI components (Button, Card, etc.)
+- `src/pages`: Page components
+  - `packages`: Individual package pages
+- `src/assets`: Static assets (images, fonts, etc.)
+- `public`: Public assets (favicon, etc.)
+
+## Technologies Used
+
+- React
+- Vite
+- Tailwind CSS
+- React Router
+- Headless UI
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
