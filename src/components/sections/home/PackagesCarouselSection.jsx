@@ -356,7 +356,7 @@ const PackagesCarouselSection = ({
                   {packages.map((pkg, index) => (
                     <div 
                       key={index}
-                      className="package-panel p-6 md:p-8"
+                      className="package-panel p-6 md:p-8 min-h-[460px]"
                       style={{display: index === activeIndex ? 'block' : 'none'}}
                     >
                       <div className="flex flex-col mb-6">
@@ -419,7 +419,7 @@ const PackagesCarouselSection = ({
                 </div>
                 
                 {/* Right column: Video preview */}
-                <div className="bg-gradient-to-br from-gray-900 to-black relative h-full min-h-[300px] md:min-h-[400px]">
+                <div className="bg-gradient-to-br from-gray-900 to-black relative h-full min-h-[400px] md:min-h-[600px]">
                   {packages.map((pkg, index) => (
                     <div 
                       key={index}
