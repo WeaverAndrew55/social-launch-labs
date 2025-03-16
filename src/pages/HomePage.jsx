@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/layout/Layout';
 import EnhancedHeroSection from '../components/sections/common/EnhancedHeroSection';
 import ProblemSolutionSection from '../components/sections/home/ProblemSolutionSection';
-import TargetAudienceSection from '../components/sections/home/TargetAudienceSection';
+import ClientIndustriesSection from '../components/sections/home/ClientIndustriesSection';
 import WhatWeOfferSection from '../components/sections/home/WhatWeOfferSection';
 import ProcessOverviewSection from '../components/sections/home/ProcessOverviewSection';
 import CoreServicesSection from '../components/sections/home/CoreServicesSection';
@@ -39,27 +39,11 @@ const problemSolutionContent = {
   }
 };
 
-// Import target audience content
-const targetAudienceContent = {
+// Client industries content
+const clientIndustriesContent = {
   title: "Who We Work With",
-  description: "Our frameworks are specifically designed for service-based businesses who want to leverage social media effectively.",
-  segments: [
-    {
-      title: "Coaches & Consultants",
-      description: "Establish yourself as an authority and attract clients who value your expertise.",
-      icon: "chart-bar"
-    },
-    {
-      title: "Professional Service Providers",
-      description: "Build trust and visibility in your specialized field to attract high-value clients.",
-      icon: "briefcase"
-    },
-    {
-      title: "Agency Owners",
-      description: "Showcase your results and methodology to stand out in a crowded marketplace.",
-      icon: "building"
-    }
-  ]
+  subtitle: "Our Clients",
+  description: "We create content for businesses looking to grow their brand authority, increase conversions, and build customer trust."
 };
 
 // Import process overview content
@@ -256,10 +240,10 @@ const HomePage = () => {
         problem={problemSolutionContent.problem}
         solution={problemSolutionContent.solution}
       />
-      <TargetAudienceSection
-        title={targetAudienceContent.title}
-        description={targetAudienceContent.description}
-        segments={targetAudienceContent.segments}
+      <ClientIndustriesSection
+        title={clientIndustriesContent.title}
+        subtitle={clientIndustriesContent.subtitle}
+        description={clientIndustriesContent.description}
       />
       <WhatWeOfferSection />
       <ProcessOverviewSection

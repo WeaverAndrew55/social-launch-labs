@@ -85,10 +85,14 @@ const Header = ({ transparent = false }) => {
   };
 
   const toggleDropdown = (dropdown) => {
-    setActiveDropdowns(prev => ({
-      ...prev,
-      [dropdown]: !prev[dropdown]
-    }));
+    // Close other dropdowns when opening a new one
+    setActiveDropdowns(prev => {
+      const newState = { ...prev };
+      Object.keys(newState).forEach(key => {
+        newState[key] = key === dropdown ? !prev[key] : false;
+      });
+      return newState;
+    });
   };
   
   const closeDropdowns = () => {
@@ -109,7 +113,7 @@ const Header = ({ transparent = false }) => {
   // Header styles
   let headerClasses = "bg-white shadow-sm sticky-header";
   if (transparent && !isScrolled) {
-    headerClasses = "bg-transparent";
+    headerClasses = "bg-transparent sticky-header";
   } else if (isScrolled) {
     headerClasses = "bg-white shadow-md sticky-header";
   }
@@ -136,7 +140,10 @@ const Header = ({ transparent = false }) => {
             <div className="relative dropdown-container" ref={servicesDropdownRef}>
               <button 
                 className="dropdown-toggle px-4 py-2 text-gray-700 rounded hover:bg-gray-100 hover:text-blue-600 transition duration-200 flex items-center"
-                onClick={() => toggleDropdown('services')}
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleDropdown('services');
+                }}
               >
                 Services
                 <svg 
@@ -149,8 +156,10 @@ const Header = ({ transparent = false }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </button>
+              {/* Position absolute relative to the button */}
               <div 
                 className={`dropdown-menu absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg ${activeDropdowns.services ? 'block' : 'hidden'}`}
+                style={{ zIndex: 100 }}
               >
                 <div className="py-1 rounded-md bg-white shadow-xs">
                   <Link 
@@ -175,7 +184,10 @@ const Header = ({ transparent = false }) => {
             <div className="relative dropdown-container" ref={packagesDropdownRef}>
               <button 
                 className="dropdown-toggle px-4 py-2 text-gray-700 rounded hover:bg-gray-100 hover:text-blue-600 transition duration-200 flex items-center"
-                onClick={() => toggleDropdown('packages')}
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleDropdown('packages');
+                }}
               >
                 Packages
                 <svg 
@@ -190,6 +202,7 @@ const Header = ({ transparent = false }) => {
               </button>
               <div 
                 className={`dropdown-menu absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg ${activeDropdowns.packages ? 'block' : 'hidden'}`}
+                style={{ zIndex: 100 }}
               >
                 <div className="py-1 rounded-md bg-white shadow-xs">
                   <Link 

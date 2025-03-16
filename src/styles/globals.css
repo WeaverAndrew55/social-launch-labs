@@ -59,8 +59,8 @@
 }
 
 /* Dropdown styles */
-.dropdown-container:hover .dropdown-menu {
-  display: block;
+.dropdown-menu {
+  z-index: 100; /* Ensure dropdowns appear above other elements */
 }
 
 .dropdown-arrow {
