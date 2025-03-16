@@ -53,19 +53,19 @@ const testimonialsContent = {
       quote: "Since implementing Social Launch Labs' framework, we've seen a 43% increase in qualified leads from social media, with a much higher conversion rate than our previous efforts.",
       author: "Sarah Johnson",
       title: "Marketing Director, Apex Consulting",
-      image: "/images/testimonial-1.jpg"
+      image: "https://WeaverAndrew55.github.io/SLL-Images/assets/testimonials/testimonial-1.jpg"
     },
     {
       quote: "Their systematic approach completely transformed how we view social media. We're now generating consistent leads without the constant guesswork.",
       author: "Michael Chen",
       title: "CEO, Growth Partners Agency",
-      image: "/images/testimonial-2.jpg"
+      image: "https://WeaverAndrew55.github.io/SLL-Images/assets/testimonials/testimonial-2.jpg"
     },
     {
       quote: "I finally feel like I have a sustainable social media strategy that actually brings in clients instead of just vanity metrics.",
       author: "Alicia Rodriguez",
       title: "Business Coach & Consultant",
-      image: "/images/testimonial-3.jpg"
+      image: "https://WeaverAndrew55.github.io/SLL-Images/assets/testimonials/testimonial-3.jpg"
     }
   ]
 };
