@@ -239,7 +239,6 @@ const HomePage = () => {
         secondaryCta={heroContent.secondaryCta}
         imageSrc={heroContent.imageSrc}
         aiGeneratedSrc={heroContent.aiGeneratedSrc}
-        showAiInstructions={true} // Always show instructions during development
       />
       <ProblemSolutionSection
         problem={problemSolutionContent.problem}
