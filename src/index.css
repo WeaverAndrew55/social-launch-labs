@@ -4,47 +4,122 @@
 
 @layer base {
   html {
-    @apply text-neutral-800 bg-white;
+    color: #1e293b;
+    background-color: #ffffff;
     scroll-behavior: smooth;
   }
   
   body {
-    @apply font-body m-0 min-h-screen;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
   }
   
   h1 {
-    @apply text-4xl md:text-5xl;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3rem;
+      line-height: 1;
+    }
   }
   
   h2 {
-    @apply text-3xl md:text-4xl;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
   }
   
   h3 {
-    @apply text-2xl md:text-3xl;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    h3 {
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
   }
   
   p {
-    @apply text-base md:text-lg mb-4;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    p {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
   }
   
   a {
-    @apply text-primary-600 hover:text-primary-700 transition-colors;
+    color: #2465e3;
+    transition-property: color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  
+  a:hover {
+    color: #1e4bcc;
   }
 }
 
-@layer components {
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
   .container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
-  
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
   .section {
-    @apply py-12 md:py-16 lg:py-20;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 }
