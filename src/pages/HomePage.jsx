@@ -111,9 +111,9 @@ const ctaContent = {
 
 // Packages Carousel content
 const packagesCarouselContent = {
-  title: 'Strategically Designed',
-  subtitle: 'Our Packages',
-  description: "We've developed three signature video marketing packages based on real business outcomes, ensuring you have the right content at each stage of your growth."
+  title: 'Strategic Growth Solutions',
+  subtitle: 'OUR PACKAGES',
+  description: "We've developed three signature social media packages based on real business outcomes, each designed to solve a specific challenge in your growth journey."
 };
 
 /**

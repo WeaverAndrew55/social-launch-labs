@@ -17,9 +17,9 @@ import SectionContainer from '../../ui/SectionContainer';
  * @param {string} props.spacingClass - Class name for section spacing
  */
 const PackagesCarouselSection = ({ 
-  title = "Our Growth Packages", 
-  subtitle = "TAILORED SOLUTIONS", 
-  description = "Choose the package that best fits your business goals and growth strategy.",
+  title = "Strategic Growth Solutions", 
+  subtitle = "OUR PACKAGES", 
+  description = "Select the perfect package to achieve your specific business growth objectives, each with a comprehensive digital strategy included.",
   processTitle = "How It Works",
   processSubtitle = "SIMPLE PROCESS",
   processDescription = "Getting started is easy",
@@ -30,56 +30,68 @@ const PackagesCarouselSection = ({
   // Package data
   const packages = [
     {
-      title: "Starter Growth Package",
-      badge: "Basic",
+      title: "Lead Generation Package",
+      subtitle: "Starter Growth",
+      badge: "Essential",
       badgeColor: "blue",
+      overview: "Build a strong foundation for attracting qualified leads through strategic social media positioning.",
+      keyOutcome: "Start attracting qualified leads consistently through social media",
       features: [
-        "Social media management for 2 platforms",
-        "8 posts per month",
-        "Basic analytics reporting",
-        "Community engagement"
+        "Strategic content calendar for 2 platforms",
+        "8 optimized posts per month",
+        "Audience targeting & growth strategy",
+        "Monthly performance analytics"
       ],
       price: "$997",
       perMonth: "/mo",
-      learnMoreLink: "/packages/starter",
+      learnMoreLink: "/packages/lead-generation",
       ctaLink: "/contact",
+      ctaText: "Start Generating Leads",
       videoThumbnail: "https://WeaverAndrew55.github.io/SLL-Images/assets/packages/starter-package.jpg",
       videoDuration: "2:15"
     },
     {
-      title: "Professional Growth Package",
-      badge: "Popular",
+      title: "Conversion Booster Package",
+      subtitle: "Professional Growth",
+      badge: "Most Popular",
       badgeColor: "purple",
+      overview: "Transform engagement into conversions with advanced strategies designed to nurture and convert your audience.",
+      keyOutcome: "Convert your growing audience into qualified business opportunities",
       features: [
-        "Social media management for 3 platforms",
-        "15 posts per month",
-        "Advanced analytics reporting",
-        "Community engagement & growth",
-        "Monthly strategy calls"
+        "Strategic content for 3 platforms",
+        "15 conversion-focused posts monthly",
+        "Engagement sequence development",
+        "Lead magnet optimization",
+        "Bi-weekly strategy calls"
       ],
       price: "$1,997",
       perMonth: "/mo",
-      learnMoreLink: "/packages/professional",
+      learnMoreLink: "/packages/conversion-booster",
       ctaLink: "/contact",
+      ctaText: "Boost Your Conversions",
       videoThumbnail: "https://WeaverAndrew55.github.io/SLL-Images/assets/packages/professional-package.jpg",
       videoDuration: "2:45"
     },
     {
-      title: "Premium Growth Package",
+      title: "Authority Builder Package",
+      subtitle: "Premium Growth",
       badge: "Advanced",
       badgeColor: "orange",
+      overview: "Establish yourself as the go-to authority in your industry with comprehensive thought leadership strategies.",
+      keyOutcome: "Position yourself as the undisputed expert in your industry",
       features: [
-        "Social media management for 4 platforms",
-        "25 posts per month",
-        "Comprehensive analytics dashboard",
-        "Advanced community growth",
-        "Bi-weekly strategy calls",
-        "Content calendar development"
+        "Comprehensive content for 4 platforms",
+        "25 authority-building posts monthly",
+        "Thought leadership positioning",
+        "Industry networking & partnerships",
+        "Media opportunities development",
+        "Weekly strategy sessions"
       ],
       price: "$2,997",
       perMonth: "/mo",
-      learnMoreLink: "/packages/premium",
+      learnMoreLink: "/packages/authority-builder",
       ctaLink: "/contact",
+      ctaText: "Build Your Authority",
       videoThumbnail: "https://WeaverAndrew55.github.io/SLL-Images/assets/packages/premium-package.jpg",
       videoDuration: "3:05"
     }
@@ -347,20 +359,35 @@ const PackagesCarouselSection = ({
                       className="package-panel p-6 md:p-8"
                       style={{display: index === activeIndex ? 'block' : 'none'}}
                     >
-                      <div className="flex justify-between items-start mb-6">
-                        <div>
-                          <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${getBadgeClass(pkg.badgeColor)}`}>
-                            {pkg.badge}
-                          </span>
-                          <h3 className="text-xl md:text-2xl font-bold mt-2">{pkg.title}</h3>
+                      <div className="flex flex-col mb-6">
+                        <div className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${getBadgeClass(pkg.badgeColor)} mb-2 self-start`}>
+                          {pkg.badge}
                         </div>
-                        <div className="text-right">
-                          <div className="text-2xl md:text-3xl font-bold">{pkg.price}</div>
-                          <div className="text-sm text-gray-500">{pkg.perMonth}</div>
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <div className="text-sm text-gray-500 mb-1">{pkg.subtitle}</div>
+                            <h3 className="text-xl md:text-2xl font-bold">{pkg.title}</h3>
+                          </div>
+                          <div className="text-right">
+                            <div className="text-2xl md:text-3xl font-bold">{pkg.price}</div>
+                            <div className="text-sm text-gray-500">{pkg.perMonth}</div>
+                          </div>
                         </div>
                       </div>
                       
-                      <ul className="space-y-3 my-6">
+                      {/* Package overview */}
+                      <div className={`p-4 rounded-lg mb-6 ${pkg.badgeColor === 'blue' ? 'bg-blue-50' : pkg.badgeColor === 'purple' ? 'bg-purple-50' : 'bg-orange-50'}`}>
+                        <p className="text-gray-800">{pkg.overview}</p>
+                      </div>
+                      
+                      {/* Key outcome */}
+                      <div className="mb-6 border-l-4 pl-3 border-green-500">
+                        <p className="text-gray-700 font-medium">Key Outcome:</p>
+                        <p className="text-gray-800 font-semibold">{pkg.keyOutcome}</p>
+                      </div>
+                      
+                      <div className="mb-4 text-gray-700 font-medium">What's included:</div>
+                      <ul className="space-y-3 mb-6">
                         {pkg.features.map((feature, i) => (
                           <li key={i} className="flex items-start">
                             <svg className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -371,20 +398,20 @@ const PackagesCarouselSection = ({
                         ))}
                       </ul>
                       
-                      <div className="flex flex-col sm:flex-row gap-3 mt-8">
+                      <div className="flex flex-col gap-3 mt-8">
                         <Link 
                           to={pkg.ctaLink} 
                           className={`inline-flex justify-center items-center px-6 py-3 border border-transparent 
-                            text-base font-medium rounded-md shadow-sm text-white ${getButtonClass(pkg.badgeColor)}`}
+                            text-base font-medium rounded-md shadow-sm text-white ${getButtonClass(pkg.badgeColor)} transition-transform hover:scale-105`}
                         >
-                          Get Started
+                          {pkg.ctaText}
                         </Link>
                         <Link 
                           to={pkg.learnMoreLink} 
                           className="inline-flex justify-center items-center px-6 py-3 border border-gray-300 
                             text-base font-medium rounded-md bg-white text-gray-700 hover:bg-gray-50"
                         >
-                          Learn More
+                          View Full Details
                         </Link>
                       </div>
                     </div>
@@ -406,10 +433,16 @@ const PackagesCarouselSection = ({
                       />
                       <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-between p-4 sm:p-6 md:p-8">
                         {/* Video title overlay */}
-                        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 max-w-md">
-                          <h3 className="text-lg sm:text-xl font-semibold text-white">{pkg.title} Overview</h3>
-                          <p className="text-white/80 text-sm mt-1">
-                            See how our {pkg.title.toLowerCase()} can transform your social media presence.
+                        <div className={`${pkg.badgeColor === 'blue' ? 'from-blue-600/40' : pkg.badgeColor === 'purple' ? 'from-purple-600/40' : 'from-orange-600/40'} to-black/10 bg-gradient-to-br backdrop-blur-sm rounded-lg p-4 max-w-md`}>
+                          <h3 className="text-lg sm:text-xl font-semibold text-white">{pkg.title}</h3>
+                          <p className="text-white/90 text-sm mt-1">
+                            <span className="font-medium block mb-1">{pkg.keyOutcome}</span>
+                            <span className="text-xs inline-flex items-center mt-2">
+                              <svg className="w-4 h-4 mr-1 text-white/70" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clipRule="evenodd"></path>
+                              </svg>
+                              Watch the video to learn more
+                            </span>
                           </p>
                         </div>
                         
