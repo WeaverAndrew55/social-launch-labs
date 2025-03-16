@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
  * Displays packages in an interactive carousel with integrated process steps
  */
 const PackagesCarouselSection = ({ 
-  title = "Strategically Designed", 
-  subtitle = "OUR PACKAGES", 
-  description = "We've developed three signature video marketing packages based on real business outcomes, ensuring you have the right content at each stage of your growth.",
+  title = "Our Growth Packages", 
+  subtitle = "TAILORED SOLUTIONS", 
+  description = "Choose the package that best fits your business goals and growth strategy.",
   processTitle = "How It Works",
   processSubtitle = "SIMPLE PROCESS",
   processDescription = "Getting started is easy"
@@ -219,7 +219,7 @@ const PackagesCarouselSection = ({
   };
 
   // Calculate the current active package color for process cards
-  const activePackageColor = 'purple'; // Fixed to purple to match the screenshot
+  const activePackageColor = packages[activeIndex]?.badgeColor || 'blue';
   const getProcessNumberBgColor = (color) => {
     const bgColors = {
       blue: 'bg-blue-600',
@@ -237,25 +237,23 @@ const PackagesCarouselSection = ({
       <div className="absolute bottom-0 right-0 w-1/3 h-48 bg-indigo-50 rounded-full filter blur-3xl opacity-40 transform translate-x-1/4"></div>
       
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        {/* "OUR PACKAGES" subtitle at the top right */}
-        {subtitle && (
-          <div className="text-right mb-8">
-            <span className="inline-block text-blue-600 font-semibold text-sm md:text-base uppercase tracking-wider">
-              {subtitle}
-            </span>
-          </div>
-        )}
+        {/* Section heading */}
+        <div className="text-center mb-12 md:mb-16">
+          {subtitle && <span className="section-subtitle">{subtitle}</span>}
+          {title && <h2 className="section-title">{title}</h2>}
+          {description && <p className="section-description mt-4">{description}</p>}
+        </div>
         
-        {/* Main content container with two columns */}
-        <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-3 lg:gap-16">
+        {/* Main content container - packages and process side by side */}
+        <div className="max-w-7xl mx-auto mb-16 lg:grid lg:grid-cols-3 lg:gap-12 lg:items-start">
           {/* Left column: Process - takes 1/3 of width on large screens */}
           <div className="lg:col-span-1 mb-12 lg:mb-0 order-2 lg:order-1">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="p-8 md:p-10">
+              <div className="p-6 md:p-8">
                 {/* Process section heading */}
-                <div className="mb-10">
+                <div className="mb-6">
                   {processSubtitle && (
-                    <div className="inline-block bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-3">
+                    <div className="inline-block bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-2">
                       {processSubtitle}
                     </div>
                   )}
@@ -264,25 +262,26 @@ const PackagesCarouselSection = ({
                 </div>
                 
                 {/* Process steps - vertical layout with connecting line */}
-                <div className="relative pt-6">
+                <div className="relative pt-4">
                   {/* Connecting line */}
-                  <div className="absolute top-0 bottom-0 left-6 w-px bg-gray-200"></div>
+                  <div className="absolute top-0 bottom-0 left-5 w-px bg-gray-200"></div>
                   
                   {/* Process steps */}
-                  <div className="space-y-10">
+                  <div className="space-y-8">
                     {processSteps.map((step, index) => (
                       <div key={index} className="relative flex items-start">
                         {/* Step number circle */}
                         <div 
-                          className="flex-shrink-0 w-12 h-12 rounded-full z-10 flex items-center justify-center text-white text-lg font-bold bg-purple-600 transition-colors duration-300"
+                          className={`flex-shrink-0 w-10 h-10 rounded-full z-10 flex items-center justify-center text-white font-semibold ${getProcessNumberBgColor(activePackageColor)} transition-colors duration-300`}
                         >
                           {step.number}
                         </div>
                         
                         {/* Step content */}
-                        <div className="ml-5">
+                        <div className="ml-4">
                           <div className="flex items-center mb-1">
-                            <span className="text-gray-800 text-lg font-bold">{step.title}</span>
+                            <span className="text-gray-800 font-bold">{step.title}</span>
+                            <span className="ml-2 text-gray-500">{step.icon}</span>
                           </div>
                           <p className="text-sm text-gray-600">{step.description}</p>
                         </div>
@@ -292,10 +291,10 @@ const PackagesCarouselSection = ({
                 </div>
                 
                 {/* CTA Button */}
-                <div className="mt-10 pt-6 border-t border-gray-100">
+                <div className="mt-8 pt-6 border-t border-gray-100">
                   <Link
                     to="/contact"
-                    className="block w-full text-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-purple-600 transition-colors duration-300 hover:opacity-90"
+                    className={`block w-full text-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white ${getButtonClass(activePackageColor)} transition-colors duration-300 hover:opacity-90`}
                   >
                     Start Your Journey
                   </Link>
@@ -310,13 +309,7 @@ const PackagesCarouselSection = ({
           
           {/* Right column: Packages - takes 2/3 of width on large screens */}
           <div className="lg:col-span-2 order-1 lg:order-2">
-            {/* Section heading - now above the packages only */}
-            <div className="mb-12">
-              {title && <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">{title}</h2>}
-              {description && <p className="text-lg text-gray-600 max-w-3xl mb-8">{description}</p>}
-            </div>
-            
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-24">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
               {/* Tab navigation */}
               <div className="flex flex-nowrap border-b overflow-x-auto">
                 {packages.map((pkg, index) => {
@@ -336,7 +329,7 @@ const PackagesCarouselSection = ({
                     >
                       <div className="relative flex flex-col items-center">
                         {/* Small colored dot indicator */}
-                        <span className={`w-3 h-3 rounded-full mb-2 ${getActiveDotClass(pkg.badgeColor)} 
+                        <span className={`w-2 h-2 rounded-full mb-1.5 ${getActiveDotClass(pkg.badgeColor)} 
                           ${isActive ? 'opacity-100' : 'opacity-30'}`}>
                         </span>
                         
