@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
  * @param {string} [props.id] - Section ID for navigation/anchors
  * @param {string} [props.bgColor='bg-white'] - Background color
  * @param {boolean} [props.fullWidth=false] - Whether section is full width
- * @param {string} [props.paddingY='py-16'] - Vertical padding
+ * @param {string} [props.spacing='lg'] - Spacing size (lg, md, sm, none)
  */
 const SectionContainer = ({
   children,
@@ -18,13 +18,31 @@ const SectionContainer = ({
   id,
   bgColor = 'bg-white',
   fullWidth = false,
-  paddingY = 'py-16',
+  spacing = 'lg',
   ...rest
 }) => {
+  // Determine spacing class based on the spacing prop
+  const getSpacingClass = () => {
+    switch (spacing) {
+      case 'lg':
+        return 'section-spacing-lg';
+      case 'md':
+        return 'section-spacing-md';
+      case 'sm':
+        return 'py-8';
+      case 'none':
+        return '';
+      default:
+        return 'section-spacing-lg';
+    }
+  };
+
+  const spacingClass = getSpacingClass();
+
   return (
     <section
       id={id}
-      className={`${bgColor} ${paddingY} ${className}`}
+      className={`${bgColor} ${spacingClass} ${className}`}
       {...rest}
     >
       <div className={`mx-auto px-4 sm:px-6 lg:px-8 ${fullWidth ? 'w-full' : 'max-w-7xl'}`}>
@@ -40,7 +58,7 @@ SectionContainer.propTypes = {
   id: PropTypes.string,
   bgColor: PropTypes.string,
   fullWidth: PropTypes.bool,
-  paddingY: PropTypes.string
+  spacing: PropTypes.oneOf(['lg', 'md', 'sm', 'none'])
 };
 
 export default SectionContainer; 

@@ -2,13 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SectionContainer from '../../ui/SectionContainer';
 import AIGeneratedImage from '../../ui/AIGeneratedImage';
+import PropTypes from 'prop-types';
 
 /**
  * What We Offer Section component
  * 
+ * @param {Object} props - Component props
+ * @param {string} props.spacingClass - Class name for section spacing
  * @returns {JSX.Element} The What We Offer section
  */
-const WhatWeOfferSection = () => {
+const WhatWeOfferSection = ({ spacingClass }) => {
   // Content for the section
   const content = {
     title: "Complete Video Marketing Solutions",
@@ -105,11 +108,11 @@ const WhatWeOfferSection = () => {
   };
 
   return (
-    <section className="relative overflow-hidden py-16 md:py-24">
+    <section className={`relative overflow-hidden ${spacingClass || ''}`}>
       {/* Subtle background circle */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 -z-10"></div>
       
-      <SectionContainer>
+      <SectionContainer spacing="none">
         <div className="max-w-3xl mx-auto text-center mb-20">
           <span className="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-sm font-medium rounded-full mb-4">What We Offer</span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{content.title}</h2>
@@ -262,6 +265,10 @@ const WhatWeOfferSection = () => {
       </SectionContainer>
     </section>
   );
+};
+
+WhatWeOfferSection.propTypes = {
+  spacingClass: PropTypes.string
 };
 
 export default WhatWeOfferSection; 

@@ -5,9 +5,6 @@ import ProblemSolutionSection from '../components/sections/home/ProblemSolutionS
 import ClientIndustriesSection from '../components/sections/home/ClientIndustriesSection';
 import WhatWeOfferSection from '../components/sections/home/WhatWeOfferSection';
 import PackagesCarouselSection from '../components/sections/home/PackagesCarouselSection';
-import ProcessOverviewSection from '../components/sections/home/ProcessOverviewSection';
-import CoreServicesSection from '../components/sections/home/CoreServicesSection';
-import PackagesOverviewSection from '../components/sections/home/PackagesOverviewSection';
 import TestimonialsSection from '../components/sections/home/TestimonialsSection';
 import FAQSection from '../components/sections/home/FAQSection';
 import CtaSection from '../components/sections/shared/CtaSection';
@@ -45,113 +42,6 @@ const clientIndustriesContent = {
   title: "Who We Work With",
   subtitle: "Our Clients",
   description: "We create content for businesses looking to grow their brand authority, increase conversions, and build customer trust."
-};
-
-// Import process overview content
-const processOverviewContent = {
-  title: "Our Proven Process",
-  description: "We follow a structured approach to transform your social media from a time-sink to a client-attraction system.",
-  steps: [
-    {
-      number: "01",
-      title: "Strategic Foundation",
-      description: "We analyze your business goals, ideal clients, and competitive landscape to develop a tailored social media strategy."
-    },
-    {
-      number: "02",
-      title: "Framework Implementation",
-      description: "We build and implement the custom frameworks your business needs for lead generation, conversions, and authority building."
-    },
-    {
-      number: "03",
-      title: "Optimization & Scale",
-      description: "We continuously refine your approach based on performance data and scale what's working to maximize your ROI."
-    }
-  ]
-};
-
-// Import core services content
-const coreServicesContent = {
-  title: "Our Core Services",
-  description: "Each service is designed to address a specific aspect of social media success for service-based businesses.",
-  services: [
-    {
-      title: "Strategy Development",
-      description: "Custom social media strategy aligned with your business goals and target audience.",
-      icon: "light-bulb"
-    },
-    {
-      title: "Content Framework",
-      description: "Structured content approach that positions you as an authority while driving engagement.",
-      icon: "document-text"
-    },
-    {
-      title: "Lead Generation",
-      description: "Systems to attract and capture qualified leads from your ideal target market.",
-      icon: "users"
-    },
-    {
-      title: "Conversion Optimization",
-      description: "Processes to nurture leads and increase your client conversion rate.",
-      icon: "chart-bar"
-    }
-  ]
-};
-
-// Import packages overview content
-const packagesOverviewContent = {
-  title: "Tailored Packages for Your Goals",
-  description: "Choose from our carefully crafted packages designed to meet your specific business needs.",
-  packages: [
-    {
-      title: "Lead Generation Mastery",
-      price: "$1,997/mo",
-      description: "Turn your social media into a consistent lead generation machine.",
-      primaryBenefit: "Ideal for businesses focused on growing their client base",
-      features: [
-        "Social media audit and strategy",
-        "Content calendar development",
-        "Engagement campaign setup",
-        "Lead magnet creation",
-        "Monthly performance reports"
-      ],
-      ctaText: "Learn More",
-      ctaLink: "/packages/lead-generation",
-      popular: false
-    },
-    {
-      title: "Conversion Booster",
-      price: "$2,497/mo",
-      description: "Transform engagement into clients with our conversion-focused system.",
-      primaryBenefit: "Perfect for businesses with traffic but low conversion rates",
-      features: [
-        "Everything in Lead Generation",
-        "Conversion path optimization",
-        "Social proof integration",
-        "Messaging refinement",
-        "A/B testing implementation"
-      ],
-      ctaText: "Learn More",
-      ctaLink: "/packages/conversion-booster",
-      popular: true
-    },
-    {
-      title: "Authority Builder",
-      price: "$3,997/mo",
-      description: "Establish yourself as the go-to authority in your niche.",
-      primaryBenefit: "Best for established businesses ready to dominate their market",
-      features: [
-        "Everything in Conversion Booster",
-        "Thought leadership content",
-        "Industry partnerships",
-        "Speaking opportunity outreach",
-        "PR and media exposure strategy"
-      ],
-      ctaText: "Learn More",
-      ctaLink: "/packages/authority-builder",
-      popular: false
-    }
-  ]
 };
 
 // Import testimonials content
@@ -243,17 +133,37 @@ const HomePage = () => {
       <ProblemSolutionSection
         problem={problemSolutionContent.problem}
         solution={problemSolutionContent.solution}
+        spacingClass="section-spacing-lg"
       />
+      <div className="section-divider"></div>
       <ClientIndustriesSection
         title={clientIndustriesContent.title}
         subtitle={clientIndustriesContent.subtitle}
         description={clientIndustriesContent.description}
+        spacingClass="section-spacing-lg"
       />
-      <WhatWeOfferSection />
+      <div className="section-divider"></div>
+      <WhatWeOfferSection spacingClass="section-spacing-lg" />
+      <div className="section-divider"></div>
       <PackagesCarouselSection
         title={packagesCarouselContent.title}
         subtitle={packagesCarouselContent.subtitle}
         description={packagesCarouselContent.description}
+        spacingClass="section-spacing-lg"
+      />
+      <div className="section-divider"></div>
+      <TestimonialsSection
+        title={testimonialsContent.title}
+        description={testimonialsContent.description}
+        testimonials={testimonialsContent.testimonials}
+        spacingClass="section-spacing-lg"
+      />
+      <div className="section-divider"></div>
+      <FAQSection
+        title={faqContent.title}
+        description={faqContent.description}
+        faqs={faqContent.faqs}
+        spacingClass="section-spacing-lg"
       />
       <CtaSection
         title={ctaContent.title}
@@ -263,16 +173,7 @@ const HomePage = () => {
         secondaryButtonText={ctaContent.secondaryButtonText}
         secondaryButtonLink={ctaContent.secondaryButtonLink}
         bgColor={ctaContent.bgColor}
-      />
-      <TestimonialsSection
-        title={testimonialsContent.title}
-        description={testimonialsContent.description}
-        testimonials={testimonialsContent.testimonials}
-      />
-      <FAQSection
-        title={faqContent.title}
-        description={faqContent.description}
-        faqs={faqContent.faqs}
+        spacingClass="section-spacing-md"
       />
     </Layout>
   );

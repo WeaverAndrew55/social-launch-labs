@@ -5,6 +5,17 @@ import { Link } from 'react-router-dom';
 /**
  * Reusable Call-to-Action section component
  * Used throughout the site for conversion-focused messaging
+ * 
+ * @param {Object} props - Component props
+ * @param {string} props.title - CTA title
+ * @param {string} props.description - CTA description
+ * @param {string} props.primaryButtonText - Text for primary button
+ * @param {string} props.primaryButtonLink - Link for primary button
+ * @param {string} props.secondaryButtonText - Text for secondary button
+ * @param {string} props.secondaryButtonLink - Link for secondary button
+ * @param {boolean} props.showSecondaryButton - Whether to show secondary button
+ * @param {string} props.bgColor - Background color theme ('blue', 'purple', 'orange')
+ * @param {string} props.spacingClass - Class name for section spacing
  */
 const CtaSection = ({
   title = "Ready to transform your social media presence?",
@@ -14,7 +25,8 @@ const CtaSection = ({
   secondaryButtonText = "Learn More",
   secondaryButtonLink = "/services",
   showSecondaryButton = true,
-  bgColor = "blue" // 'blue', 'purple', 'orange'
+  bgColor = "blue", // 'blue', 'purple', 'orange'
+  spacingClass
 }) => {
   
   // Get gradient colors based on color prop
@@ -48,8 +60,8 @@ const CtaSection = ({
   };
   
   return (
-    <section className="bg-white py-20">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section className={`${getGradient(bgColor)} ${spacingClass || 'section-spacing-md'}`}>
+      <div className="container mx-auto px-6 py-12 md:py-16 max-w-5xl text-center">
         <div className={`bg-gradient-to-r ${getGradient(bgColor)} text-white rounded-xl shadow-xl p-8 md:p-12 lg:p-16 
           flex flex-col md:flex-row items-center justify-between transform hover:scale-105 transition duration-500 ease-in-out`}>
           
@@ -91,7 +103,8 @@ CtaSection.propTypes = {
   secondaryButtonText: PropTypes.string,
   secondaryButtonLink: PropTypes.string,
   showSecondaryButton: PropTypes.bool,
-  bgColor: PropTypes.oneOf(['blue', 'purple', 'orange'])
+  bgColor: PropTypes.oneOf(['blue', 'purple', 'orange']),
+  spacingClass: PropTypes.string
 };
 
 export default CtaSection; 

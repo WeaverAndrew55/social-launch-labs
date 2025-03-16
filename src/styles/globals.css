@@ -95,11 +95,32 @@
 .section-spacing-lg {
   padding-top: 6rem;
   padding-bottom: 6rem;
+  position: relative;
 }
 
 .section-spacing-md {
   padding-top: 4rem;
   padding-bottom: 4rem;
+  position: relative;
+}
+
+.section-spacing-sm {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  position: relative;
+}
+
+/* Section spacing with consistent vertical rhythm */
+.section + .section {
+  padding-top: 0;
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, rgba(226, 232, 240, 0), rgba(226, 232, 240, 1) 50%, rgba(226, 232, 240, 0));
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .section-subtitle {
@@ -209,8 +230,18 @@
   }
   
   .section-spacing-lg {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+  
+  .section-spacing-md {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  
+  .section-spacing-sm {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 }
 
@@ -220,7 +251,17 @@
   }
   
   .section-spacing-lg {
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+  }
+  
+  .section-spacing-md {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  
+  .section-spacing-sm {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 }

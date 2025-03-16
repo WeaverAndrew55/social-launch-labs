@@ -13,13 +13,15 @@ import Card from '../../ui/Card';
  * @param {Object} props.solution - Solution information
  * @param {string} props.solution.title - Solution title
  * @param {string} props.solution.description - Solution description
+ * @param {string} props.spacingClass - Class name for section spacing
  */
 const ProblemSolutionSection = ({
   problem,
-  solution
+  solution,
+  spacingClass
 }) => {
   return (
-    <SectionContainer bgColor="bg-white" id="problem-solution">
+    <SectionContainer bgColor="bg-white" id="problem-solution" className={spacingClass}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Problem Column */}
         <Card 
@@ -97,7 +99,8 @@ ProblemSolutionSection.propTypes = {
   solution: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  spacingClass: PropTypes.string
 };
 
 export default ProblemSolutionSection; 
