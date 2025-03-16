@@ -12,6 +12,7 @@ import PackagesPage from './pages/PackagesPage';
 import ContactPage from './pages/ContactPage';
 import LeadGenerationPackagePage from './pages/packages/LeadGenerationPackagePage';
 import ConversionBoosterPackagePage from './pages/packages/ConversionBoosterPackagePage';
+import AuthorityBuilderPackagePage from './pages/packages/AuthorityBuilderPackagePage';
 
 // UI Components
 import Button from './components/ui/Button';
@@ -29,6 +30,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/packages/lead-generation" element={<LeadGenerationPackagePage />} />
         <Route path="/packages/conversion-booster" element={<ConversionBoosterPackagePage />} />
+        <Route path="/packages/authority-builder" element={<AuthorityBuilderPackagePage />} />
       </Routes>
     </Router>
   );
