@@ -141,12 +141,20 @@
 }
 
 /* Package Carousel Styles */
-.package-video:not(.active) {
+.package-video {
   display: none;
 }
 
-.package-panel:not(.active) {
+.package-video.active {
+  display: block;
+}
+
+.package-panel {
   display: none;
+}
+
+.package-panel.active {
+  display: block;
 }
 
 .package-tab.active {
