@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import SectionContainer from '../../ui/SectionContainer';
 
 /**
  * Reusable Call-to-Action section component
@@ -60,37 +61,39 @@ const CtaSection = ({
   };
   
   return (
-    <section className={`${getGradient(bgColor)} ${spacingClass || 'section-spacing-md'}`}>
-      <div className="container mx-auto px-6 py-12 md:py-16 max-w-5xl text-center">
-        <div className={`bg-gradient-to-r ${getGradient(bgColor)} text-white rounded-xl shadow-xl p-8 md:p-12 lg:p-16 
-          flex flex-col md:flex-row items-center justify-between transform hover:scale-105 transition duration-500 ease-in-out`}>
-          
-          {/* Left side: Content */}
-          <div className="md:w-2/3 mb-8 md:mb-0 pr-0 md:pr-8">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">{title}</h2>
-            <p className="text-lg opacity-90 max-w-2xl">{description}</p>
-          </div>
-          
-          {/* Right side: Buttons */}
-          <div className="md:w-1/3 flex flex-col sm:flex-row md:flex-col space-y-4 sm:space-y-0 md:space-y-4 sm:space-x-4 md:space-x-0">
-            <Link 
-              to={primaryButtonLink}
-              className={`bg-white ${getPrimaryButtonTextColor(bgColor)} hover:bg-gray-100 px-6 py-3 rounded-lg text-lg font-medium transition duration-300 text-center shadow-md`}
-            >
-              {primaryButtonText}
-            </Link>
+    <section className={`${spacingClass || 'section-spacing-md'} bg-gradient-to-r ${getGradient(bgColor)}`}>
+      <SectionContainer>
+        <div className="py-12 md:py-16 max-w-5xl mx-auto text-center">
+          <div className={`bg-gradient-to-r ${getGradient(bgColor)} text-white rounded-xl shadow-xl p-8 md:p-12 lg:p-16 
+            flex flex-col md:flex-row items-center justify-between transform hover:scale-105 transition duration-500 ease-in-out`}>
             
-            {showSecondaryButton && (
+            {/* Left side: Content */}
+            <div className="md:w-2/3 mb-8 md:mb-0 pr-0 md:pr-8">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">{title}</h2>
+              <p className="text-lg opacity-90 max-w-2xl">{description}</p>
+            </div>
+            
+            {/* Right side: Buttons */}
+            <div className="md:w-1/3 flex flex-col sm:flex-row md:flex-col space-y-4 sm:space-y-0 md:space-y-4 sm:space-x-4 md:space-x-0">
               <Link 
-                to={secondaryButtonLink}
-                className={`bg-transparent border-2 border-white text-white hover:bg-white ${getSecondaryButtonHoverBg(bgColor)} px-6 py-3 rounded-lg text-lg font-medium transition duration-300 text-center`}
+                to={primaryButtonLink}
+                className={`bg-white ${getPrimaryButtonTextColor(bgColor)} hover:bg-gray-100 px-6 py-3 rounded-lg text-lg font-medium transition duration-300 text-center shadow-md`}
               >
-                {secondaryButtonText}
+                {primaryButtonText}
               </Link>
-            )}
+              
+              {showSecondaryButton && (
+                <Link 
+                  to={secondaryButtonLink}
+                  className={`bg-transparent border-2 border-white text-white hover:bg-white ${getSecondaryButtonHoverBg(bgColor)} px-6 py-3 rounded-lg text-lg font-medium transition duration-300 text-center`}
+                >
+                  {secondaryButtonText}
+                </Link>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      </SectionContainer>
     </section>
   );
 };

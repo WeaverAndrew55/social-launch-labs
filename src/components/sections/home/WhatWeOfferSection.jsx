@@ -108,11 +108,11 @@ const WhatWeOfferSection = ({ spacingClass }) => {
   };
 
   return (
-    <section className={`relative overflow-hidden ${spacingClass || ''}`}>
+    <section className={`${spacingClass || 'section-spacing-lg'} relative overflow-hidden bg-white`}>
       {/* Subtle background circle */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 -z-10"></div>
       
-      <SectionContainer spacing="none">
+      <SectionContainer>
         <div className="max-w-3xl mx-auto text-center mb-20">
           <span className="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-sm font-medium rounded-full mb-4">What We Offer</span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{content.title}</h2>
@@ -124,7 +124,7 @@ const WhatWeOfferSection = ({ spacingClass }) => {
 
         {/* Features */}
         {content.features.map((feature, index) => (
-          <div key={index} className={`flex flex-col ${feature.reversed ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-12 mb-24`}>
+          <div key={index} className={`flex flex-col ${feature.reversed ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-12 mb-24 last:mb-0`}>
             {/* Content Side */}
             <div className="md:w-1/2">
               <div className="relative">

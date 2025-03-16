@@ -206,6 +206,13 @@ const Header = ({ transparent = false }) => {
               >
                 <div className="py-1 rounded-md bg-white shadow-xs">
                   <Link 
+                    to="/packages" 
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 font-medium border-b border-gray-100"
+                    onClick={closeDropdowns}
+                  >
+                    All Packages
+                  </Link>
+                  <Link 
                     to="/packages/lead-generation" 
                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600"
                     onClick={closeDropdowns}
@@ -346,22 +353,29 @@ const Header = ({ transparent = false }) => {
               </button>
               <div className="mobile-dropdown-content" data-dropdown="packages">
                 <Link 
+                  to="/packages" 
+                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 font-medium border-b border-gray-100"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  All Packages
+                </Link>
+                <Link 
                   to="/packages/lead-generation" 
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200"
+                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Lead Generation
                 </Link>
                 <Link 
                   to="/packages/conversion-booster" 
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200"
+                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Conversion Booster
                 </Link>
                 <Link 
                   to="/packages/authority-building" 
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200"
+                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Authority Building

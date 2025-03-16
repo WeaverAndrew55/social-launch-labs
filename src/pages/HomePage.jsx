@@ -135,30 +135,25 @@ const HomePage = () => {
         solution={problemSolutionContent.solution}
         spacingClass="section-spacing-lg"
       />
-      <div className="section-divider"></div>
       <ClientIndustriesSection
         title={clientIndustriesContent.title}
         subtitle={clientIndustriesContent.subtitle}
         description={clientIndustriesContent.description}
         spacingClass="section-spacing-lg"
       />
-      <div className="section-divider"></div>
       <WhatWeOfferSection spacingClass="section-spacing-lg" />
-      <div className="section-divider"></div>
       <PackagesCarouselSection
         title={packagesCarouselContent.title}
         subtitle={packagesCarouselContent.subtitle}
         description={packagesCarouselContent.description}
         spacingClass="section-spacing-lg"
       />
-      <div className="section-divider"></div>
       <TestimonialsSection
         title={testimonialsContent.title}
         description={testimonialsContent.description}
         testimonials={testimonialsContent.testimonials}
         spacingClass="section-spacing-lg"
       />
-      <div className="section-divider"></div>
       <FAQSection
         title={faqContent.title}
         description={faqContent.description}

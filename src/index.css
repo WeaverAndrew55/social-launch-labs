@@ -105,3 +105,79 @@
     padding-bottom: 5rem;
   }
 }
+
+/* Package Page Specific Styles */
+
+/* Section spacing variables */
+:root {
+  --section-spacing-xs: 2rem;
+  --section-spacing-sm: 3rem;
+  --section-spacing-md: 5rem;
+  --section-spacing-lg: 7rem;
+  --section-spacing-xl: 9rem;
+}
+
+/* Section spacing classes */
+.section-spacing-xs {
+  padding-top: var(--section-spacing-xs);
+  padding-bottom: var(--section-spacing-xs);
+}
+
+.section-spacing-sm {
+  padding-top: var(--section-spacing-sm);
+  padding-bottom: var(--section-spacing-sm);
+}
+
+.section-spacing-md {
+  padding-top: var(--section-spacing-md);
+  padding-bottom: var(--section-spacing-md);
+}
+
+.section-spacing-lg {
+  padding-top: var(--section-spacing-lg);
+  padding-bottom: var(--section-spacing-lg);
+}
+
+.section-spacing-xl {
+  padding-top: var(--section-spacing-xl);
+  padding-bottom: var(--section-spacing-xl);
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, rgba(219, 234, 254, 0), rgba(59, 130, 246, 0.5), rgba(219, 234, 254, 0));
+  margin: 1rem auto;
+  width: 80%;
+  max-width: 800px;
+}
+
+/* Feature card */
+.feature-card {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Section header spacing */
+.section-header {
+  margin-bottom: 3rem;
+}
+
+/* Responsive section spacing adjustments */
+@media (max-width: 768px) {
+  :root {
+    --section-spacing-sm: 2.5rem;
+    --section-spacing-md: 4rem;
+    --section-spacing-lg: 5.5rem;
+    --section-spacing-xl: 7rem;
+  }
+}

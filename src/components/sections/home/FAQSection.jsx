@@ -21,8 +21,8 @@ const FAQSection = ({
   spacingClass
 }) => {
   return (
-    <section className={`bg-gray-50 ${spacingClass || 'section-spacing-lg'}`}>
-      <SectionContainer spacing="none">
+    <section className={`${spacingClass || 'section-spacing-lg'} bg-gray-50`}>
+      <SectionContainer>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">

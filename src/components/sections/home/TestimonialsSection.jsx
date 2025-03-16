@@ -51,12 +51,12 @@ const TestimonialsSection = ({
   };
 
   return (
-    <section className={`bg-gradient-to-b from-white to-neutral-50 relative overflow-hidden ${spacingClass || 'section-spacing-lg'}`}>
+    <section className={`${spacingClass || 'section-spacing-lg'} relative overflow-hidden bg-gradient-to-b from-white to-neutral-50`}>
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-50 rounded-full mix-blend-multiply filter blur-3xl opacity-30 translate-x-1/3 translate-y-1/2"></div>
       
-      <SectionContainer spacing="none">
+      <SectionContainer>
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <span className="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-sm font-medium rounded-full mb-4">
             {subtitle}

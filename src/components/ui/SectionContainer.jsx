@@ -8,47 +8,29 @@ import PropTypes from 'prop-types';
  * @param {React.ReactNode} props.children - Section content
  * @param {string} [props.className] - Additional CSS classes
  * @param {string} [props.id] - Section ID for navigation/anchors
- * @param {string} [props.bgColor='bg-white'] - Background color
+ * @param {string} [props.bgColor] - Background color (if not specified by parent)
  * @param {boolean} [props.fullWidth=false] - Whether section is full width
- * @param {string} [props.spacing='lg'] - Spacing size (lg, md, sm, none)
  */
 const SectionContainer = ({
   children,
   className = '',
   id,
-  bgColor = 'bg-white',
+  bgColor,
   fullWidth = false,
-  spacing = 'lg',
   ...rest
 }) => {
-  // Determine spacing class based on the spacing prop
-  const getSpacingClass = () => {
-    switch (spacing) {
-      case 'lg':
-        return 'section-spacing-lg';
-      case 'md':
-        return 'section-spacing-md';
-      case 'sm':
-        return 'py-8';
-      case 'none':
-        return '';
-      default:
-        return 'section-spacing-lg';
-    }
-  };
-
-  const spacingClass = getSpacingClass();
+  const bgColorClass = bgColor ? bgColor : '';
 
   return (
-    <section
+    <div
       id={id}
-      className={`${bgColor} ${spacingClass} ${className}`}
+      className={`relative ${bgColorClass} ${className}`}
       {...rest}
     >
       <div className={`mx-auto px-4 sm:px-6 lg:px-8 ${fullWidth ? 'w-full' : 'max-w-7xl'}`}>
         {children}
       </div>
-    </section>
+    </div>
   );
 };
 
@@ -57,8 +39,7 @@ SectionContainer.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
   bgColor: PropTypes.string,
-  fullWidth: PropTypes.bool,
-  spacing: PropTypes.oneOf(['lg', 'md', 'sm', 'none'])
+  fullWidth: PropTypes.bool
 };
 
 export default SectionContainer; 

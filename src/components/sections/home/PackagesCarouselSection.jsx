@@ -241,12 +241,12 @@ const PackagesCarouselSection = ({
   };
 
   return (
-    <section className={`relative overflow-hidden ${spacingClass || 'section-spacing-lg'}`}>
+    <section className={`${spacingClass || 'section-spacing-lg'} relative overflow-hidden bg-gradient-to-b from-white to-gray-50`}>
       {/* Decorative shapes */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
       
-      <SectionContainer spacing="none">
+      <SectionContainer>
         {/* Background decorations */}
         <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-white to-gray-50"></div>
         <div className="absolute top-1/2 left-0 w-1/4 h-32 bg-blue-50 rounded-full filter blur-3xl opacity-30 transform -translate-x-1/2"></div>

@@ -3,40 +3,26 @@ import Layout from '../components/layout/Layout';
 
 // Import section components
 import EnhancedHeroSection from '../components/sections/common/EnhancedHeroSection';
-import PackageListSection from '../components/sections/packages/PackageListSection';
-import PackageComparisonSection from '../components/sections/packages/PackageComparisonSection';
-import PackageTestimonialsSection from '../components/sections/packages/PackageTestimonialsSection';
-import PackageFAQSection from '../components/sections/packages/PackageFAQSection';
-import CTASection from '../components/sections/home/CTASection';
+import WhyPackagesWorkSection from '../components/sections/packages/WhyPackagesWorkSection';
+import PackageDetailsSection from '../components/sections/packages/PackageDetailsSection';
+import PackageSelectorSection from '../components/sections/packages/PackageSelectorSection';
+import ProcessStepsSection from '../components/sections/packages/ProcessStepsSection';
+import PackageCTASection from '../components/sections/packages/PackageCTASection';
 
 // Packages page hero content
 const heroContent = {
-  title: "Tailored Social Media Packages",
-  description: "Choose the perfect package to transform your social media presence into a client-generating asset.",
+  title: "Choose the Right Package for Your Business Growth",
+  description: "Our three modular packages are designed to meet you wherever you are in your marketing journey. Whether you need to attract new leads, convert more customers, or build your brand's authority, we have a flexible package to fuel your business growth.",
   primaryCta: {
-    text: "View Packages",
+    text: "View Our Packages",
     link: "#packages"
   },
   secondaryCta: {
-    text: "Compare Features",
-    link: "#package-comparison"
+    text: "Schedule a Consultation",
+    link: "#contact"
   },
-  imageSrc: "https://picsum.photos/800/450?random=3", // Placeholder image
-  aiGeneratedSrc: "/images/ai-generated/hero/packages-hero.jpg" // Simulated AI-generated image path
-};
-
-// Import CTA content
-const ctaContent = {
-  title: "Ready to Get Started?",
-  description: "Book a free discovery call to discuss which package is right for your business.",
-  primaryButton: {
-    text: "Book Your Free Call",
-    link: "/contact"
-  },
-  secondaryButton: {
-    text: "Learn More About Our Process",
-    link: "/services"
-  }
+  imageSrc: "https://WeaverAndrew55.github.io/SLL-Images/assets/Services/Services-3.png", 
+  aiGeneratedSrc: "/images/packages/packages-hero.jpg"
 };
 
 /**
@@ -52,18 +38,37 @@ const PackagesPage = () => {
         secondaryCta={heroContent.secondaryCta}
         imageSrc={heroContent.imageSrc}
         aiGeneratedSrc={heroContent.aiGeneratedSrc}
-        id="packages"
       />
-      <PackageListSection />
-      <PackageComparisonSection />
-      <PackageTestimonialsSection />
-      <PackageFAQSection />
-      <CTASection
-        title={ctaContent.title}
-        description={ctaContent.description}
-        primaryButton={ctaContent.primaryButton}
-        secondaryButton={ctaContent.secondaryButton}
-      />
+      
+      {/* Visual Connector Element */}
+      <div className="section-divider"></div>
+      
+      {/* Why Our Packages Work */}
+      <WhyPackagesWorkSection />
+      
+      {/* Visual Connector Element */}
+      <div className="section-divider"></div>
+      
+      {/* Package Details */}
+      <PackageDetailsSection />
+      
+      {/* Visual Connector Element */}
+      <div className="section-divider"></div>
+      
+      {/* Package Selector */}
+      <PackageSelectorSection />
+      
+      {/* Visual Connector Element */}
+      <div className="section-divider"></div>
+      
+      {/* Process Steps */}
+      <ProcessStepsSection />
+      
+      {/* Visual Connector Element */}
+      <div className="section-divider"></div>
+      
+      {/* CTA Section */}
+      <PackageCTASection />
     </Layout>
   );
 };

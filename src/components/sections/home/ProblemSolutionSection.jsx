@@ -21,73 +21,75 @@ const ProblemSolutionSection = ({
   spacingClass
 }) => {
   return (
-    <SectionContainer bgColor="bg-white" id="problem-solution" className={spacingClass}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Problem Column */}
-        <Card 
-          className="h-full flex flex-col shadow-md hover:shadow-lg transition-shadow border-t-4 border-neutral-700"
-        >
-          <div className="flex-1 p-6">
-            <div className="flex items-center mb-4">
-              <div className="w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 mr-4">
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  className="h-6 w-6 text-neutral-700" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
-                  stroke="currentColor"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" 
-                  />
-                </svg>
+    <section className={`${spacingClass || 'section-spacing-lg'} bg-white`} id="problem-solution">
+      <SectionContainer>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Problem Column */}
+          <Card 
+            className="h-full flex flex-col shadow-md hover:shadow-lg transition-shadow border-t-4 border-neutral-700"
+          >
+            <div className="flex-1 p-6">
+              <div className="flex items-center mb-4">
+                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-neutral-100 mr-4">
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-6 w-6 text-neutral-700" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" 
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-display font-bold text-neutral-800">
+                  {problem.title}
+                </h3>
               </div>
-              <h3 className="text-2xl font-display font-bold text-neutral-800">
-                {problem.title}
-              </h3>
+              <p className="text-neutral-600">
+                {problem.description}
+              </p>
             </div>
-            <p className="text-neutral-600">
-              {problem.description}
-            </p>
-          </div>
-        </Card>
+          </Card>
 
-        {/* Solution Column */}
-        <Card 
-          className="h-full flex flex-col shadow-md hover:shadow-lg transition-shadow border-t-4 border-primary-600"
-        >
-          <div className="flex-1 p-6">
-            <div className="flex items-center mb-4">
-              <div className="w-10 h-10 flex items-center justify-center rounded-full bg-primary-100 mr-4">
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  className="h-6 w-6 text-primary-600" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
-                  stroke="currentColor"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" 
-                  />
-                </svg>
+          {/* Solution Column */}
+          <Card 
+            className="h-full flex flex-col shadow-md hover:shadow-lg transition-shadow border-t-4 border-primary-600"
+          >
+            <div className="flex-1 p-6">
+              <div className="flex items-center mb-4">
+                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-primary-100 mr-4">
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-6 w-6 text-primary-600" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" 
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-display font-bold text-primary-700">
+                  {solution.title}
+                </h3>
               </div>
-              <h3 className="text-2xl font-display font-bold text-primary-700">
-                {solution.title}
-              </h3>
+              <p className="text-neutral-600">
+                {solution.description}
+              </p>
             </div>
-            <p className="text-neutral-600">
-              {solution.description}
-            </p>
-          </div>
-        </Card>
-      </div>
-    </SectionContainer>
+          </Card>
+        </div>
+      </SectionContainer>
+    </section>
   );
 };
 
