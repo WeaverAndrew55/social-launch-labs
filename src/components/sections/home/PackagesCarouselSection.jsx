@@ -219,7 +219,7 @@ const PackagesCarouselSection = ({
   };
 
   // Calculate the current active package color for process cards
-  const activePackageColor = packages[activeIndex]?.badgeColor || 'blue';
+  const activePackageColor = 'purple'; // Fixed to purple to match the screenshot
   const getProcessNumberBgColor = (color) => {
     const bgColors = {
       blue: 'bg-blue-600',
@@ -237,16 +237,25 @@ const PackagesCarouselSection = ({
       <div className="absolute bottom-0 right-0 w-1/3 h-48 bg-indigo-50 rounded-full filter blur-3xl opacity-40 transform translate-x-1/4"></div>
       
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        {/* "OUR PACKAGES" subtitle at the top right */}
+        {subtitle && (
+          <div className="text-right mb-8">
+            <span className="inline-block text-blue-600 font-semibold text-sm md:text-base uppercase tracking-wider">
+              {subtitle}
+            </span>
+          </div>
+        )}
+        
         {/* Main content container with two columns */}
-        <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-3 lg:gap-12">
+        <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-3 lg:gap-16">
           {/* Left column: Process - takes 1/3 of width on large screens */}
-          <div className="lg:col-span-1 mb-12 lg:mb-0 order-2 lg:order-1 lg:-mt-16">
+          <div className="lg:col-span-1 mb-12 lg:mb-0 order-2 lg:order-1">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="p-6 md:p-8">
+              <div className="p-8 md:p-10">
                 {/* Process section heading */}
-                <div className="mb-8">
+                <div className="mb-10">
                   {processSubtitle && (
-                    <div className="inline-block bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-2">
+                    <div className="inline-block bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-3">
                       {processSubtitle}
                     </div>
                   )}
@@ -255,26 +264,25 @@ const PackagesCarouselSection = ({
                 </div>
                 
                 {/* Process steps - vertical layout with connecting line */}
-                <div className="relative pt-4">
+                <div className="relative pt-6">
                   {/* Connecting line */}
-                  <div className="absolute top-0 bottom-0 left-5 w-px bg-gray-200"></div>
+                  <div className="absolute top-0 bottom-0 left-6 w-px bg-gray-200"></div>
                   
                   {/* Process steps */}
-                  <div className="space-y-8">
+                  <div className="space-y-10">
                     {processSteps.map((step, index) => (
                       <div key={index} className="relative flex items-start">
                         {/* Step number circle */}
                         <div 
-                          className={`flex-shrink-0 w-12 h-12 rounded-full z-10 flex items-center justify-center text-white text-lg font-bold ${getProcessNumberBgColor(activePackageColor)} transition-colors duration-300`}
+                          className="flex-shrink-0 w-12 h-12 rounded-full z-10 flex items-center justify-center text-white text-lg font-bold bg-purple-600 transition-colors duration-300"
                         >
                           {step.number}
                         </div>
                         
                         {/* Step content */}
-                        <div className="ml-4">
+                        <div className="ml-5">
                           <div className="flex items-center mb-1">
                             <span className="text-gray-800 text-lg font-bold">{step.title}</span>
-                            <span className="ml-2 text-gray-500">{step.icon}</span>
                           </div>
                           <p className="text-sm text-gray-600">{step.description}</p>
                         </div>
@@ -284,10 +292,10 @@ const PackagesCarouselSection = ({
                 </div>
                 
                 {/* CTA Button */}
-                <div className="mt-8 pt-6 border-t border-gray-100">
+                <div className="mt-10 pt-6 border-t border-gray-100">
                   <Link
                     to="/contact"
-                    className={`block w-full text-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white ${getButtonClass(activePackageColor)} transition-colors duration-300 hover:opacity-90`}
+                    className="block w-full text-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-purple-600 transition-colors duration-300 hover:opacity-90"
                   >
                     Start Your Journey
                   </Link>
@@ -304,15 +312,8 @@ const PackagesCarouselSection = ({
           <div className="lg:col-span-2 order-1 lg:order-2">
             {/* Section heading - now above the packages only */}
             <div className="mb-12">
-              {subtitle && (
-                <div className="text-right mb-2">
-                  <span className="inline-block text-blue-600 font-semibold text-sm md:text-base uppercase tracking-wider">
-                    {subtitle}
-                  </span>
-                </div>
-              )}
               {title && <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">{title}</h2>}
-              {description && <p className="text-lg text-gray-600 max-w-3xl">{description}</p>}
+              {description && <p className="text-lg text-gray-600 max-w-3xl mb-8">{description}</p>}
             </div>
             
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-24">
