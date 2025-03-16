@@ -21,8 +21,11 @@ import Button from './components/ui/Button';
 const Contact = () => <div className="container mx-auto px-4 py-16"><h1>Contact Page</h1></div>;
 
 function App() {
+  // Get the base path from the environment or use the default for GitHub Pages
+  const basePath = import.meta.env.BASE_URL || '/social-launch-labs/';
+
   return (
-    <Router>
+    <Router basename={basePath}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/services" element={<ServicesPage />} />
