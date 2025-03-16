@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 
 /**
  * Packages Carousel section component
- * Displays packages in an interactive carousel with tabs and process steps
+ * Displays packages in an interactive carousel with integrated process steps
  */
 const PackagesCarouselSection = ({ 
   title = "Our Growth Packages", 
   subtitle = "TAILORED SOLUTIONS", 
   description = "Choose the package that best fits your business goals and growth strategy.",
-  processTitle = "How the Process Works",
-  processSubtitle = "NEXT STEPS",
-  processDescription = "Getting started with Social Launch Labs is simple. Follow these steps to move forward:"
+  processTitle = "How It Works",
+  processSubtitle = "SIMPLE PROCESS",
+  processDescription = "Getting started is easy"
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -78,23 +78,43 @@ const PackagesCarouselSection = ({
   const processSteps = [
     {
       number: "1",
-      title: "Determine Your Needs",
-      description: "Assess where your business needs the biggest boost - whether it's lead generation, conversion improvement, or industry authority."
+      title: "Assess Your Needs",
+      description: "Identify your primary growth challenge",
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+        </svg>
+      )
     },
     {
       number: "2",
-      title: "Select Your Package",
-      description: "Choose the package that aligns with your business goals and budget. Each is designed to address specific growth challenges."
+      title: "Choose Package",
+      description: "Select the solution that fits your goals",
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+        </svg>
+      )
     },
     {
       number: "3",
-      title: "Customization Call",
-      description: "Schedule a strategy call where we'll refine the approach to fit your brand's unique voice and target audience."
+      title: "Strategy Call",
+      description: "Customize the approach for your brand",
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+      )
     },
     {
       number: "4",
       title: "Implementation",
-      description: "Our team executes the strategy, providing regular updates and making adjustments as needed for optimal results."
+      description: "Watch your social presence transform",
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      )
     }
   ];
 
@@ -198,10 +218,21 @@ const PackagesCarouselSection = ({
     return dotClasses[color] || dotClasses.blue;
   };
 
+  // Calculate the current active package color for process cards
+  const activePackageColor = packages[activeIndex]?.badgeColor || 'blue';
+  const getProcessNumberBgColor = (color) => {
+    const bgColors = {
+      blue: 'bg-blue-600',
+      purple: 'bg-purple-600',
+      orange: 'bg-orange-600'
+    };
+    return bgColors[color] || bgColors.blue;
+  };
+
   return (
-    <section className="section-spacing-lg relative overflow-hidden">
+    <section className="section-spacing-lg relative overflow-hidden bg-gray-50">
       {/* Background decorations */}
-      <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-gray-50 to-white"></div>
+      <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-white to-gray-50"></div>
       <div className="absolute top-1/2 left-0 w-1/4 h-32 bg-blue-50 rounded-full filter blur-3xl opacity-30 transform -translate-x-1/2"></div>
       <div className="absolute bottom-0 right-0 w-1/3 h-48 bg-indigo-50 rounded-full filter blur-3xl opacity-40 transform translate-x-1/4"></div>
       
@@ -213,201 +244,227 @@ const PackagesCarouselSection = ({
           {description && <p className="section-description mt-4">{description}</p>}
         </div>
         
-        {/* Packages carousel */}
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-7xl mx-auto mb-16">
-          {/* Tab navigation */}
-          <div className="flex flex-nowrap border-b overflow-x-auto">
-            {packages.map((pkg, index) => {
-              const isActive = index === activeIndex;
-              const activeColorClass = isActive ? getTabColor(pkg.badgeColor) : getTabInactiveColor(pkg.badgeColor);
-              const bgColorClass = getTabBgColor(pkg.badgeColor, isActive);
-              const borderColorClass = getTabBorderColor(pkg.badgeColor, isActive);
-              
-              return (
-                <button
-                  key={index}
-                  data-index={index}
-                  className={`package-tab relative flex-1 py-4 px-6 text-center text-sm md:text-base font-medium 
-                    border-b-2 ${borderColorClass} ${bgColorClass} ${activeColorClass} focus:outline-none 
-                    transition-all duration-200 ${isActive ? 'active font-semibold' : ''}`}
-                  onClick={() => handleTabClick(index)}
-                >
-                  <div className="relative flex flex-col items-center">
-                    {/* Small colored dot indicator */}
-                    <span className={`w-2 h-2 rounded-full mb-1.5 ${getActiveDotClass(pkg.badgeColor)} 
-                      ${isActive ? 'opacity-100' : 'opacity-30'}`}>
-                    </span>
-                    
-                    {pkg.title}
-                    
-                    {isActive && (
-                      <span className="absolute -top-3 -right-6 inline-flex h-5 w-5">
-                        <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${pkg.badgeColor === 'blue' ? 'bg-blue-300' : pkg.badgeColor === 'purple' ? 'bg-purple-300' : 'bg-orange-300'}`}></span>
-                        <span className={`relative inline-flex rounded-full h-3 w-3 ${pkg.badgeColor === 'blue' ? 'bg-blue-500' : pkg.badgeColor === 'purple' ? 'bg-purple-500' : 'bg-orange-500'}`}></span>
-                      </span>
-                    )}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-          
-          {/* Content container */}
-          <div className="md:grid md:grid-cols-2">
-            {/* Left column: Package info */}
-            <div className="package-info-column">
-              {packages.map((pkg, index) => {
-                const isActive = index === activeIndex;
-                return (
-                  <div 
-                    key={index}
-                    data-index={index}
-                    className={`package-panel p-6 md:p-8 ${isActive ? 'active' : ''}`}
-                  >
-                    <div className="flex justify-between items-start mb-6">
-                      <div>
-                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${getBadgeClass(pkg.badgeColor)}`}>
-                          {pkg.badge}
+        {/* Main content container - packages and process side by side */}
+        <div className="max-w-7xl mx-auto mb-16 lg:grid lg:grid-cols-3 lg:gap-12 lg:items-start">
+          {/* Left column: Packages - takes 2/3 of width on large screens */}
+          <div className="lg:col-span-2 mb-12 lg:mb-0">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              {/* Tab navigation */}
+              <div className="flex flex-nowrap border-b overflow-x-auto">
+                {packages.map((pkg, index) => {
+                  const isActive = index === activeIndex;
+                  const activeColorClass = isActive ? getTabColor(pkg.badgeColor) : getTabInactiveColor(pkg.badgeColor);
+                  const bgColorClass = getTabBgColor(pkg.badgeColor, isActive);
+                  const borderColorClass = getTabBorderColor(pkg.badgeColor, isActive);
+                  
+                  return (
+                    <button
+                      key={index}
+                      data-index={index}
+                      className={`package-tab relative flex-1 py-4 px-6 text-center text-sm md:text-base font-medium 
+                        border-b-2 ${borderColorClass} ${bgColorClass} ${activeColorClass} focus:outline-none 
+                        transition-all duration-200 ${isActive ? 'active font-semibold' : ''}`}
+                      onClick={() => handleTabClick(index)}
+                    >
+                      <div className="relative flex flex-col items-center">
+                        {/* Small colored dot indicator */}
+                        <span className={`w-2 h-2 rounded-full mb-1.5 ${getActiveDotClass(pkg.badgeColor)} 
+                          ${isActive ? 'opacity-100' : 'opacity-30'}`}>
                         </span>
-                        <h3 className="text-xl md:text-2xl font-bold mt-2">{pkg.title}</h3>
+                        
+                        {pkg.title}
+                        
+                        {isActive && (
+                          <span className="absolute -top-3 -right-6 inline-flex h-5 w-5">
+                            <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${pkg.badgeColor === 'blue' ? 'bg-blue-300' : pkg.badgeColor === 'purple' ? 'bg-purple-300' : 'bg-orange-300'}`}></span>
+                            <span className={`relative inline-flex rounded-full h-3 w-3 ${pkg.badgeColor === 'blue' ? 'bg-blue-500' : pkg.badgeColor === 'purple' ? 'bg-purple-500' : 'bg-orange-500'}`}></span>
+                          </span>
+                        )}
                       </div>
-                      <div className="text-right">
-                        <div className="text-2xl md:text-3xl font-bold">{pkg.price}</div>
-                        <div className="text-sm text-gray-500">{pkg.perMonth}</div>
-                      </div>
-                    </div>
-                    
-                    <ul className="space-y-3 my-6">
-                      {pkg.features.map((feature, i) => (
-                        <li key={i} className="flex items-start">
-                          <svg className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                          </svg>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    
-                    <div className="flex flex-col sm:flex-row gap-3 mt-8">
-                      <Link 
-                        to={pkg.ctaLink} 
-                        className={`inline-flex justify-center items-center px-6 py-3 border border-transparent 
-                          text-base font-medium rounded-md shadow-sm text-white ${getButtonClass(pkg.badgeColor)} 
-                          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}
+                    </button>
+                  );
+                })}
+              </div>
+              
+              {/* Content container */}
+              <div className="md:grid md:grid-cols-2">
+                {/* Left column: Package info */}
+                <div className="package-info-column">
+                  {packages.map((pkg, index) => {
+                    const isActive = index === activeIndex;
+                    return (
+                      <div 
+                        key={index}
+                        data-index={index}
+                        className={`package-panel p-6 md:p-8 ${isActive ? 'active' : ''}`}
                       >
-                        Get Started
-                      </Link>
-                      <Link 
-                        to={pkg.learnMoreLink} 
-                        className="inline-flex justify-center items-center px-6 py-3 border border-gray-300 
-                          text-base font-medium rounded-md bg-white text-gray-700 hover:bg-gray-50 
-                          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                      >
-                        Learn More
-                      </Link>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-            
-            {/* Right column: Video preview */}
-            <div className="bg-gradient-to-br from-gray-900 to-black relative h-full min-h-[300px] md:min-h-[400px]">
-              {packages.map((pkg, index) => {
-                const isActive = index === activeIndex;
-                return (
-                  <div 
-                    key={index}
-                    data-index={index}
-                    className={`package-video absolute inset-0 ${isActive ? 'active' : ''}`}
-                  >
-                    <img 
-                      src={pkg.videoThumbnail} 
-                      alt={`${pkg.title} preview`} 
-                      className="video-thumbnail w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-between p-4 sm:p-6 md:p-8">
-                      {/* Video title overlay */}
-                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 max-w-md">
-                        <h3 className="text-lg sm:text-xl font-semibold text-white">{pkg.title} Overview</h3>
-                        <p className="text-white/80 text-sm mt-1">
-                          See how our {pkg.title.toLowerCase()} can transform your social media presence.
-                        </p>
-                      </div>
-                      
-                      {/* Play button and duration */}
-                      <div className="flex justify-between items-end">
-                        <button className="play-button bg-white rounded-full w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center shadow-lg transform transition-all duration-300 hover:scale-110 hover:bg-blue-50 focus:outline-none group">
-                          <svg className="w-7 h-7 sm:w-8 sm:h-8 text-blue-600 group-hover:text-blue-700" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                          </svg>
-                        </button>
-                        <div className="bg-black bg-opacity-60 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg text-sm font-medium">
-                          {pkg.videoDuration}
+                        <div className="flex justify-between items-start mb-6">
+                          <div>
+                            <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${getBadgeClass(pkg.badgeColor)}`}>
+                              {pkg.badge}
+                            </span>
+                            <h3 className="text-xl md:text-2xl font-bold mt-2">{pkg.title}</h3>
+                          </div>
+                          <div className="text-right">
+                            <div className="text-2xl md:text-3xl font-bold">{pkg.price}</div>
+                            <div className="text-sm text-gray-500">{pkg.perMonth}</div>
+                          </div>
+                        </div>
+                        
+                        <ul className="space-y-3 my-6">
+                          {pkg.features.map((feature, i) => (
+                            <li key={i} className="flex items-start">
+                              <svg className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                              </svg>
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        
+                        <div className="flex flex-col sm:flex-row gap-3 mt-8">
+                          <Link 
+                            to={pkg.ctaLink} 
+                            className={`inline-flex justify-center items-center px-6 py-3 border border-transparent 
+                              text-base font-medium rounded-md shadow-sm text-white ${getButtonClass(pkg.badgeColor)} 
+                              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}
+                          >
+                            Get Started
+                          </Link>
+                          <Link 
+                            to={pkg.learnMoreLink} 
+                            className="inline-flex justify-center items-center px-6 py-3 border border-gray-300 
+                              text-base font-medium rounded-md bg-white text-gray-700 hover:bg-gray-50 
+                              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                          >
+                            Learn More
+                          </Link>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                );
-              })}
+                    );
+                  })}
+                </div>
+                
+                {/* Right column: Video preview */}
+                <div className="bg-gradient-to-br from-gray-900 to-black relative h-full min-h-[300px] md:min-h-[400px]">
+                  {packages.map((pkg, index) => {
+                    const isActive = index === activeIndex;
+                    return (
+                      <div 
+                        key={index}
+                        data-index={index}
+                        className={`package-video absolute inset-0 ${isActive ? 'active' : ''}`}
+                      >
+                        <img 
+                          src={pkg.videoThumbnail} 
+                          alt={`${pkg.title} preview`} 
+                          className="video-thumbnail w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-between p-4 sm:p-6 md:p-8">
+                          {/* Video title overlay */}
+                          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 max-w-md">
+                            <h3 className="text-lg sm:text-xl font-semibold text-white">{pkg.title} Overview</h3>
+                            <p className="text-white/80 text-sm mt-1">
+                              See how our {pkg.title.toLowerCase()} can transform your social media presence.
+                            </p>
+                          </div>
+                          
+                          {/* Play button and duration */}
+                          <div className="flex justify-between items-end">
+                            <button className="play-button bg-white rounded-full w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center shadow-lg transform transition-all duration-300 hover:scale-110 hover:bg-blue-50 focus:outline-none group">
+                              <svg className="w-7 h-7 sm:w-8 sm:h-8 text-blue-600 group-hover:text-blue-700" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                              </svg>
+                            </button>
+                            <div className="bg-black bg-opacity-60 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg text-sm font-medium">
+                              {pkg.videoDuration}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              
+              {/* Navigation dots */}
+              <div className="flex justify-center py-4 bg-gray-50">
+                {packages.map((pkg, index) => {
+                  const isActive = index === activeIndex;
+                  const dotColorClass = isActive ? getActiveDotClass(pkg.badgeColor) : 'bg-gray-300';
+                  
+                  return (
+                    <button
+                      key={index}
+                      className={`w-3 h-3 rounded-full mx-1.5 focus:outline-none transition-colors duration-200 ${dotColorClass}`}
+                      onClick={() => handleTabClick(index)}
+                      aria-label={`View package ${index + 1}`}
+                    ></button>
+                  );
+                })}
+              </div>
             </div>
           </div>
           
-          {/* Navigation dots */}
-          <div className="flex justify-center py-4 bg-gray-50">
-            {packages.map((pkg, index) => {
-              const isActive = index === activeIndex;
-              const dotColorClass = isActive ? getActiveDotClass(pkg.badgeColor) : 'bg-gray-300';
-              
-              return (
-                <button
-                  key={index}
-                  className={`w-3 h-3 rounded-full mx-1.5 focus:outline-none transition-colors duration-200 ${dotColorClass}`}
-                  onClick={() => handleTabClick(index)}
-                  aria-label={`View package ${index + 1}`}
-                ></button>
-              );
-            })}
-          </div>
-        </div>
-        
-        {/* Process section */}
-        <div className="max-w-7xl mx-auto mt-24">
-          {/* Process section heading */}
-          <div className="text-center mb-12">
-            {processSubtitle && (
-              <div className="inline-block bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-4">
-                {processSubtitle}
-              </div>
-            )}
-            {processTitle && <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{processTitle}</h2>}
-            {processDescription && <p className="text-lg text-gray-600 max-w-3xl mx-auto">{processDescription}</p>}
-          </div>
-          
-          {/* Process cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {processSteps.map((step, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-md p-6 md:p-8 relative hover:shadow-lg transition-shadow duration-300">
-                <div className="absolute -top-4 -left-4 bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold">
-                  {step.number}
+          {/* Right column: Process - takes 1/3 of width on large screens */}
+          <div className="lg:col-span-1">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <div className="p-6 md:p-8">
+                {/* Process section heading */}
+                <div className="mb-6">
+                  {processSubtitle && (
+                    <div className="inline-block bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-2">
+                      {processSubtitle}
+                    </div>
+                  )}
+                  {processTitle && <h2 className="text-2xl font-bold text-gray-900 mb-3">{processTitle}</h2>}
+                  {processDescription && <p className="text-gray-600">{processDescription}</p>}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 mt-2">{step.title}</h3>
-                <p className="text-gray-700">{step.description}</p>
+                
+                {/* Process steps - vertical layout with connecting line */}
+                <div className="relative pt-4">
+                  {/* Connecting line */}
+                  <div className="absolute top-0 bottom-0 left-5 w-px bg-gray-200"></div>
+                  
+                  {/* Process steps */}
+                  <div className="space-y-8">
+                    {processSteps.map((step, index) => (
+                      <div key={index} className="relative flex items-start">
+                        {/* Step number circle */}
+                        <div 
+                          className={`flex-shrink-0 w-10 h-10 rounded-full z-10 flex items-center justify-center text-white font-semibold ${getProcessNumberBgColor(activePackageColor)} transition-colors duration-300`}
+                        >
+                          {step.number}
+                        </div>
+                        
+                        {/* Step content */}
+                        <div className="ml-4">
+                          <div className="flex items-center mb-1">
+                            <span className="text-gray-800 font-bold">{step.title}</span>
+                            <span className="ml-2 text-gray-500">{step.icon}</span>
+                          </div>
+                          <p className="text-sm text-gray-600">{step.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* CTA Button */}
+                <div className="mt-8 pt-6 border-t border-gray-100">
+                  <Link
+                    to="/contact"
+                    className={`block w-full text-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white ${getButtonClass(activePackageColor)} transition-colors duration-300 hover:opacity-90`}
+                  >
+                    Start Your Journey
+                  </Link>
+                  
+                  <div className="mt-4 text-center text-sm text-gray-500">
+                    Free consultation - No obligation
+                  </div>
+                </div>
               </div>
-            ))}
-          </div>
-          
-          {/* Process CTA */}
-          <div className="text-center mt-12">
-            <Link
-              to="/contact"
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300"
-            >
-              Schedule Your Free Consultation
-              <svg className="ml-2 -mr-1 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </Link>
+            </div>
           </div>
         </div>
       </div>
