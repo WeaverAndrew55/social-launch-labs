@@ -11,6 +11,7 @@ import ServicesPage from './pages/ServicesPage';
 import PackagesPage from './pages/PackagesPage';
 import ContactPage from './pages/ContactPage';
 import LeadGenerationPackagePage from './pages/packages/LeadGenerationPackagePage';
+import ConversionBoosterPackagePage from './pages/packages/ConversionBoosterPackagePage';
 
 // UI Components
 import Button from './components/ui/Button';
@@ -27,6 +28,7 @@ function App() {
         <Route path="/packages" element={<PackagesPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/packages/lead-generation" element={<LeadGenerationPackagePage />} />
+        <Route path="/packages/conversion-booster" element={<ConversionBoosterPackagePage />} />
       </Routes>
     </Router>
   );
