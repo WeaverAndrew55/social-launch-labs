@@ -11,6 +11,7 @@ import PackagesOverviewSection from '../components/sections/home/PackagesOvervie
 import TestimonialsSection from '../components/sections/home/TestimonialsSection';
 import FAQSection from '../components/sections/home/FAQSection';
 import CTASection from '../components/sections/home/CTASection';
+import CtaSection from '../components/sections/shared/CtaSection';
 
 // Import hero content
 const heroContent = {
@@ -210,16 +211,13 @@ const faqContent = {
 
 // Import CTA content
 const ctaContent = {
-  title: "Ready to Transform Your Social Media Presence?",
-  description: "Book a free discovery call to discuss your business goals and how our frameworks can help you achieve them.",
-  primaryButton: {
-    text: "Book Your Free Call",
-    link: "/contact"
-  },
-  secondaryButton: {
-    text: "Explore Our Packages",
-    link: "/packages"
-  }
+  title: "Ready to Elevate Your Social Media Strategy?",
+  description: "Take your brand's social presence to the next level with our proven strategies tailored specifically for your business goals.",
+  primaryButtonText: "Book a Free Strategy Call",
+  primaryButtonLink: "/contact",
+  secondaryButtonText: "Browse All Services",
+  secondaryButtonLink: "/services",
+  bgColor: "purple"
 };
 
 // Packages Carousel content
@@ -258,6 +256,15 @@ const HomePage = () => {
         title={packagesCarouselContent.title}
         subtitle={packagesCarouselContent.subtitle}
         description={packagesCarouselContent.description}
+      />
+      <CtaSection
+        title={ctaContent.title}
+        description={ctaContent.description}
+        primaryButtonText={ctaContent.primaryButtonText}
+        primaryButtonLink={ctaContent.primaryButtonLink}
+        secondaryButtonText={ctaContent.secondaryButtonText}
+        secondaryButtonLink={ctaContent.secondaryButtonLink}
+        bgColor={ctaContent.bgColor}
       />
       <ProcessOverviewSection
         title={processOverviewContent.title}
