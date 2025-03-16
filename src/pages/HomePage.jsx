@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../components/layout/Layout';
 import HeroSection from '../components/sections/home/HeroSection';
 import ProblemSolutionSection from '../components/sections/home/ProblemSolutionSection';
+import TargetAudienceSection from '../components/sections/home/TargetAudienceSection';
 
 // Import hero content
 const heroContent = {
@@ -24,6 +25,29 @@ const problemSolutionContent = {
   }
 };
 
+// Import target audience content
+const targetAudienceContent = {
+  title: "Who We Work With",
+  description: "Our frameworks are specifically designed for service-based businesses who want to leverage social media effectively.",
+  segments: [
+    {
+      title: "Coaches & Consultants",
+      description: "Establish yourself as an authority and attract clients who value your expertise.",
+      icon: "chart-bar"
+    },
+    {
+      title: "Professional Service Providers",
+      description: "Build trust and visibility in your specialized field to attract high-value clients.",
+      icon: "briefcase"
+    },
+    {
+      title: "Agency Owners",
+      description: "Showcase your results and methodology to stand out in a crowded marketplace.",
+      icon: "building"
+    }
+  ]
+};
+
 /**
  * Home page component
  */
@@ -40,6 +64,11 @@ const HomePage = () => {
       <ProblemSolutionSection
         problem={problemSolutionContent.problem}
         solution={problemSolutionContent.solution}
+      />
+      <TargetAudienceSection
+        title={targetAudienceContent.title}
+        description={targetAudienceContent.description}
+        segments={targetAudienceContent.segments}
       />
       {/* Other sections will be added here */}
     </Layout>
