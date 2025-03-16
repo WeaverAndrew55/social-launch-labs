@@ -241,7 +241,7 @@ const PackagesCarouselSection = ({
   };
 
   return (
-    <section className={`${spacingClass || 'section-spacing-md'} relative bg-white overflow-hidden`}>
+    <section className={`${spacingClass || 'section-spacing-md'} relative bg-white overflow-hidden`} data-optimized-layout="true">
       {/* Decorative shapes */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
@@ -253,20 +253,20 @@ const PackagesCarouselSection = ({
         <div className="absolute bottom-0 right-0 w-1/3 h-48 bg-indigo-50 rounded-full filter blur-3xl opacity-40 transform translate-x-1/4"></div>
         
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          {/* Section heading - now positioned at the very top */}
-          <div className="text-center mb-8">
+          {/* IMPORTANT: This is the optimized title section that should be centered over both columns */}
+          <div className="text-center mb-8 border-b pb-4">
             <span className="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-sm font-medium rounded-full mb-3">{subtitle}</span>
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">{title}</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">{description}</p>
           </div>
           
-          {/* Restructured the layout to achieve the desired design */}
+          {/* Updated layout structure with clear labels */}
           <div className="max-w-7xl mx-auto">
-            {/* Two column layout */}
+            {/* Two column layout with fixed order */}
             <div className="lg:grid lg:grid-cols-3 lg:gap-10">
-              {/* Left column: Process section - now at the same level as the title */}
+              {/* Left column: Process section aligned with title */}
               <div className="lg:col-span-1 mb-12">
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
                   <div className="p-6 md:p-8">
                     {/* Process section heading */}
                     <div className="mb-6">
