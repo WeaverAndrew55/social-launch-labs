@@ -4,9 +4,16 @@ import { Link } from 'react-router-dom';
 
 /**
  * Packages Carousel section component
- * Displays packages in an interactive carousel with tabs
+ * Displays packages in an interactive carousel with tabs and process steps
  */
-const PackagesCarouselSection = ({ title, subtitle, description }) => {
+const PackagesCarouselSection = ({ 
+  title = "Our Growth Packages", 
+  subtitle = "TAILORED SOLUTIONS", 
+  description = "Choose the package that best fits your business goals and growth strategy.",
+  processTitle = "How the Process Works",
+  processSubtitle = "NEXT STEPS",
+  processDescription = "Getting started with Social Launch Labs is simple. Follow these steps to move forward:"
+}) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   // Package data
@@ -64,6 +71,30 @@ const PackagesCarouselSection = ({ title, subtitle, description }) => {
       ctaLink: "/contact",
       videoThumbnail: "https://WeaverAndrew55.github.io/SLL-Images/assets/packages/premium-package.jpg",
       videoDuration: "3:05"
+    }
+  ];
+
+  // Process steps data
+  const processSteps = [
+    {
+      number: "1",
+      title: "Determine Your Needs",
+      description: "Assess where your business needs the biggest boost - whether it's lead generation, conversion improvement, or industry authority."
+    },
+    {
+      number: "2",
+      title: "Select Your Package",
+      description: "Choose the package that aligns with your business goals and budget. Each is designed to address specific growth challenges."
+    },
+    {
+      number: "3",
+      title: "Customization Call",
+      description: "Schedule a strategy call where we'll refine the approach to fit your brand's unique voice and target audience."
+    },
+    {
+      number: "4",
+      title: "Implementation",
+      description: "Our team executes the strategy, providing regular updates and making adjustments as needed for optimal results."
     }
   ];
 
@@ -183,7 +214,7 @@ const PackagesCarouselSection = ({ title, subtitle, description }) => {
         </div>
         
         {/* Packages carousel */}
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-7xl mx-auto">
+        <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-7xl mx-auto mb-16">
           {/* Tab navigation */}
           <div className="flex flex-nowrap border-b overflow-x-auto">
             {packages.map((pkg, index) => {
@@ -340,17 +371,44 @@ const PackagesCarouselSection = ({ title, subtitle, description }) => {
           </div>
         </div>
         
-        {/* CTA button */}
-        <div className="text-center mt-12">
-          <Link 
-            to="/packages" 
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            See All Package Details
-            <svg className="ml-2 -mr-1 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </Link>
+        {/* Process section */}
+        <div className="max-w-7xl mx-auto mt-24">
+          {/* Process section heading */}
+          <div className="text-center mb-12">
+            {processSubtitle && (
+              <div className="inline-block bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-4">
+                {processSubtitle}
+              </div>
+            )}
+            {processTitle && <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{processTitle}</h2>}
+            {processDescription && <p className="text-lg text-gray-600 max-w-3xl mx-auto">{processDescription}</p>}
+          </div>
+          
+          {/* Process cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {processSteps.map((step, index) => (
+              <div key={index} className="bg-white rounded-2xl shadow-md p-6 md:p-8 relative hover:shadow-lg transition-shadow duration-300">
+                <div className="absolute -top-4 -left-4 bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold">
+                  {step.number}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 mt-2">{step.title}</h3>
+                <p className="text-gray-700">{step.description}</p>
+              </div>
+            ))}
+          </div>
+          
+          {/* Process CTA */}
+          <div className="text-center mt-12">
+            <Link
+              to="/contact"
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300"
+            >
+              Schedule Your Free Consultation
+              <svg className="ml-2 -mr-1 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </section>
@@ -358,9 +416,12 @@ const PackagesCarouselSection = ({ title, subtitle, description }) => {
 };
 
 PackagesCarouselSection.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   subtitle: PropTypes.string,
-  description: PropTypes.string
+  description: PropTypes.string,
+  processTitle: PropTypes.string,
+  processSubtitle: PropTypes.string,
+  processDescription: PropTypes.string
 };
 
 export default PackagesCarouselSection; 
