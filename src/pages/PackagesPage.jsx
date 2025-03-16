@@ -9,28 +9,29 @@ import PackageSelectorSection from '../components/sections/packages/PackageSelec
 import ProcessStepsSection from '../components/sections/packages/ProcessStepsSection';
 import PackageCTASection from '../components/sections/packages/PackageCTASection';
 
-// Packages page hero content
+// Optimized hero content - more concise and action-focused
 const heroContent = {
-  title: "Choose the Right Package for Your Business Growth",
-  description: "Our three modular packages are designed to meet you wherever you are in your marketing journey. Whether you need to attract new leads, convert more customers, or build your brand's authority, we have a flexible package to fuel your business growth.",
+  title: "Strategic Service Packages for Your Growth Goals",
+  description: "Choose the package that addresses your specific marketing challenge. Each solution targets a key stage of your customer journey - from attracting leads to converting clients to establishing authority.",
   primaryCta: {
-    text: "View Our Packages",
+    text: "View Packages",
     link: "#packages"
   },
   secondaryCta: {
-    text: "Schedule a Consultation",
+    text: "Book Consultation",
     link: "#contact"
   },
-  imageSrc: "https://WeaverAndrew55.github.io/SLL-Images/assets/Services/Services-3.png", 
-  aiGeneratedSrc: "/images/packages/packages-hero.jpg"
+  imageSrc: "https://placehold.co/800x600/eef4ff/3b82f6?text=Strategic+Packages&font=playfair-display",
+  aiGeneratedSrc: null
 };
 
 /**
- * Packages page component
+ * Optimized Packages page component
  */
 const PackagesPage = () => {
   return (
     <Layout>
+      {/* 1. Hero Section - First impression and value proposition */}
       <EnhancedHeroSection
         title={heroContent.title}
         description={heroContent.description}
@@ -40,34 +41,19 @@ const PackagesPage = () => {
         aiGeneratedSrc={heroContent.aiGeneratedSrc}
       />
       
-      {/* Visual Connector Element */}
-      <div className="section-divider"></div>
-      
-      {/* Why Our Packages Work */}
+      {/* 2. Our Approach - Why Our Packages Work */}
       <WhyPackagesWorkSection />
       
-      {/* Visual Connector Element */}
-      <div className="section-divider"></div>
-      
-      {/* Package Details */}
+      {/* 3. Our Specialized Service Packages */}
       <PackageDetailsSection />
       
-      {/* Visual Connector Element */}
-      <div className="section-divider"></div>
-      
-      {/* Package Selector */}
+      {/* 4. Find Your Match - Not Sure Which Package You Need? */}
       <PackageSelectorSection />
       
-      {/* Visual Connector Element */}
-      <div className="section-divider"></div>
-      
-      {/* Process Steps */}
+      {/* 5. Getting Started - Simple 3-Step Process */}
       <ProcessStepsSection />
       
-      {/* Visual Connector Element */}
-      <div className="section-divider"></div>
-      
-      {/* CTA Section */}
+      {/* 6. Final CTA - Strong conversion point at the end of the journey */}
       <PackageCTASection />
     </Layout>
   );

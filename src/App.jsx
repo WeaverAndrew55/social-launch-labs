@@ -10,14 +10,13 @@ import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import PackagesPage from './pages/PackagesPage';
 import ContactPage from './pages/ContactPage';
+import AboutPage from './pages/AboutPage';
 import LeadGenerationPackagePage from './pages/packages/LeadGenerationPackagePage';
 import ConversionBoosterPackagePage from './pages/packages/ConversionBoosterPackagePage';
 import AuthorityBuilderPackagePage from './pages/packages/AuthorityBuilderPackagePage';
 import ExamplePage from './pages/ExamplePage';
 
 // Temporary placeholder pages
-const Contact = () => <div className="container mx-auto px-4 py-16"><h1>Contact Page</h1></div>;
-const AboutPage = () => <div className="container mx-auto px-4 py-16"><h1>About Us Page</h1></div>;
 const FAQPage = () => <div className="container mx-auto px-4 py-16"><h1>FAQ Page</h1></div>;
 const ForBusinessesPage = () => <div className="container mx-auto px-4 py-16"><h1>For Businesses Page</h1></div>;
 const ForAgenciesPage = () => <div className="container mx-auto px-4 py-16"><h1>For Agencies Page</h1></div>;

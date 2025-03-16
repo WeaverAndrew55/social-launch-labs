@@ -6,7 +6,7 @@ import ClientIndustriesSection from '../components/sections/home/ClientIndustrie
 import WhatWeOfferSection from '../components/sections/home/WhatWeOfferSection';
 import PackagesCarouselSection from '../components/sections/home/PackagesCarouselSection';
 import TestimonialsSection from '../components/sections/home/TestimonialsSection';
-import FAQSection from '../components/sections/home/FAQSection';
+import PackageFAQSection from '../components/sections/packages/PackageFAQSection';
 import CtaSection from '../components/sections/shared/CtaSection';
 
 // Import hero content
@@ -106,7 +106,7 @@ const ctaContent = {
   primaryButtonLink: "/contact",
   secondaryButtonText: "Browse All Services",
   secondaryButtonLink: "/services",
-  bgColor: "purple"
+  bgColor: "gray"
 };
 
 // Packages Carousel content
@@ -133,32 +133,33 @@ const HomePage = () => {
       <ProblemSolutionSection
         problem={problemSolutionContent.problem}
         solution={problemSolutionContent.solution}
-        spacingClass="section-spacing-lg"
+        spacingClass="section-spacing-md"
       />
       <ClientIndustriesSection
         title={clientIndustriesContent.title}
         subtitle={clientIndustriesContent.subtitle}
         description={clientIndustriesContent.description}
-        spacingClass="section-spacing-lg"
+        spacingClass="section-spacing-md"
       />
-      <WhatWeOfferSection spacingClass="section-spacing-lg" />
+      <WhatWeOfferSection spacingClass="section-spacing-md" />
       <PackagesCarouselSection
         title={packagesCarouselContent.title}
         subtitle={packagesCarouselContent.subtitle}
         description={packagesCarouselContent.description}
-        spacingClass="section-spacing-lg"
+        spacingClass="section-spacing-md"
       />
-      <TestimonialsSection
-        title={testimonialsContent.title}
-        description={testimonialsContent.description}
-        testimonials={testimonialsContent.testimonials}
-        spacingClass="section-spacing-lg"
-      />
-      <FAQSection
+      <div className="bg-neutral-50 section-spacing-md">
+        <TestimonialsSection
+          title={testimonialsContent.title}
+          description={testimonialsContent.description}
+          testimonials={testimonialsContent.testimonials}
+          spacingClass=""
+        />
+      </div>
+      <PackageFAQSection
         title={faqContent.title}
         description={faqContent.description}
         faqs={faqContent.faqs}
-        spacingClass="section-spacing-lg"
       />
       <CtaSection
         title={ctaContent.title}
@@ -167,7 +168,7 @@ const HomePage = () => {
         primaryButtonLink={ctaContent.primaryButtonLink}
         secondaryButtonText={ctaContent.secondaryButtonText}
         secondaryButtonLink={ctaContent.secondaryButtonLink}
-        bgColor={ctaContent.bgColor}
+        bgColor="gray"
         spacingClass="section-spacing-md"
       />
     </Layout>

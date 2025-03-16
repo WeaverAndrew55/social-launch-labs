@@ -1,68 +1,31 @@
 import React from 'react';
 import Layout from '../components/layout/Layout';
-
-// Import section components
-import EnhancedHeroSection from '../components/sections/common/EnhancedHeroSection';
-import ServiceOfferingsSection from '../components/sections/services/ServiceOfferingsSection';
-import ServiceProcessSection from '../components/sections/services/ServiceProcessSection';
-import ServiceTestimonialsSection from '../components/sections/services/ServiceTestimonialsSection';
-import ServiceFAQSection from '../components/sections/services/ServiceFAQSection';
-import CTASection from '../components/sections/home/CTASection';
-
-// Services page hero content
-const heroContent = {
-  title: "Strategic Social Media Services",
-  description: "Tailored solutions to transform your social media presence into a powerful lead generation and authority-building system.",
-  primaryCta: {
-    text: "Explore Our Services",
-    link: "#services"
-  },
-  secondaryCta: {
-    text: "Contact Us",
-    link: "/contact"
-  },
-  imageSrc: "https://picsum.photos/800/450?random=2", // Placeholder image
-  aiGeneratedSrc: null // Set to path of AI-generated image when available
-};
-
-// Import CTA content
-const ctaContent = {
-  title: "Ready to Transform Your Social Media Presence?",
-  description: "Book a free discovery call to discuss your business goals and how our frameworks can help you achieve them.",
-  primaryButton: {
-    text: "Book Your Free Call",
-    link: "/contact"
-  },
-  secondaryButton: {
-    text: "Explore Our Packages",
-    link: "/packages"
-  }
-};
+import ServicesHeroSection from '../components/sections/services/ServicesHeroSection';
+import WhatWeDoSection from '../components/sections/services/WhatWeDoSection';
+import CorePackagesSection from '../components/sections/services/CorePackagesSection';
+import AdditionalServicesSection from '../components/sections/services/AdditionalServicesSection';
+import WhyWorkWithUsSection from '../components/sections/services/WhyWorkWithUsSection';
+import CTASection from '../components/sections/common/CTASection';
 
 /**
- * Services page component
+ * Services page component showing all services offered by Social Launch Labs
  */
 const ServicesPage = () => {
   return (
     <Layout>
-      <EnhancedHeroSection
-        title={heroContent.title}
-        description={heroContent.description}
-        primaryCta={heroContent.primaryCta}
-        secondaryCta={heroContent.secondaryCta}
-        imageSrc={heroContent.imageSrc}
-        aiGeneratedSrc={heroContent.aiGeneratedSrc}
-        id="services"
-      />
-      <ServiceOfferingsSection />
-      <ServiceProcessSection />
-      <ServiceTestimonialsSection />
-      <ServiceFAQSection />
-      <CTASection
-        title={ctaContent.title}
-        description={ctaContent.description}
-        primaryButton={ctaContent.primaryButton}
-        secondaryButton={ctaContent.secondaryButton}
+      <ServicesHeroSection />
+      <WhatWeDoSection />
+      <CorePackagesSection />
+      <AdditionalServicesSection />
+      <WhyWorkWithUsSection />
+      <CTASection 
+        title="Ready to Elevate Your Brand?" 
+        description="The fastest way to grow with video is to start with a conversation. If you're excited to see what strategic video content can do for your business, let's chat about it!"
+        primaryButtonText="Book Your Consultation"
+        primaryButtonLink="/contact"
+        secondaryButtonText="Call Us Directly"
+        secondaryButtonLink="tel:+1234567890"
+        note="This no-obligation call is a friendly deep-dive into possibilities – whether you already have a vision or need guidance, we're here to provide expert advice."
       />
     </Layout>
   );

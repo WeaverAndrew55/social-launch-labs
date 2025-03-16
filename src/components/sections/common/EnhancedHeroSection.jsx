@@ -40,21 +40,21 @@ const EnhancedHeroSection = ({
   const isVideo = !!videoSrc;
   
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-blue-900 to-indigo-800">
+    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100">
       <div className="container mx-auto px-4 py-28 md:py-32 relative z-10">
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-16 items-center ${reversed ? 'md:flex-row-reverse' : ''}`}>
           {/* Text Content */}
-          <div className="text-white">
-            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">
+          <div className="text-gray-800">
+            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-blue-600">
               {title}
             </h1>
-            <p className="text-xl mb-8 text-blue-100">
+            <p className="text-xl mb-8 text-gray-600">
               {description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
                 to={primaryCta.link} 
-                className="inline-block bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-md transition-colors duration-300"
+                className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-md transition-colors duration-300"
               >
                 {primaryCta.text}
               </Link>
@@ -62,7 +62,7 @@ const EnhancedHeroSection = ({
               {secondaryCta && (
                 <Link 
                   to={secondaryCta.link} 
-                  className="inline-block bg-transparent hover:bg-white/10 text-white border border-white/30 font-medium py-3 px-6 rounded-md transition-colors duration-300"
+                  className="inline-block bg-transparent hover:bg-blue-50 text-blue-600 border border-blue-300 font-medium py-3 px-6 rounded-md transition-colors duration-300"
                 >
                   {secondaryCta.text}
                 </Link>
@@ -77,11 +77,11 @@ const EnhancedHeroSection = ({
             </div>
           ) : (
             <AIGeneratedImage
-              placeholderSrc={imageSrc || "https://picsum.photos/800/450?random=1"}
+              placeholderSrc={"https://placehold.co/800x450/eef4ff/3b82f6?text=Strategic+Service+Packages&font=playfair-display"}
               alt={imageAlt}
               aiSrc={aiGeneratedSrc}
               isVideo={isVideo}
-              className="w-full aspect-video shadow-xl"
+              className="w-full aspect-video shadow-xl rounded-xl"
               showInstructions={showAiInstructions}
             />
           )}
@@ -90,9 +90,9 @@ const EnhancedHeroSection = ({
       
       {/* Background shapes/effects */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
       </div>
     </section>
   );

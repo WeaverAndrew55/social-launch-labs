@@ -131,54 +131,20 @@ const Header = ({ transparent = false }) => {
           <div className="hidden lg:flex lg:items-center lg:space-x-1">
             <Link 
               to="/" 
-              className="px-4 py-2 text-blue-600 rounded bg-gray-100 font-medium"
+              className="px-4 py-2 text-gray-700 rounded hover:bg-gray-100 hover:text-blue-600 transition duration-200"
             >
               Home
             </Link>
             
-            {/* Services Dropdown */}
-            <div className="relative dropdown-container" ref={servicesDropdownRef}>
-              <button 
-                className="dropdown-toggle px-4 py-2 text-gray-700 rounded hover:bg-gray-100 hover:text-blue-600 transition duration-200 flex items-center"
-                onClick={(e) => {
-                  e.preventDefault();
-                  toggleDropdown('services');
-                }}
-              >
-                Services
-                <svg 
-                  className={`w-4 h-4 ml-1 dropdown-arrow transition-transform duration-200 ${activeDropdowns.services ? 'rotate-180' : ''}`} 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </button>
-              {/* Position absolute relative to the button */}
-              <div 
-                className={`dropdown-menu absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg ${activeDropdowns.services ? 'block' : 'hidden'}`}
-                style={{ zIndex: 100 }}
-              >
-                <div className="py-1 rounded-md bg-white shadow-xs">
-                  <Link 
-                    to="/services/for-businesses" 
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600"
-                    onClick={closeDropdowns}
-                  >
-                    For Businesses
-                  </Link>
-                  <Link 
-                    to="/services/for-agencies" 
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600"
-                    onClick={closeDropdowns}
-                  >
-                    For Agencies
-                  </Link>
-                </div>
-              </div>
-            </div>
+            {/* Services Main Link */}
+            <Link 
+              to="/services" 
+              className="px-4 py-2 text-gray-700 rounded hover:bg-gray-100 hover:text-blue-600 transition duration-200"
+            >
+              Services
+            </Link>
+            
+
 
             {/* Packages Dropdown */}
             <div className="relative dropdown-container" ref={packagesDropdownRef}>
@@ -269,8 +235,8 @@ const Header = ({ transparent = false }) => {
           {/* Mobile Menu Button */}
           <div className="lg:hidden">
             <button 
-              onClick={toggleMenu}
               className="text-gray-600 hover:text-blue-600 focus:outline-none transition duration-200"
+              onClick={toggleMenu}
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -280,32 +246,42 @@ const Header = ({ transparent = false }) => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Menu */}
         <Transition
           show={isMenuOpen}
-          enter="transition duration-200 ease-out"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
+          enter="transition duration-300 ease-out"
+          enterFrom="transform -translate-y-10 opacity-0"
+          enterTo="transform translate-y-0 opacity-100"
           leave="transition duration-150 ease-in"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
+          leaveFrom="transform translate-y-0 opacity-100"
+          leaveTo="transform -translate-y-10 opacity-0"
+          className="lg:hidden pb-6"
         >
-          <div className="lg:hidden pb-4">
+          <div className="flex flex-col space-y-1">
             <Link 
               to="/" 
-              className="block px-4 py-2 text-blue-600 bg-gray-50 font-medium"
+              className="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               Home
             </Link>
             
-            {/* Mobile Services */}
+            {/* Mobile Services Link */}
+            <Link 
+              to="/services" 
+              className="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Services
+            </Link>
+            
+            {/* Mobile Services Dropdown */}
             <div className="mobile-dropdown">
               <button 
-                className="mobile-dropdown-toggle w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 font-medium flex justify-between items-center"
+                className="mobile-dropdown-toggle w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 font-medium flex justify-between items-center rounded"
                 onClick={(e) => handleMobileDropdownClick(e, 'services')}
               >
-                Services
+                For
                 <svg 
                   className={`w-4 h-4 mobile-dropdown-icon transition-transform duration-200 ${activeDropdowns.services ? 'rotate-180' : ''}`} 
                   fill="none" 
@@ -316,28 +292,37 @@ const Header = ({ transparent = false }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </button>
-              <div className="mobile-dropdown-content" data-dropdown="services">
+              <div 
+                className={`mobile-dropdown-content pl-4 ${activeDropdowns.services ? 'block' : 'hidden'}`}
+                data-dropdown="services"
+              >
                 <Link 
                   to="/services/for-businesses" 
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded"
+                  onClick={() => {
+                    closeDropdowns();
+                    setIsMenuOpen(false);
+                  }}
                 >
                   For Businesses
                 </Link>
                 <Link 
                   to="/services/for-agencies" 
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded"
+                  onClick={() => {
+                    closeDropdowns();
+                    setIsMenuOpen(false);
+                  }}
                 >
                   For Agencies
                 </Link>
               </div>
             </div>
 
-            {/* Mobile Packages */}
+            {/* Mobile Packages Dropdown */}
             <div className="mobile-dropdown">
               <button 
-                className="mobile-dropdown-toggle w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 font-medium flex justify-between items-center"
+                className="mobile-dropdown-toggle w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 font-medium flex justify-between items-center rounded"
                 onClick={(e) => handleMobileDropdownClick(e, 'packages')}
               >
                 Packages
@@ -351,32 +336,47 @@ const Header = ({ transparent = false }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </button>
-              <div className="mobile-dropdown-content" data-dropdown="packages">
+              <div 
+                className={`mobile-dropdown-content pl-4 ${activeDropdowns.packages ? 'block' : 'hidden'}`}
+                data-dropdown="packages"
+              >
                 <Link 
                   to="/packages" 
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 font-medium border-b border-gray-100"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded font-medium"
+                  onClick={() => {
+                    closeDropdowns();
+                    setIsMenuOpen(false);
+                  }}
                 >
                   All Packages
                 </Link>
                 <Link 
                   to="/packages/lead-generation" 
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded"
+                  onClick={() => {
+                    closeDropdowns();
+                    setIsMenuOpen(false);
+                  }}
                 >
                   Lead Generation
                 </Link>
                 <Link 
                   to="/packages/conversion-booster" 
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded"
+                  onClick={() => {
+                    closeDropdowns();
+                    setIsMenuOpen(false);
+                  }}
                 >
                   Conversion Booster
                 </Link>
                 <Link 
                   to="/packages/authority-building" 
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded"
+                  onClick={() => {
+                    closeDropdowns();
+                    setIsMenuOpen(false);
+                  }}
                 >
                   Authority Building
                 </Link>
@@ -386,24 +386,17 @@ const Header = ({ transparent = false }) => {
             {/* Mobile Regular Nav Items */}
             <Link 
               to="/about" 
-              className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 font-medium"
+              className="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               About Us
             </Link>
             <Link 
               to="/contact" 
-              className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 font-medium"
+              className="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               Contact
-            </Link>
-            <Link 
-              to="/faq" 
-              className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 font-medium"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              FAQ
             </Link>
             
             {/* Mobile CTA */}

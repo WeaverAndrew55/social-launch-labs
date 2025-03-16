@@ -15,7 +15,7 @@ import SectionContainer from '../../ui/SectionContainer';
  * @param {string} props.secondaryButtonText - Text for secondary button
  * @param {string} props.secondaryButtonLink - Link for secondary button
  * @param {boolean} props.showSecondaryButton - Whether to show secondary button
- * @param {string} props.bgColor - Background color theme ('blue', 'purple', 'orange')
+ * @param {string} props.bgColor - Background color theme ('blue', 'purple', 'orange', 'gray')
  * @param {string} props.spacingClass - Class name for section spacing
  */
 const CtaSection = ({
@@ -26,71 +26,70 @@ const CtaSection = ({
   secondaryButtonText = "Learn More",
   secondaryButtonLink = "/services",
   showSecondaryButton = true,
-  bgColor = "blue", // 'blue', 'purple', 'orange'
+  bgColor = "blue", // 'blue', 'purple', 'orange', 'gray'
   spacingClass
 }) => {
+  // Determine background color classes based on bgColor prop
+  let bgClasses = "";
+  let textClasses = "";
   
-  // Get gradient colors based on color prop
-  const getGradient = (color) => {
-    const gradients = {
-      blue: 'from-blue-600 to-blue-800',
-      purple: 'from-purple-600 to-indigo-700',
-      orange: 'from-orange-500 to-red-600'
-    };
-    return gradients[color] || gradients.blue;
-  };
-  
-  // Get primary button text color based on bg color
-  const getPrimaryButtonTextColor = (color) => {
-    const textColors = {
-      blue: 'text-blue-700',
-      purple: 'text-purple-700',
-      orange: 'text-orange-700'
-    };
-    return textColors[color] || textColors.blue;
-  };
-  
-  // Get secondary button hover colors
-  const getSecondaryButtonHoverBg = (color) => {
-    const hoverColors = {
-      blue: 'hover:text-blue-700',
-      purple: 'hover:text-purple-700',
-      orange: 'hover:text-orange-700'
-    };
-    return hoverColors[color] || hoverColors.blue;
-  };
-  
+  switch (bgColor) {
+    case 'blue':
+      bgClasses = "bg-blue-600";
+      textClasses = "text-white";
+      break;
+    case 'purple':
+      bgClasses = "bg-purple-600";
+      textClasses = "text-white";
+      break;
+    case 'orange':
+      bgClasses = "bg-orange-600";
+      textClasses = "text-white";
+      break;
+    case 'gray':
+      bgClasses = "bg-gray-100";
+      textClasses = "text-gray-900";
+      break;
+    default:
+      bgClasses = "bg-blue-600";
+      textClasses = "text-white";
+  }
+
   return (
-    <section className={`${spacingClass || 'section-spacing-md'} bg-gradient-to-r ${getGradient(bgColor)}`}>
+    <section className={`${spacingClass || 'section-spacing-lg'} ${bgClasses}`}>
       <SectionContainer>
-        <div className="py-12 md:py-16 max-w-5xl mx-auto text-center">
-          <div className={`bg-gradient-to-r ${getGradient(bgColor)} text-white rounded-xl shadow-xl p-8 md:p-12 lg:p-16 
-            flex flex-col md:flex-row items-center justify-between transform hover:scale-105 transition duration-500 ease-in-out`}>
+        <div className="text-center max-w-3xl mx-auto">
+          <h2 className={`text-3xl md:text-4xl font-display font-bold mb-4 ${textClasses}`}>
+            {title}
+          </h2>
+          <p className={`text-lg ${bgColor === 'gray' ? 'text-gray-600' : 'text-white text-opacity-90'} mb-8`}>
+            {description}
+          </p>
+          
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link 
+              to={primaryButtonLink} 
+              className={`inline-flex justify-center items-center px-8 py-3 rounded-xl ${
+                bgColor === 'gray' 
+                  ? 'bg-blue-600 text-white hover:bg-blue-700' 
+                  : 'bg-white text-blue-600 hover:bg-blue-50'
+              } font-medium transition-colors duration-200 shadow-md text-center`}
+            >
+              {primaryButtonText}
+            </Link>
             
-            {/* Left side: Content */}
-            <div className="md:w-2/3 mb-8 md:mb-0 pr-0 md:pr-8">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">{title}</h2>
-              <p className="text-lg opacity-90 max-w-2xl">{description}</p>
-            </div>
-            
-            {/* Right side: Buttons */}
-            <div className="md:w-1/3 flex flex-col sm:flex-row md:flex-col space-y-4 sm:space-y-0 md:space-y-4 sm:space-x-4 md:space-x-0">
+            {showSecondaryButton && (
               <Link 
-                to={primaryButtonLink}
-                className={`bg-white ${getPrimaryButtonTextColor(bgColor)} hover:bg-gray-100 px-6 py-3 rounded-lg text-lg font-medium transition duration-300 text-center shadow-md`}
+                to={secondaryButtonLink}
+                className={`inline-flex justify-center items-center px-8 py-3 rounded-xl ${
+                  bgColor === 'gray'
+                    ? 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+                    : 'bg-transparent text-white border border-white hover:bg-white hover:bg-opacity-10'
+                } font-medium transition-colors duration-200 text-center`}
               >
-                {primaryButtonText}
+                {secondaryButtonText}
               </Link>
-              
-              {showSecondaryButton && (
-                <Link 
-                  to={secondaryButtonLink}
-                  className={`bg-transparent border-2 border-white text-white hover:bg-white ${getSecondaryButtonHoverBg(bgColor)} px-6 py-3 rounded-lg text-lg font-medium transition duration-300 text-center`}
-                >
-                  {secondaryButtonText}
-                </Link>
-              )}
-            </div>
+            )}
           </div>
         </div>
       </SectionContainer>
@@ -106,7 +105,7 @@ CtaSection.propTypes = {
   secondaryButtonText: PropTypes.string,
   secondaryButtonLink: PropTypes.string,
   showSecondaryButton: PropTypes.bool,
-  bgColor: PropTypes.oneOf(['blue', 'purple', 'orange']),
+  bgColor: PropTypes.oneOf(['blue', 'purple', 'orange', 'gray']),
   spacingClass: PropTypes.string
 };
 
