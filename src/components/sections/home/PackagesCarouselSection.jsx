@@ -47,7 +47,7 @@ const PackagesCarouselSection = ({
       learnMoreLink: "/packages/lead-generation",
       ctaLink: "/contact",
       ctaText: "Start Generating Leads",
-      videoThumbnail: "https://WeaverAndrew55.github.io/SLL-Images/assets/packages/starter-package.jpg",
+      videoThumbnail: "https://placehold.co/800x600/eef4ff/3b82f6?text=Lead+Generation+Package&font=playfair-display",
       videoDuration: "2:15"
     },
     {
@@ -69,7 +69,7 @@ const PackagesCarouselSection = ({
       learnMoreLink: "/packages/conversion-booster",
       ctaLink: "/contact",
       ctaText: "Boost Your Conversions",
-      videoThumbnail: "https://WeaverAndrew55.github.io/SLL-Images/assets/packages/professional-package.jpg",
+      videoThumbnail: "https://placehold.co/800x600/f3e8ff/9333ea?text=Conversion+Booster&font=playfair-display",
       videoDuration: "2:45"
     },
     {
@@ -92,7 +92,7 @@ const PackagesCarouselSection = ({
       learnMoreLink: "/packages/authority-builder",
       ctaLink: "/contact",
       ctaText: "Build Your Authority",
-      videoThumbnail: "https://WeaverAndrew55.github.io/SLL-Images/assets/packages/premium-package.jpg",
+      videoThumbnail: "https://placehold.co/800x600/fff7ed/ea580c?text=Authority+Builder&font=playfair-display",
       videoDuration: "3:05"
     }
   ];
@@ -246,7 +246,7 @@ const PackagesCarouselSection = ({
   return (
     <SectionContainer className={`py-16 bg-white overflow-hidden ${spacingClass || ''}`} id="new-package-carousel-layout">
       {/* Main title section - centered top */}
-      <div className="mb-10 text-center">
+      <div className="max-w-7xl mx-auto mb-10 text-center">
         <div className="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-sm font-medium rounded-full mb-3">
           {subtitle}
         </div>
@@ -256,7 +256,7 @@ const PackagesCarouselSection = ({
       </div>
 
       {/* Side-by-side layout */}
-      <div className="flex flex-col lg:flex-row gap-8">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
         {/* Left column - How It Works */}
         <div className="w-full lg:w-1/3">
           <div className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
