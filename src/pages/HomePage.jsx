@@ -4,6 +4,7 @@ import EnhancedHeroSection from '../components/sections/common/EnhancedHeroSecti
 import ProblemSolutionSection from '../components/sections/home/ProblemSolutionSection';
 import ClientIndustriesSection from '../components/sections/home/ClientIndustriesSection';
 import WhatWeOfferSection from '../components/sections/home/WhatWeOfferSection';
+import PackagesCarouselSection from '../components/sections/home/PackagesCarouselSection';
 import ProcessOverviewSection from '../components/sections/home/ProcessOverviewSection';
 import CoreServicesSection from '../components/sections/home/CoreServicesSection';
 import PackagesOverviewSection from '../components/sections/home/PackagesOverviewSection';
@@ -221,6 +222,13 @@ const ctaContent = {
   }
 };
 
+// Packages Carousel content
+const packagesCarouselContent = {
+  title: 'Strategically Designed',
+  subtitle: 'Our Packages',
+  description: "We've developed three signature video marketing packages based on real business outcomes, ensuring you have the right content at each stage of your growth."
+};
+
 /**
  * Home page component
  */
@@ -246,6 +254,11 @@ const HomePage = () => {
         description={clientIndustriesContent.description}
       />
       <WhatWeOfferSection />
+      <PackagesCarouselSection
+        title={packagesCarouselContent.title}
+        subtitle={packagesCarouselContent.subtitle}
+        description={packagesCarouselContent.description}
+      />
       <ProcessOverviewSection
         title={processOverviewContent.title}
         description={processOverviewContent.description}

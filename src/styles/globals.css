@@ -90,3 +90,88 @@
   padding: 0.5rem 1rem;
   display: block;
 }
+
+/* Section Styles */
+.section-spacing-lg {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.section-spacing-md {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.section-subtitle {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #3b82f6;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  line-height: 1.25;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.section-title span {
+  color: #3b82f6;
+}
+
+.section-description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #4b5563;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-heading-wrapper {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Package Carousel Styles */
+.package-video:not(.active) {
+  display: none;
+}
+
+.package-panel:not(.active) {
+  display: none;
+}
+
+.package-tab.active {
+  border-color: currentColor;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .section-spacing-lg {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-title {
+    font-size: 3rem;
+  }
+  
+  .section-spacing-lg {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+}
