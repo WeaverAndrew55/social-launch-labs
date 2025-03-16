@@ -9,6 +9,7 @@ import Layout from './components/layout/Layout';
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import PackagesPage from './pages/PackagesPage';
+import ContactPage from './pages/ContactPage';
 
 // UI Components
 import Button from './components/ui/Button';
@@ -23,7 +24,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/packages" element={<PackagesPage />} />
-        <Route path="/contact" element={<Layout><Contact /></Layout>} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </Router>
   );
