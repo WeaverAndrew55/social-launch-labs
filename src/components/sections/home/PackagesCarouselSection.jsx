@@ -64,26 +64,6 @@ const PackagesCarouselSection = ({ title, subtitle, description }) => {
       ctaLink: "/contact",
       videoThumbnail: "https://WeaverAndrew55.github.io/SLL-Images/assets/packages/premium-package.jpg",
       videoDuration: "3:05"
-    },
-    {
-      title: "Enterprise Solution",
-      badge: "Custom",
-      badgeColor: "teal",
-      features: [
-        "Custom platform selection",
-        "Tailored posting schedule",
-        "Dedicated account manager",
-        "Custom reporting dashboard",
-        "Weekly strategy sessions",
-        "Content calendar & creation",
-        "Influencer partnership management"
-      ],
-      price: "Custom",
-      perMonth: "",
-      learnMoreLink: "/packages/enterprise",
-      ctaLink: "/contact",
-      videoThumbnail: "https://WeaverAndrew55.github.io/SLL-Images/assets/packages/enterprise-package.jpg",
-      videoDuration: "3:30"
     }
   ];
 
@@ -128,38 +108,43 @@ const PackagesCarouselSection = ({ title, subtitle, description }) => {
     const colors = {
       blue: 'text-blue-600',
       purple: 'text-purple-600',
-      orange: 'text-orange-600',
-      teal: 'text-teal-600'
+      orange: 'text-orange-600'
     };
     return colors[color] || colors.blue;
   };
 
   const getTabBgColor = (color, isActive) => {
     const bgColors = {
-      blue: isActive ? 'bg-blue-50' : 'hover:bg-blue-50/50',
-      purple: isActive ? 'bg-purple-50' : 'hover:bg-purple-50/50',
-      orange: isActive ? 'bg-orange-50' : 'hover:bg-orange-50/50',
-      teal: isActive ? 'bg-teal-50' : 'hover:bg-teal-50/50'
+      blue: isActive ? 'bg-blue-100' : 'hover:bg-blue-50',
+      purple: isActive ? 'bg-purple-100' : 'hover:bg-purple-50',
+      orange: isActive ? 'bg-orange-100' : 'hover:bg-orange-50'
     };
     return bgColors[color] || bgColors.blue;
   };
 
   const getTabBorderColor = (color, isActive) => {
     const borderColors = {
-      blue: isActive ? 'border-blue-600' : 'border-transparent',
-      purple: isActive ? 'border-purple-600' : 'border-transparent',
-      orange: isActive ? 'border-orange-600' : 'border-transparent',
-      teal: isActive ? 'border-teal-600' : 'border-transparent'
+      blue: isActive ? 'border-blue-600' : 'border-blue-200 hover:border-blue-300',
+      purple: isActive ? 'border-purple-600' : 'border-purple-200 hover:border-purple-300',
+      orange: isActive ? 'border-orange-600' : 'border-orange-200 hover:border-orange-300'
     };
     return borderColors[color] || borderColors.blue;
+  };
+
+  const getTabInactiveColor = (color) => {
+    const inactiveColors = {
+      blue: 'text-blue-400 hover:text-blue-600',
+      purple: 'text-purple-400 hover:text-purple-600',
+      orange: 'text-orange-400 hover:text-orange-600'
+    };
+    return inactiveColors[color] || inactiveColors.blue;
   };
 
   const getBadgeClass = (color) => {
     const badgeClasses = {
       blue: 'bg-blue-100 text-blue-600',
       purple: 'bg-purple-100 text-purple-600',
-      orange: 'bg-orange-100 text-orange-600',
-      teal: 'bg-teal-100 text-teal-600'
+      orange: 'bg-orange-100 text-orange-600'
     };
     return badgeClasses[color] || badgeClasses.blue;
   };
@@ -168,8 +153,7 @@ const PackagesCarouselSection = ({ title, subtitle, description }) => {
     const buttonClasses = {
       blue: 'bg-blue-600 hover:bg-blue-700',
       purple: 'bg-purple-600 hover:bg-purple-700',
-      orange: 'bg-orange-600 hover:bg-orange-700',
-      teal: 'bg-teal-600 hover:bg-teal-700'
+      orange: 'bg-orange-600 hover:bg-orange-700'
     };
     return buttonClasses[color] || buttonClasses.blue;
   };
@@ -178,8 +162,7 @@ const PackagesCarouselSection = ({ title, subtitle, description }) => {
     const dotClasses = {
       blue: 'bg-blue-600',
       purple: 'bg-purple-600',
-      orange: 'bg-orange-600',
-      teal: 'bg-teal-600'
+      orange: 'bg-orange-600'
     };
     return dotClasses[color] || dotClasses.blue;
   };
@@ -205,7 +188,7 @@ const PackagesCarouselSection = ({ title, subtitle, description }) => {
           <div className="flex flex-nowrap border-b overflow-x-auto">
             {packages.map((pkg, index) => {
               const isActive = index === activeIndex;
-              const activeColorClass = isActive ? getTabColor(pkg.badgeColor) : '';
+              const activeColorClass = isActive ? getTabColor(pkg.badgeColor) : getTabInactiveColor(pkg.badgeColor);
               const bgColorClass = getTabBgColor(pkg.badgeColor, isActive);
               const borderColorClass = getTabBorderColor(pkg.badgeColor, isActive);
               
@@ -213,20 +196,26 @@ const PackagesCarouselSection = ({ title, subtitle, description }) => {
                 <button
                   key={index}
                   data-index={index}
-                  className={`package-tab flex-1 py-4 px-6 text-center text-sm md:text-base font-medium border-b-2 
-                    ${borderColorClass} ${bgColorClass} focus:outline-none transition-all duration-200 
-                    ${isActive ? `${activeColorClass} active` : 'text-gray-600'}`}
+                  className={`package-tab relative flex-1 py-4 px-6 text-center text-sm md:text-base font-medium 
+                    border-b-2 ${borderColorClass} ${bgColorClass} ${activeColorClass} focus:outline-none 
+                    transition-all duration-200 ${isActive ? 'active font-semibold' : ''}`}
                   onClick={() => handleTabClick(index)}
                 >
-                  <span className="relative">
+                  <div className="relative flex flex-col items-center">
+                    {/* Small colored dot indicator */}
+                    <span className={`w-2 h-2 rounded-full mb-1.5 ${getActiveDotClass(pkg.badgeColor)} 
+                      ${isActive ? 'opacity-100' : 'opacity-30'}`}>
+                    </span>
+                    
                     {pkg.title}
+                    
                     {isActive && (
-                      <span className={`absolute -right-6 -top-1 flex h-5 w-5`}>
-                        <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${pkg.badgeColor === 'blue' ? 'bg-blue-300' : pkg.badgeColor === 'purple' ? 'bg-purple-300' : pkg.badgeColor === 'orange' ? 'bg-orange-300' : 'bg-teal-300'} opacity-75`}></span>
-                        <span className={`relative inline-flex rounded-full h-3 w-3 ${pkg.badgeColor === 'blue' ? 'bg-blue-500' : pkg.badgeColor === 'purple' ? 'bg-purple-500' : pkg.badgeColor === 'orange' ? 'bg-orange-500' : 'bg-teal-500'}`}></span>
+                      <span className="absolute -top-3 -right-6 inline-flex h-5 w-5">
+                        <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${pkg.badgeColor === 'blue' ? 'bg-blue-300' : pkg.badgeColor === 'purple' ? 'bg-purple-300' : 'bg-orange-300'}`}></span>
+                        <span className={`relative inline-flex rounded-full h-3 w-3 ${pkg.badgeColor === 'blue' ? 'bg-blue-500' : pkg.badgeColor === 'purple' ? 'bg-purple-500' : 'bg-orange-500'}`}></span>
                       </span>
                     )}
-                  </span>
+                  </div>
                 </button>
               );
             })}
