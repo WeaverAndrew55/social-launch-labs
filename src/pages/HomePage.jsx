@@ -264,11 +264,6 @@ const HomePage = () => {
         secondaryButtonLink={ctaContent.secondaryButtonLink}
         bgColor={ctaContent.bgColor}
       />
-      <ProcessOverviewSection
-        title={processOverviewContent.title}
-        description={processOverviewContent.description}
-        steps={processOverviewContent.steps}
-      />
       <TestimonialsSection
         title={testimonialsContent.title}
         description={testimonialsContent.description}
