@@ -395,6 +395,71 @@ const PackagesCarouselSection = ({
                   </div>
                 ))}
               </div>
+
+              {/* Content container - direct rendering of active package */}
+              <div className="bg-white h-full p-6 md:p-8 border-t border-gray-100">
+                {/* Debug info */}
+                <div className="text-xs text-center text-red-500 mb-4">
+                  Direct rendering mode: Showing package #{activeIndex+1}
+                </div>
+                
+                {/* Package header */}
+                <div className="flex flex-col mb-6">
+                  <div className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${getBadgeClass(packages[activeIndex].badgeColor)} mb-2 self-start`}>
+                    {packages[activeIndex].badge}
+                  </div>
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <div className="text-sm text-gray-500 mb-1">{packages[activeIndex].subtitle}</div>
+                      <h3 className="text-xl md:text-2xl font-bold">{packages[activeIndex].title}</h3>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-2xl md:text-3xl font-bold">{packages[activeIndex].price}</div>
+                      <div className="text-sm text-gray-500">{packages[activeIndex].perMonth}</div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Package overview */}
+                <div className={`p-4 rounded-lg mb-6 ${packages[activeIndex].badgeColor === 'blue' ? 'bg-blue-50' : packages[activeIndex].badgeColor === 'purple' ? 'bg-purple-50' : 'bg-orange-50'}`}>
+                  <p className="text-gray-800">{packages[activeIndex].overview}</p>
+                </div>
+                
+                {/* Key outcome */}
+                <div className="mb-6 border-l-4 pl-3 border-green-500">
+                  <p className="text-gray-700 font-medium">Key Outcome:</p>
+                  <p className="text-gray-800 font-semibold">{packages[activeIndex].keyOutcome}</p>
+                </div>
+                
+                <div className="mb-4 text-gray-700 font-medium">What's included:</div>
+                <ul className="space-y-3 mb-6">
+                  {packages[activeIndex].features.map((feature, i) => (
+                    <li key={i} className="flex items-start">
+                      <svg className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <div className="flex flex-col sm:flex-row sm:justify-center gap-4 mt-8">
+                  <Link 
+                    to={packages[activeIndex].ctaLink} 
+                    className={`inline-flex justify-center items-center px-6 py-3 border border-transparent 
+                      text-base font-medium rounded-md shadow-sm text-white ${getButtonClass(packages[activeIndex].badgeColor)} transition-transform hover:scale-105`}
+                  >
+                    {packages[activeIndex].ctaText}
+                  </Link>
+                  <Link 
+                    to={packages[activeIndex].learnMoreLink} 
+                    className="inline-flex justify-center items-center px-6 py-3 border border-gray-300 
+                      text-base font-medium rounded-md bg-white text-gray-700 hover:bg-gray-50"
+                  >
+                    View Full Details
+                  </Link>
+                </div>
+              </div>
               
               {/* Navigation dots */}
               <div className="flex justify-center py-4 bg-gray-50">
