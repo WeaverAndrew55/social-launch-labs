@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../components/layout/Layout';
-import HeroSection from '../components/sections/home/HeroSection';
+import EnhancedHeroSection from '../components/sections/common/EnhancedHeroSection';
 import ProblemSolutionSection from '../components/sections/home/ProblemSolutionSection';
 import TargetAudienceSection from '../components/sections/home/TargetAudienceSection';
 import ProcessOverviewSection from '../components/sections/home/ProcessOverviewSection';
@@ -14,9 +14,15 @@ import CTASection from '../components/sections/home/CTASection';
 const heroContent = {
   title: "Launch Your Digital Presence With Confidence",
   description: "We help service-based businesses build strategic social media frameworks that attract high-quality leads and establish genuine authority.",
-  ctaText: "See Our Packages",
-  ctaLink: "/packages",
-  image: "/images/hero-image.jpg"
+  primaryCta: {
+    text: "See Our Packages",
+    link: "/packages"
+  },
+  secondaryCta: {
+    text: "Learn More",
+    link: "#how-it-works"
+  },
+  imageSrc: "/images/hero-image.jpg"
 };
 
 // Import problem-solution content
@@ -235,12 +241,12 @@ const ctaContent = {
 const HomePage = () => {
   return (
     <Layout transparentHeader={true}>
-      <HeroSection
+      <EnhancedHeroSection
         title={heroContent.title}
         description={heroContent.description}
-        ctaText={heroContent.ctaText}
-        ctaLink={heroContent.ctaLink}
-        backgroundImage={heroContent.image}
+        primaryCta={heroContent.primaryCta}
+        secondaryCta={heroContent.secondaryCta}
+        imageSrc={heroContent.imageSrc}
       />
       <ProblemSolutionSection
         problem={problemSolutionContent.problem}

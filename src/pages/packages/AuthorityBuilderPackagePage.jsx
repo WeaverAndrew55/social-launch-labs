@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Layout from '../../components/layout/Layout';
 import SectionContainer from '../../components/ui/SectionContainer';
 import Button from '../../components/ui/Button';
+import EnhancedHeroSection from '../../components/sections/common/EnhancedHeroSection';
 
 const AuthorityBuilderPackagePage = () => {
   const packageData = {
@@ -71,46 +72,31 @@ const AuthorityBuilderPackagePage = () => {
     }
   };
 
+  // Hero content
+  const heroContent = {
+    title: packageData.title,
+    description: packageData.description,
+    primaryCta: {
+      text: "Book a Free Consultation",
+      link: "/contact"
+    },
+    secondaryCta: {
+      text: "View Package Details",
+      link: "#package-details"
+    },
+    imageSrc: packageData.image
+  };
+
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-900 to-indigo-800 text-white">
-        <SectionContainer className="py-16 md:py-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">{packageData.title}</h1>
-              <p className="text-xl md:text-2xl mb-4">{packageData.primaryBenefit}</p>
-              <p className="text-lg mb-8">{packageData.description}</p>
-              <p className="text-3xl font-bold mb-8">{packageData.price}</p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  variant="primary" 
-                  size="lg"
-                  as={Link}
-                  to="/contact"
-                >
-                  Get Started
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  as={Link}
-                  to="/packages"
-                >
-                  Compare Packages
-                </Button>
-              </div>
-            </div>
-            <div className="rounded-lg overflow-hidden shadow-xl">
-              <img 
-                src={packageData.image} 
-                alt={packageData.title} 
-                className="w-full h-auto"
-              />
-            </div>
-          </div>
-        </SectionContainer>
-      </section>
+      <EnhancedHeroSection
+        title={heroContent.title}
+        description={heroContent.description}
+        primaryCta={heroContent.primaryCta}
+        secondaryCta={heroContent.secondaryCta}
+        imageSrc={heroContent.imageSrc}
+      />
 
       {/* Overview Section */}
       <section className="bg-white py-16">

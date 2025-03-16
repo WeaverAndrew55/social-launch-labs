@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/layout/Layout';
 
 // Import section components
-import ServiceHeroSection from '../components/sections/services/ServiceHeroSection';
+import EnhancedHeroSection from '../components/sections/common/EnhancedHeroSection';
 import ServiceOfferingsSection from '../components/sections/services/ServiceOfferingsSection';
 import ServiceProcessSection from '../components/sections/services/ServiceProcessSection';
 import ServiceTestimonialsSection from '../components/sections/services/ServiceTestimonialsSection';
@@ -13,7 +13,15 @@ import CTASection from '../components/sections/home/CTASection';
 const heroContent = {
   title: "Strategic Social Media Services",
   description: "Tailored solutions to transform your social media presence into a powerful lead generation and authority-building system.",
-  backgroundImage: "/images/services-hero.jpg"
+  primaryCta: {
+    text: "Explore Our Services",
+    link: "#services"
+  },
+  secondaryCta: {
+    text: "Contact Us",
+    link: "/contact"
+  },
+  imageSrc: "/images/services-hero.jpg"
 };
 
 // Import CTA content
@@ -36,10 +44,13 @@ const ctaContent = {
 const ServicesPage = () => {
   return (
     <Layout>
-      <ServiceHeroSection
+      <EnhancedHeroSection
         title={heroContent.title}
         description={heroContent.description}
-        backgroundImage={heroContent.backgroundImage}
+        primaryCta={heroContent.primaryCta}
+        secondaryCta={heroContent.secondaryCta}
+        imageSrc={heroContent.imageSrc}
+        id="services"
       />
       <ServiceOfferingsSection />
       <ServiceProcessSection />

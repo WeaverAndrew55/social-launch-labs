@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import SectionContainer from '../components/ui/SectionContainer';
 import Button from '../components/ui/Button';
+import EnhancedHeroSection from '../components/sections/common/EnhancedHeroSection';
 
 /**
  * Contact page component
@@ -43,33 +44,26 @@ const ContactPage = () => {
     });
   };
 
+  const heroContent = {
+    title: "Get in Touch",
+    description: "Ready to transform your social media presence? Contact us today to discuss how we can help you achieve your business goals.",
+    primaryCta: {
+      text: "Complete the Form",
+      link: "#contact-form"
+    },
+    imageSrc: "/images/contact-hero.jpg"
+  };
+
   return (
     <Layout>
-      <div className="relative py-20 md:py-28 px-4 bg-gradient-to-b from-neutral-900 to-primary-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <svg className="absolute inset-0 h-full w-full" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="url(#grid)" />
-          </svg>
-          <defs>
-            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5" />
-            </pattern>
-          </defs>
-        </div>
-        
-        <div className="container mx-auto relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-white">
-              Get in Touch
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8">
-              Schedule a free strategy call or send us a message to discuss how we can help your business.
-            </p>
-          </div>
-        </div>
-      </div>
+      <EnhancedHeroSection
+        title={heroContent.title}
+        description={heroContent.description}
+        primaryCta={heroContent.primaryCta}
+        imageSrc={heroContent.imageSrc}
+      />
 
-      <SectionContainer bgColor="bg-white">
+      <SectionContainer id="contact-form">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
             <h2 className="text-3xl font-display font-bold mb-6 text-neutral-800">

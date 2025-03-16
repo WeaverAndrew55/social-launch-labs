@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Layout from '../../components/layout/Layout';
 import SectionContainer from '../../components/ui/SectionContainer';
 import Button from '../../components/ui/Button';
+import EnhancedHeroSection from '../../components/sections/common/EnhancedHeroSection';
 
 /**
  * Conversion Booster Package page component
@@ -82,56 +83,31 @@ const ConversionBoosterPackagePage = () => {
     }
   };
 
+  // Hero content
+  const heroContent = {
+    title: packageData.title,
+    description: packageData.description,
+    primaryCta: {
+      text: "Book a Free Consultation",
+      link: "/contact"
+    },
+    secondaryCta: {
+      text: "View Package Details",
+      link: "#package-details"
+    },
+    imageSrc: packageData.image
+  };
+
   return (
     <Layout>
       {/* Hero Section */}
-      <div className="relative py-20 px-4 bg-gradient-to-br from-secondary-900 to-secondary-800 overflow-hidden">
-        <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <svg className="absolute inset-0 h-full w-full" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="url(#grid)" />
-          </svg>
-          <defs>
-            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5" />
-            </pattern>
-          </defs>
-        </div>
-        
-        <div className="container mx-auto relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-block bg-white/20 text-white px-4 py-1 rounded-full text-sm font-semibold mb-6">
-              Most Popular
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-white">
-              {packageData.title}
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8">
-              {packageData.description}
-            </p>
-            <div className="flex justify-center items-center space-x-2 mb-8">
-              <span className="text-3xl md:text-4xl font-bold text-white">{packageData.price}</span>
-              <span className="text-white/80">per month</span>
-            </div>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button
-                href="/contact"
-                variant="secondary"
-                size="lg"
-              >
-                Book a Free Consultation
-              </Button>
-              <Button
-                href="#package-details"
-                variant="outline"
-                size="lg"
-                className="bg-transparent border-white text-white hover:bg-white/10"
-              >
-                View Package Details
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <EnhancedHeroSection
+        title={heroContent.title}
+        description={heroContent.description}
+        primaryCta={heroContent.primaryCta}
+        secondaryCta={heroContent.secondaryCta}
+        imageSrc={heroContent.imageSrc}
+      />
 
       {/* Overview Section */}
       <SectionContainer bgColor="bg-white" id="package-details">

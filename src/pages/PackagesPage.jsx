@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/layout/Layout';
 
 // Import section components
-import PackageHeroSection from '../components/sections/packages/PackageHeroSection';
+import EnhancedHeroSection from '../components/sections/common/EnhancedHeroSection';
 import PackageListSection from '../components/sections/packages/PackageListSection';
 import PackageComparisonSection from '../components/sections/packages/PackageComparisonSection';
 import PackageTestimonialsSection from '../components/sections/packages/PackageTestimonialsSection';
@@ -13,7 +13,15 @@ import CTASection from '../components/sections/home/CTASection';
 const heroContent = {
   title: "Tailored Social Media Packages",
   description: "Choose the perfect package to transform your social media presence into a client-generating asset.",
-  backgroundImage: "/images/packages-hero.jpg"
+  primaryCta: {
+    text: "View Packages",
+    link: "#packages"
+  },
+  secondaryCta: {
+    text: "Compare Features",
+    link: "#package-comparison"
+  },
+  imageSrc: "/images/packages-hero.jpg"
 };
 
 // Import CTA content
@@ -36,10 +44,13 @@ const ctaContent = {
 const PackagesPage = () => {
   return (
     <Layout>
-      <PackageHeroSection
+      <EnhancedHeroSection
         title={heroContent.title}
         description={heroContent.description}
-        backgroundImage={heroContent.backgroundImage}
+        primaryCta={heroContent.primaryCta}
+        secondaryCta={heroContent.secondaryCta}
+        imageSrc={heroContent.imageSrc}
+        id="packages"
       />
       <PackageListSection />
       <PackageComparisonSection />
