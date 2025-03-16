@@ -46,9 +46,7 @@ const PackagesCarouselSection = ({
       perMonth: "/mo",
       learnMoreLink: "/packages/lead-generation",
       ctaLink: "/contact",
-      ctaText: "Start Generating Leads",
-      videoThumbnail: "https://placehold.co/800x600/eef4ff/3b82f6?text=Lead+Generation+Package&font=playfair-display",
-      videoDuration: "2:15"
+      ctaText: "Start Generating Leads"
     },
     {
       title: "Conversion Booster Package",
@@ -68,9 +66,7 @@ const PackagesCarouselSection = ({
       perMonth: "/mo",
       learnMoreLink: "/packages/conversion-booster",
       ctaLink: "/contact",
-      ctaText: "Boost Your Conversions",
-      videoThumbnail: "https://placehold.co/800x600/f3e8ff/9333ea?text=Conversion+Booster&font=playfair-display",
-      videoDuration: "2:45"
+      ctaText: "Boost Your Conversions"
     },
     {
       title: "Authority Builder Package",
@@ -91,9 +87,7 @@ const PackagesCarouselSection = ({
       perMonth: "/mo",
       learnMoreLink: "/packages/authority-builder",
       ctaLink: "/contact",
-      ctaText: "Build Your Authority",
-      videoThumbnail: "https://placehold.co/800x600/fff7ed/ea580c?text=Authority+Builder&font=playfair-display",
-      videoDuration: "3:05"
+      ctaText: "Build Your Authority"
     }
   ];
 
@@ -150,21 +144,12 @@ const PackagesCarouselSection = ({
   useEffect(() => {
     // Update active classes when activeIndex changes
     const panels = document.querySelectorAll('.package-panel');
-    const videos = document.querySelectorAll('.package-video');
 
     panels.forEach((panel, index) => {
       if (index === activeIndex) {
         panel.style.display = 'block';
       } else {
         panel.style.display = 'none';
-      }
-    });
-
-    videos.forEach((video, index) => {
-      if (index === activeIndex) {
-        video.style.display = 'block';
-      } else {
-        video.style.display = 'none';
       }
     });
   }, [activeIndex]);
@@ -349,118 +334,71 @@ const PackagesCarouselSection = ({
                 })}
               </div>
               
-              {/* Content container */}
-              <div className="md:grid md:grid-cols-2">
-                {/* Left column: Package info */}
-                <div className="bg-white">
-                  {packages.map((pkg, index) => (
-                    <div 
-                      key={index}
-                      className="package-panel p-6 md:p-8"
-                      style={{display: index === activeIndex ? 'block' : 'none'}}
-                    >
-                      <div className="flex flex-col mb-6">
-                        <div className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${getBadgeClass(pkg.badgeColor)} mb-2 self-start`}>
-                          {pkg.badge}
+              {/* Content container - full width package info */}
+              <div className="bg-white">
+                {packages.map((pkg, index) => (
+                  <div 
+                    key={index}
+                    className="package-panel p-6 md:p-8"
+                    style={{display: index === activeIndex ? 'block' : 'none'}}
+                  >
+                    <div className="flex flex-col mb-6">
+                      <div className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${getBadgeClass(pkg.badgeColor)} mb-2 self-start`}>
+                        {pkg.badge}
+                      </div>
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <div className="text-sm text-gray-500 mb-1">{pkg.subtitle}</div>
+                          <h3 className="text-xl md:text-2xl font-bold">{pkg.title}</h3>
                         </div>
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <div className="text-sm text-gray-500 mb-1">{pkg.subtitle}</div>
-                            <h3 className="text-xl md:text-2xl font-bold">{pkg.title}</h3>
-                          </div>
-                          <div className="text-right">
-                            <div className="text-2xl md:text-3xl font-bold">{pkg.price}</div>
-                            <div className="text-sm text-gray-500">{pkg.perMonth}</div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Package overview */}
-                      <div className={`p-4 rounded-lg mb-6 ${pkg.badgeColor === 'blue' ? 'bg-blue-50' : pkg.badgeColor === 'purple' ? 'bg-purple-50' : 'bg-orange-50'}`}>
-                        <p className="text-gray-800">{pkg.overview}</p>
-                      </div>
-                      
-                      {/* Key outcome */}
-                      <div className="mb-6 border-l-4 pl-3 border-green-500">
-                        <p className="text-gray-700 font-medium">Key Outcome:</p>
-                        <p className="text-gray-800 font-semibold">{pkg.keyOutcome}</p>
-                      </div>
-                      
-                      <div className="mb-4 text-gray-700 font-medium">What's included:</div>
-                      <ul className="space-y-3 mb-6">
-                        {pkg.features.map((feature, i) => (
-                          <li key={i} className="flex items-start">
-                            <svg className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      
-                      <div className="flex flex-col gap-3 mt-8">
-                        <Link 
-                          to={pkg.ctaLink} 
-                          className={`inline-flex justify-center items-center px-6 py-3 border border-transparent 
-                            text-base font-medium rounded-md shadow-sm text-white ${getButtonClass(pkg.badgeColor)} transition-transform hover:scale-105`}
-                        >
-                          {pkg.ctaText}
-                        </Link>
-                        <Link 
-                          to={pkg.learnMoreLink} 
-                          className="inline-flex justify-center items-center px-6 py-3 border border-gray-300 
-                            text-base font-medium rounded-md bg-white text-gray-700 hover:bg-gray-50"
-                        >
-                          View Full Details
-                        </Link>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                
-                {/* Right column: Video preview */}
-                <div className="bg-gradient-to-br from-gray-900 to-black relative h-[300px] md:h-full min-h-[300px] md:min-h-[600px]">
-                  {packages.map((pkg, index) => (
-                    <div 
-                      key={index}
-                      className="package-video absolute inset-0"
-                      style={{display: index === activeIndex ? 'block' : 'none'}}
-                    >
-                      <img 
-                        src={pkg.videoThumbnail} 
-                        alt={`${pkg.title} preview`} 
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-between p-4 sm:p-6 md:p-8">
-                        {/* Video title overlay */}
-                        <div className={`${pkg.badgeColor === 'blue' ? 'from-blue-600/40' : pkg.badgeColor === 'purple' ? 'from-purple-600/40' : 'from-orange-600/40'} to-black/10 bg-gradient-to-br backdrop-blur-sm rounded-lg p-4 max-w-md`}>
-                          <h3 className="text-lg sm:text-xl font-semibold text-white">{pkg.title}</h3>
-                          <p className="text-white/90 text-sm mt-1">
-                            <span className="font-medium block mb-1">{pkg.keyOutcome}</span>
-                            <span className="text-xs inline-flex items-center mt-2">
-                              <svg className="w-4 h-4 mr-1 text-white/70" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clipRule="evenodd"></path>
-                              </svg>
-                              Watch the video to learn more
-                            </span>
-                          </p>
-                        </div>
-                        
-                        {/* Play button and duration */}
-                        <div className="flex justify-between items-end">
-                          <button className="bg-white rounded-full w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center shadow-lg transform transition-all duration-300 hover:scale-110 hover:bg-blue-50 focus:outline-none group">
-                            <svg className="w-7 h-7 sm:w-8 sm:h-8 text-blue-600 group-hover:text-blue-700" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                            </svg>
-                          </button>
-                          <div className="bg-black bg-opacity-60 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg text-sm font-medium">
-                            {pkg.videoDuration}
-                          </div>
+                        <div className="text-right">
+                          <div className="text-2xl md:text-3xl font-bold">{pkg.price}</div>
+                          <div className="text-sm text-gray-500">{pkg.perMonth}</div>
                         </div>
                       </div>
                     </div>
-                  ))}
-                </div>
+                    
+                    {/* Package overview */}
+                    <div className={`p-4 rounded-lg mb-6 ${pkg.badgeColor === 'blue' ? 'bg-blue-50' : pkg.badgeColor === 'purple' ? 'bg-purple-50' : 'bg-orange-50'}`}>
+                      <p className="text-gray-800">{pkg.overview}</p>
+                    </div>
+                    
+                    {/* Key outcome */}
+                    <div className="mb-6 border-l-4 pl-3 border-green-500">
+                      <p className="text-gray-700 font-medium">Key Outcome:</p>
+                      <p className="text-gray-800 font-semibold">{pkg.keyOutcome}</p>
+                    </div>
+                    
+                    <div className="mb-4 text-gray-700 font-medium">What's included:</div>
+                    <ul className="space-y-3 mb-6">
+                      {pkg.features.map((feature, i) => (
+                        <li key={i} className="flex items-start">
+                          <svg className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    <div className="flex flex-col sm:flex-row sm:justify-center gap-4 mt-8">
+                      <Link 
+                        to={pkg.ctaLink} 
+                        className={`inline-flex justify-center items-center px-6 py-3 border border-transparent 
+                          text-base font-medium rounded-md shadow-sm text-white ${getButtonClass(pkg.badgeColor)} transition-transform hover:scale-105`}
+                      >
+                        {pkg.ctaText}
+                      </Link>
+                      <Link 
+                        to={pkg.learnMoreLink} 
+                        className="inline-flex justify-center items-center px-6 py-3 border border-gray-300 
+                          text-base font-medium rounded-md bg-white text-gray-700 hover:bg-gray-50"
+                      >
+                        View Full Details
+                      </Link>
+                    </div>
+                  </div>
+                ))}
               </div>
               
               {/* Navigation dots */}
