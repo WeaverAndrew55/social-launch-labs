@@ -18,8 +18,7 @@ const Layout = ({
     <div className="flex flex-col min-h-screen">
       <Header transparent={transparentHeader} />
       
-      {/* Add padding to account for fixed header */}
-      <main className="flex-grow pt-16">
+      <main className="flex-grow">
         {children}
       </main>
       

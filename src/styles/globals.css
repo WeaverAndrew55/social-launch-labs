@@ -49,3 +49,44 @@
   --color-neutral-800: #1e293b;
   --color-neutral-900: #0f172a;
 }
+
+/* Header Styles */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: all 0.3s ease;
+}
+
+/* Dropdown styles */
+.dropdown-container:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-arrow {
+  transition: transform 0.2s ease-in-out;
+}
+
+.dropdown-toggle:hover .dropdown-arrow,
+.mobile-dropdown-toggle:hover .mobile-dropdown-icon {
+  transform: rotate(180deg);
+}
+
+/* Mobile menu styles */
+.mobile-dropdown-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-out;
+  opacity: 0;
+}
+
+.mobile-dropdown-content.open {
+  max-height: 500px;
+  opacity: 1;
+  padding-left: 1rem;
+}
+
+.mobile-dropdown-content a {
+  padding: 0.5rem 1rem;
+  display: block;
+}

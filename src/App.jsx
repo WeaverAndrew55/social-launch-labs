@@ -15,11 +15,12 @@ import ConversionBoosterPackagePage from './pages/packages/ConversionBoosterPack
 import AuthorityBuilderPackagePage from './pages/packages/AuthorityBuilderPackagePage';
 import ExamplePage from './pages/ExamplePage';
 
-// UI Components
-import Button from './components/ui/Button';
-
 // Temporary placeholder pages
 const Contact = () => <div className="container mx-auto px-4 py-16"><h1>Contact Page</h1></div>;
+const AboutPage = () => <div className="container mx-auto px-4 py-16"><h1>About Us Page</h1></div>;
+const FAQPage = () => <div className="container mx-auto px-4 py-16"><h1>FAQ Page</h1></div>;
+const ForBusinessesPage = () => <div className="container mx-auto px-4 py-16"><h1>For Businesses Page</h1></div>;
+const ForAgenciesPage = () => <div className="container mx-auto px-4 py-16"><h1>For Agencies Page</h1></div>;
 
 function App() {
   // Get the base path from the environment or use the default for GitHub Pages
@@ -30,11 +31,15 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/services" element={<ServicesPage />} />
+        <Route path="/services/for-businesses" element={<ForBusinessesPage />} />
+        <Route path="/services/for-agencies" element={<ForAgenciesPage />} />
         <Route path="/packages" element={<PackagesPage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/faq" element={<FAQPage />} />
         <Route path="/packages/lead-generation" element={<LeadGenerationPackagePage />} />
         <Route path="/packages/conversion-booster" element={<ConversionBoosterPackagePage />} />
-        <Route path="/packages/authority-builder" element={<AuthorityBuilderPackagePage />} />
+        <Route path="/packages/authority-building" element={<AuthorityBuilderPackagePage />} />
         <Route path="/example" element={<ExamplePage />} />
       </Routes>
     </Router>
