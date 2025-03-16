@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SectionContainer from '../../layout/SectionContainer';
+import SectionContainer from '../../ui/SectionContainer';
 import AIGeneratedImage from '../../ui/AIGeneratedImage';
 
 /**
@@ -20,7 +20,7 @@ const WhatWeOfferSection = () => {
         listItems: ["Lead Generation", "Conversion Booster", "Authority Builder"],
         ctaText: "Explore our packages",
         ctaLink: "#packages",
-        imageSrc: "https://images.unsplash.com/photo-1552664730-d307ca884978",
+        imageSrc: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
         aiGeneratedSrc: "/images/ai-generated/services/strategic-packages.jpg",
         imageAlt: "Strategic Content Planning",
         badge: "Revolutionary!",
@@ -42,7 +42,7 @@ const WhatWeOfferSection = () => {
         ],
         ctaText: "Learn more about our process",
         ctaLink: "#process",
-        imageSrc: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf",
+        imageSrc: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
         aiGeneratedSrc: "/images/ai-generated/services/proven-process.jpg",
         imageAlt: "Proven Content Process",
         reversed: true
@@ -57,7 +57,7 @@ const WhatWeOfferSection = () => {
         ],
         ctaText: "See client success metrics",
         ctaLink: "#results",
-        imageSrc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+        imageSrc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
         aiGeneratedSrc: "/images/ai-generated/services/measurable-results.jpg",
         imageAlt: "Analytics Dashboard",
         floatingCard: {
@@ -195,10 +195,10 @@ const WhatWeOfferSection = () => {
               <div className="relative">
                 {/* Main Image */}
                 <div className="rounded-xl overflow-hidden shadow-lg">
-                  <AIGeneratedImage
-                    placeholderSrc={feature.imageSrc}
-                    aiSrc={feature.aiGeneratedSrc}
-                    alt={feature.imageAlt}
+                  {/* Use direct img tag first with fallback to AIGeneratedImage if needed */}
+                  <img 
+                    src={feature.imageSrc} 
+                    alt={feature.imageAlt} 
                     className="w-full h-auto"
                   />
                 </div>
