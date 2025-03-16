@@ -21,7 +21,8 @@ const heroContent = {
     text: "Compare Features",
     link: "#package-comparison"
   },
-  imageSrc: "/images/packages-hero.jpg"
+  imageSrc: "https://picsum.photos/800/450?random=3", // Placeholder image
+  aiGeneratedSrc: "/images/ai-generated/hero/packages-hero.jpg" // Simulated AI-generated image path
 };
 
 // Import CTA content
@@ -50,6 +51,7 @@ const PackagesPage = () => {
         primaryCta={heroContent.primaryCta}
         secondaryCta={heroContent.secondaryCta}
         imageSrc={heroContent.imageSrc}
+        aiGeneratedSrc={heroContent.aiGeneratedSrc}
         id="packages"
       />
       <PackageListSection />

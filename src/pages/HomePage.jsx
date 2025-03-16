@@ -22,7 +22,8 @@ const heroContent = {
     text: "Learn More",
     link: "#how-it-works"
   },
-  imageSrc: "/images/hero-image.jpg"
+  imageSrc: "https://picsum.photos/800/450?random=1", // Placeholder image
+  aiGeneratedSrc: null // Set to path of AI-generated image when available
 };
 
 // Import problem-solution content
@@ -247,6 +248,8 @@ const HomePage = () => {
         primaryCta={heroContent.primaryCta}
         secondaryCta={heroContent.secondaryCta}
         imageSrc={heroContent.imageSrc}
+        aiGeneratedSrc={heroContent.aiGeneratedSrc}
+        showAiInstructions={true} // Always show instructions during development
       />
       <ProblemSolutionSection
         problem={problemSolutionContent.problem}

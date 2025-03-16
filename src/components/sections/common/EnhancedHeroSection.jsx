@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import AIGeneratedImage from '../../ui/AIGeneratedImage';
 
 /**
  * Enhanced Hero Section component that can be used site-wide
@@ -17,9 +18,11 @@ import { Link } from 'react-router-dom';
  * @param {string} props.secondaryCta.link - Secondary CTA button link
  * @param {string} [props.videoSrc] - Optional video source URL
  * @param {string} [props.imageSrc] - Optional image source (used as fallback or placeholder)
+ * @param {string} [props.aiGeneratedSrc] - Optional AI-generated image/video path
  * @param {string} [props.imageAlt] - Optional alt text for the image
  * @param {React.ReactNode} [props.children] - Optional children to render in the right column instead of video/image
  * @param {boolean} [props.reversed=false] - Whether to reverse the layout (content on right, media on left)
+ * @param {boolean} [props.showAiInstructions=false] - Whether to show AI generation instructions (dev only)
  */
 const EnhancedHeroSection = ({
   title,
@@ -28,10 +31,14 @@ const EnhancedHeroSection = ({
   secondaryCta,
   videoSrc,
   imageSrc,
+  aiGeneratedSrc,
   imageAlt = "Hero image",
   children,
-  reversed = false
+  reversed = false,
+  showAiInstructions = process.env.NODE_ENV === 'development'
 }) => {
+  const isVideo = !!videoSrc;
+  
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-blue-900 to-indigo-800">
       <div className="container mx-auto px-4 py-28 md:py-32 relative z-10">
@@ -69,48 +76,14 @@ const EnhancedHeroSection = ({
               {children}
             </div>
           ) : (
-            <div className="relative rounded-lg shadow-xl overflow-hidden">
-              {videoSrc ? (
-                <video 
-                  className="w-full h-full object-cover rounded-lg" 
-                  playsInline
-                  controls
-                >
-                  <source src={videoSrc} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              ) : imageSrc ? (
-                <img 
-                  src={imageSrc} 
-                  alt={imageAlt} 
-                  className="w-full h-full object-cover rounded-lg"
-                />
-              ) : (
-                <div className="bg-neutral-800 w-full aspect-video rounded-lg flex items-center justify-center">
-                  <p className="text-neutral-400">Media placeholder</p>
-                </div>
-              )}
-              
-              {/* Play Button Overlay (only for videos with image placeholders) */}
-              {!videoSrc && imageSrc && (
-                <div className="absolute inset-0 flex items-center justify-center cursor-pointer">
-                  <div className="bg-white bg-opacity-80 hover:bg-opacity-90 transition-all p-4 rounded-full">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-12 w-12 text-primary-700" 
-                      viewBox="0 0 20 20" 
-                      fill="currentColor"
-                    >
-                      <path 
-                        fillRule="evenodd" 
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" 
-                        clipRule="evenodd" 
-                      />
-                    </svg>
-                  </div>
-                </div>
-              )}
-            </div>
+            <AIGeneratedImage
+              placeholderSrc={imageSrc || "https://picsum.photos/800/450?random=1"}
+              alt={imageAlt}
+              aiSrc={aiGeneratedSrc}
+              isVideo={isVideo}
+              className="w-full aspect-video shadow-xl"
+              showInstructions={showAiInstructions}
+            />
           )}
         </div>
       </div>
@@ -138,9 +111,11 @@ EnhancedHeroSection.propTypes = {
   }),
   videoSrc: PropTypes.string,
   imageSrc: PropTypes.string,
+  aiGeneratedSrc: PropTypes.string,
   imageAlt: PropTypes.string,
   children: PropTypes.node,
-  reversed: PropTypes.bool
+  reversed: PropTypes.bool,
+  showAiInstructions: PropTypes.bool
 };
 
 export default EnhancedHeroSection; 

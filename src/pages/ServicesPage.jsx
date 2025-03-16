@@ -21,7 +21,8 @@ const heroContent = {
     text: "Contact Us",
     link: "/contact"
   },
-  imageSrc: "/images/services-hero.jpg"
+  imageSrc: "https://picsum.photos/800/450?random=2", // Placeholder image
+  aiGeneratedSrc: null // Set to path of AI-generated image when available
 };
 
 // Import CTA content
@@ -50,6 +51,7 @@ const ServicesPage = () => {
         primaryCta={heroContent.primaryCta}
         secondaryCta={heroContent.secondaryCta}
         imageSrc={heroContent.imageSrc}
+        aiGeneratedSrc={heroContent.aiGeneratedSrc}
         id="services"
       />
       <ServiceOfferingsSection />
