@@ -270,16 +270,6 @@ const HomePage = () => {
         description={processOverviewContent.description}
         steps={processOverviewContent.steps}
       />
-      <CoreServicesSection
-        title={coreServicesContent.title}
-        description={coreServicesContent.description}
-        services={coreServicesContent.services}
-      />
-      <PackagesOverviewSection
-        title={packagesOverviewContent.title}
-        description={packagesOverviewContent.description}
-        packages={packagesOverviewContent.packages}
-      />
       <TestimonialsSection
         title={testimonialsContent.title}
         description={testimonialsContent.description}
