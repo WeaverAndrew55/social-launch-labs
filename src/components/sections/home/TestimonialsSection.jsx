@@ -49,7 +49,7 @@ const TestimonialsSection = ({
               quote={testimonial.quote}
               author={testimonial.author}
               title={testimonial.title}
-              image={testimonial.image}
+              image={testimonial.image || `https://WeaverAndrew55.github.io/SLL-Images/assets/testimonials/testimonial-${index + 1}.jpg`}
             />
           </div>
         ))}
@@ -63,7 +63,7 @@ const TestimonialsSection = ({
               quote={testimonials[activeIndex].quote}
               author={testimonials[activeIndex].author}
               title={testimonials[activeIndex].title}
-              image={testimonials[activeIndex].image}
+              image={testimonials[activeIndex].image || `https://WeaverAndrew55.github.io/SLL-Images/assets/testimonials/testimonial-${activeIndex + 1}.jpg`}
             />
           </div>
           

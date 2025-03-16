@@ -10,7 +10,6 @@ import CoreServicesSection from '../components/sections/home/CoreServicesSection
 import PackagesOverviewSection from '../components/sections/home/PackagesOverviewSection';
 import TestimonialsSection from '../components/sections/home/TestimonialsSection';
 import FAQSection from '../components/sections/home/FAQSection';
-import CTASection from '../components/sections/home/CTASection';
 import CtaSection from '../components/sections/shared/CtaSection';
 
 // Import hero content
@@ -290,12 +289,6 @@ const HomePage = () => {
         title={faqContent.title}
         description={faqContent.description}
         faqs={faqContent.faqs}
-      />
-      <CTASection
-        title={ctaContent.title}
-        description={ctaContent.description}
-        primaryButton={ctaContent.primaryButton}
-        secondaryButton={ctaContent.secondaryButton}
       />
     </Layout>
   );
