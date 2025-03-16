@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../../components/layout/Layout';
-import SectionContainer from '../../components/layout/SectionContainer';
+import SectionContainer from '../../components/ui/SectionContainer';
 import Button from '../../components/ui/Button';
 
 const AuthorityBuilderPackagePage = () => {
