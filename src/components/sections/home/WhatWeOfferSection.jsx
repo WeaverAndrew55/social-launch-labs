@@ -68,11 +68,6 @@ const WhatWeOfferSection = () => {
         }
       }
     ],
-    conclusion: {
-      text: "Ready to transform your content strategy? Choose from our proven service packages designed to meet your specific needs.",
-      ctaText: "Explore Our Packages",
-      ctaLink: "#packages"
-    }
   };
 
   const renderIcon = (iconName) => {
