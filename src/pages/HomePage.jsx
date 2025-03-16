@@ -142,12 +142,14 @@ const HomePage = () => {
         spacingClass="section-spacing-md"
       />
       <WhatWeOfferSection spacingClass="section-spacing-md" />
-      <PackagesCarouselSection
-        title={packagesCarouselContent.title}
-        subtitle={packagesCarouselContent.subtitle}
-        description={packagesCarouselContent.description}
-        spacingClass="section-spacing-md"
-      />
+      <div id="packages-section">
+        <PackagesCarouselSection
+          title={packagesCarouselContent.title}
+          subtitle={packagesCarouselContent.subtitle}
+          description={packagesCarouselContent.description}
+          spacingClass=""
+        />
+      </div>
       <div className="bg-neutral-50 section-spacing-md">
         <TestimonialsSection
           title={testimonialsContent.title}

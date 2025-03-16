@@ -140,19 +140,34 @@ const PackagesCarouselSection = ({
     setActiveIndex(index);
   };
 
-  // Update active tabs when activeIndex changes
+  // Initialize and update active tabs when activeIndex changes
   useEffect(() => {
-    // Update active classes when activeIndex changes
+    console.log('Active index changed:', activeIndex);
+    
+    // Force immediate update of active panel
     const panels = document.querySelectorAll('.package-panel');
-
-    panels.forEach((panel, index) => {
-      if (index === activeIndex) {
-        panel.style.display = 'block';
-      } else {
-        panel.style.display = 'none';
-      }
-    });
+    if (panels.length > 0) {
+      console.log('Found', panels.length, 'package panels');
+      
+      panels.forEach((panel, index) => {
+        if (index === activeIndex) {
+          panel.style.display = 'block';
+          console.log('Setting panel', index, 'to display block');
+        } else {
+          panel.style.display = 'none';
+          console.log('Setting panel', index, 'to display none');
+        }
+      });
+    } else {
+      console.warn('No package panels found in the DOM');
+    }
   }, [activeIndex]);
+
+  // Initialize on component mount
+  useEffect(() => {
+    // Set first tab as active by default
+    setActiveIndex(0);
+  }, []);
 
   const getTabColor = (color) => {
     const colors = {
@@ -335,13 +350,16 @@ const PackagesCarouselSection = ({
               </div>
               
               {/* Content container - full width package info */}
-              <div className="bg-white">
+              <div className="bg-white h-full">
                 {packages.map((pkg, index) => (
                   <div 
                     key={index}
                     className="package-panel p-6 md:p-8"
                     style={{display: index === activeIndex ? 'block' : 'none'}}
+                    data-active={index === activeIndex ? 'true' : 'false'}
                   >
+                    {/* Debug Info */}
+                    <div className="debug-info text-xs text-gray-400 mb-4">Panel {index} {index === activeIndex ? '(active)' : '(inactive)'}</div>
                     <div className="flex flex-col mb-6">
                       <div className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${getBadgeClass(pkg.badgeColor)} mb-2 self-start`}>
                         {pkg.badge}
