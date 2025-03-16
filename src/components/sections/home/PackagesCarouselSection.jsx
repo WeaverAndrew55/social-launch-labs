@@ -134,6 +134,26 @@ const PackagesCarouselSection = ({ title, subtitle, description }) => {
     return colors[color] || colors.blue;
   };
 
+  const getTabBgColor = (color, isActive) => {
+    const bgColors = {
+      blue: isActive ? 'bg-blue-50' : 'hover:bg-blue-50/50',
+      purple: isActive ? 'bg-purple-50' : 'hover:bg-purple-50/50',
+      orange: isActive ? 'bg-orange-50' : 'hover:bg-orange-50/50',
+      teal: isActive ? 'bg-teal-50' : 'hover:bg-teal-50/50'
+    };
+    return bgColors[color] || bgColors.blue;
+  };
+
+  const getTabBorderColor = (color, isActive) => {
+    const borderColors = {
+      blue: isActive ? 'border-blue-600' : 'border-transparent',
+      purple: isActive ? 'border-purple-600' : 'border-transparent',
+      orange: isActive ? 'border-orange-600' : 'border-transparent',
+      teal: isActive ? 'border-teal-600' : 'border-transparent'
+    };
+    return borderColors[color] || borderColors.blue;
+  };
+
   const getBadgeClass = (color) => {
     const badgeClasses = {
       blue: 'bg-blue-100 text-blue-600',
@@ -186,17 +206,27 @@ const PackagesCarouselSection = ({ title, subtitle, description }) => {
             {packages.map((pkg, index) => {
               const isActive = index === activeIndex;
               const activeColorClass = isActive ? getTabColor(pkg.badgeColor) : '';
+              const bgColorClass = getTabBgColor(pkg.badgeColor, isActive);
+              const borderColorClass = getTabBorderColor(pkg.badgeColor, isActive);
               
               return (
                 <button
                   key={index}
                   data-index={index}
                   className={`package-tab flex-1 py-4 px-6 text-center text-sm md:text-base font-medium border-b-2 
-                    border-transparent hover:text-gray-900 focus:outline-none transition-colors duration-200 
-                    ${isActive ? `${activeColorClass} active` : 'text-gray-500'}`}
+                    ${borderColorClass} ${bgColorClass} focus:outline-none transition-all duration-200 
+                    ${isActive ? `${activeColorClass} active` : 'text-gray-600'}`}
                   onClick={() => handleTabClick(index)}
                 >
-                  {pkg.title}
+                  <span className="relative">
+                    {pkg.title}
+                    {isActive && (
+                      <span className={`absolute -right-6 -top-1 flex h-5 w-5`}>
+                        <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${pkg.badgeColor === 'blue' ? 'bg-blue-300' : pkg.badgeColor === 'purple' ? 'bg-purple-300' : pkg.badgeColor === 'orange' ? 'bg-orange-300' : 'bg-teal-300'} opacity-75`}></span>
+                        <span className={`relative inline-flex rounded-full h-3 w-3 ${pkg.badgeColor === 'blue' ? 'bg-blue-500' : pkg.badgeColor === 'purple' ? 'bg-purple-500' : pkg.badgeColor === 'orange' ? 'bg-orange-500' : 'bg-teal-500'}`}></span>
+                      </span>
+                    )}
+                  </span>
                 </button>
               );
             })}
