@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://andrewweaver.github.io/social-launch-labs",
+  "homepage": "https://weaverandrew55.github.io/social-launch-labs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
