@@ -3,6 +3,7 @@ import Layout from '../components/layout/Layout';
 import EnhancedHeroSection from '../components/sections/common/EnhancedHeroSection';
 import ProblemSolutionSection from '../components/sections/home/ProblemSolutionSection';
 import TargetAudienceSection from '../components/sections/home/TargetAudienceSection';
+import WhatWeOfferSection from '../components/sections/home/WhatWeOfferSection';
 import ProcessOverviewSection from '../components/sections/home/ProcessOverviewSection';
 import CoreServicesSection from '../components/sections/home/CoreServicesSection';
 import PackagesOverviewSection from '../components/sections/home/PackagesOverviewSection';
@@ -260,6 +261,7 @@ const HomePage = () => {
         description={targetAudienceContent.description}
         segments={targetAudienceContent.segments}
       />
+      <WhatWeOfferSection />
       <ProcessOverviewSection
         title={processOverviewContent.title}
         description={processOverviewContent.description}
