@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Transition } from '@headlessui/react';
@@ -11,15 +11,42 @@ import { Transition } from '@headlessui/react';
  */
 const Header = ({ transparent = false }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  
+  // Add scroll event listener
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    // Initial check in case page is loaded scrolled down
+    handleScroll();
+    
+    // Clean up event listener
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   
   const baseStyles = "fixed w-full top-0 z-50 transition-all duration-300";
-  const bgStyles = transparent 
-    ? "bg-transparent text-white" 
-    : "bg-neutral-800 text-neutral-200 shadow-md";
+  
+  // Determine background style based on scroll position and transparency
+  let bgStyles;
+  if (transparent && !isScrolled) {
+    bgStyles = "bg-neutral-900/60 backdrop-blur-sm text-white";
+  } else {
+    bgStyles = "bg-neutral-800 text-neutral-200 shadow-md";
+  }
   
   return (
     <header className={`${baseStyles} ${bgStyles}`}>
@@ -27,7 +54,7 @@ const Header = ({ transparent = false }) => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className={`text-2xl font-heading font-bold ${transparent ? 'text-white' : 'text-white'}`}>
+            <span className={`text-2xl font-heading font-bold ${(transparent && !isScrolled) ? 'text-white' : 'text-white'}`}>
               Social Launch Labs
             </span>
           </Link>
@@ -38,7 +65,7 @@ const Header = ({ transparent = false }) => {
               <li>
                 <Link 
                   to="/" 
-                  className={`font-medium hover:text-primary-500 transition-colors ${transparent ? 'text-white hover:text-primary-200' : 'text-neutral-400 hover:text-white'}`}
+                  className={`font-medium hover:text-primary-500 transition-colors ${(transparent && !isScrolled) ? 'text-white hover:text-primary-200' : 'text-neutral-400 hover:text-white'}`}
                 >
                   Home
                 </Link>
@@ -46,7 +73,7 @@ const Header = ({ transparent = false }) => {
               <li>
                 <Link 
                   to="/services" 
-                  className={`font-medium hover:text-primary-500 transition-colors ${transparent ? 'text-white hover:text-primary-200' : 'text-neutral-400 hover:text-white'}`}
+                  className={`font-medium hover:text-primary-500 transition-colors ${(transparent && !isScrolled) ? 'text-white hover:text-primary-200' : 'text-neutral-400 hover:text-white'}`}
                 >
                   Services
                 </Link>
@@ -54,7 +81,7 @@ const Header = ({ transparent = false }) => {
               <li>
                 <Link 
                   to="/packages" 
-                  className={`font-medium hover:text-primary-500 transition-colors ${transparent ? 'text-white hover:text-primary-200' : 'text-neutral-400 hover:text-white'}`}
+                  className={`font-medium hover:text-primary-500 transition-colors ${(transparent && !isScrolled) ? 'text-white hover:text-primary-200' : 'text-neutral-400 hover:text-white'}`}
                 >
                   Packages
                 </Link>
@@ -62,7 +89,7 @@ const Header = ({ transparent = false }) => {
               <li>
                 <Link 
                   to="/contact" 
-                  className={`font-medium hover:text-primary-500 transition-colors ${transparent ? 'text-white hover:text-primary-200' : 'text-neutral-400 hover:text-white'}`}
+                  className={`font-medium hover:text-primary-500 transition-colors ${(transparent && !isScrolled) ? 'text-white hover:text-primary-200' : 'text-neutral-400 hover:text-white'}`}
                 >
                   Contact
                 </Link>
@@ -79,7 +106,7 @@ const Header = ({ transparent = false }) => {
             {isMenuOpen ? (
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
-                className={`h-6 w-6 ${transparent ? 'text-white' : 'text-neutral-400'}`} 
+                className={`h-6 w-6 ${(transparent && !isScrolled) ? 'text-white' : 'text-neutral-400'}`} 
                 fill="none" 
                 viewBox="0 0 24 24" 
                 stroke="currentColor"
@@ -89,7 +116,7 @@ const Header = ({ transparent = false }) => {
             ) : (
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
-                className={`h-6 w-6 ${transparent ? 'text-white' : 'text-neutral-400'}`} 
+                className={`h-6 w-6 ${(transparent && !isScrolled) ? 'text-white' : 'text-neutral-400'}`} 
                 fill="none" 
                 viewBox="0 0 24 24" 
                 stroke="currentColor"
