@@ -259,19 +259,6 @@ const WhatWeOfferSection = () => {
             </div>
           </div>
         ))}
-        
-        {/* Conclusion */}
-        <div className="text-center">
-          <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
-            {content.conclusion.text}
-          </p>
-          <Link to={content.conclusion.ctaLink} className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-xl text-base font-bold hover:bg-blue-700 transition duration-300">
-            {content.conclusion.ctaText}
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </Link>
-        </div>
       </SectionContainer>
     </section>
   );

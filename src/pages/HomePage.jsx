@@ -255,6 +255,15 @@ const HomePage = () => {
         subtitle={packagesCarouselContent.subtitle}
         description={packagesCarouselContent.description}
       />
+      <CtaSection
+        title={ctaContent.title}
+        description={ctaContent.description}
+        primaryButtonText={ctaContent.primaryButtonText}
+        primaryButtonLink={ctaContent.primaryButtonLink}
+        secondaryButtonText={ctaContent.secondaryButtonText}
+        secondaryButtonLink={ctaContent.secondaryButtonLink}
+        bgColor={ctaContent.bgColor}
+      />
       <TestimonialsSection
         title={testimonialsContent.title}
         description={testimonialsContent.description}
