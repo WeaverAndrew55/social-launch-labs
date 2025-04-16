@@ -33,7 +33,7 @@ const PackageComparisonSection = ({
     {
       name: "Lead Generation Mastery",
       price: "$1,997/mo",
-      link: "/packages/lead-generation",
+      link: "/packages/lead-generation-sales",
       features: {
         "Social Media Audit": true,
         "Strategy Development": true,
@@ -52,7 +52,7 @@ const PackageComparisonSection = ({
     {
       name: "Conversion Booster",
       price: "$2,497/mo",
-      link: "/packages/conversion-booster",
+      link: "/packages/conversion-booster-sales",
       popular: true,
       features: {
         "Social Media Audit": true,
@@ -72,7 +72,7 @@ const PackageComparisonSection = ({
     {
       name: "Authority Builder",
       price: "$3,997/mo",
-      link: "/packages/authority-builder",
+      link: "/packages/authority-building-sales",
       features: {
         "Social Media Audit": true,
         "Strategy Development": true,

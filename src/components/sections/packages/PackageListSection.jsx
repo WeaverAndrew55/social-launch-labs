@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import SectionContainer from '../../ui/SectionContainer';
 import PackageCard from '../../ui/PackageCard';
 import Button from '../../ui/Button';
+import LeadGenIcon from '../../icons/LeadGenIcon';
 
 /**
  * Package List section component for the Packages page
@@ -19,7 +20,7 @@ const PackageListSection = ({
     {
       title: "Lead Generation Mastery",
       price: "$1,997/mo",
-      description: "Turn your social media into a consistent lead generation machine.",
+      description: "Start attracting qualified leads consistently through strategic social media positioning.",
       primaryBenefit: "Ideal for businesses focused on growing their client base",
       features: [
         "Social media audit and strategy",
@@ -29,8 +30,9 @@ const PackageListSection = ({
         "Monthly performance reports"
       ],
       ctaText: "Learn More",
-      ctaLink: "/packages/lead-generation",
-      popular: false
+      ctaLink: "/packages/lead-generation-sales",
+      popular: false,
+      icon: <LeadGenIcon className="h-6 w-6" />
     },
     {
       title: "Conversion Booster",
@@ -45,7 +47,7 @@ const PackageListSection = ({
         "A/B testing implementation"
       ],
       ctaText: "Learn More",
-      ctaLink: "/packages/conversion-booster",
+      ctaLink: "/packages/conversion-booster-sales",
       popular: true
     },
     {
@@ -61,7 +63,7 @@ const PackageListSection = ({
         "PR and media exposure strategy"
       ],
       ctaText: "Learn More",
-      ctaLink: "/packages/authority-builder",
+      ctaLink: "/packages/authority-building-sales",
       popular: false
     }
   ]
@@ -89,6 +91,7 @@ const PackageListSection = ({
               ctaLink={pkg.ctaLink}
               ctaText={pkg.ctaText}
               popular={pkg.popular}
+              icon={pkg.icon}
             />
           </div>
         ))}

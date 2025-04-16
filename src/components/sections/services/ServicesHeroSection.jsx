@@ -1,69 +1,104 @@
 import React from 'react';
+import EnhancedHeroSection from '../../sections/common/EnhancedHeroSection';
 
 /**
- * Hero section for the Services page
- * Showcases the main value proposition of Social Launch Labs services
+ * ServicesHeroSection component
+ * Hero section for the Services page using the standardized EnhancedHeroSection component
+ * 
+ * @param {Object} props - Component props
+ * @param {Object} [props.heroOverlay] - Optional overlay information for the hero image
  */
-const ServicesHeroSection = () => {
+const ServicesHeroSection = ({ heroOverlay }) => {
+  // Hero content for Services page
+  const heroContent = {
+    title: "Video Marketing Services That Drive Real Business Growth",
+    description: "From strategy to scripting & production, we provide end-to-end video marketing services designed to generate leads, boost conversions, and position you as the go-to expert in your field.",
+    primaryCta: {
+      text: "Book a Free Strategy Call",
+      link: "/contact"
+    },
+    secondaryCta: {
+      text: "View Service Packages",
+      link: "#core-packages"
+    },
+    imageSrc: "https://WeaverAndrew55.github.io/SLL-Images/assets/Services/Services-Hero.png",
+    aiGeneratedSrc: null
+  };
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-blue-50 to-indigo-50 min-h-[70vh] flex items-center py-12">
-      {/* Background Shapes */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -right-10 -top-10 w-64 h-64 bg-blue-100 rounded-full opacity-50"></div>
-        <div className="absolute right-1/3 top-1/4 w-32 h-32 bg-blue-200 rounded-full opacity-30"></div>
-        <div className="absolute left-10 bottom-10 w-48 h-48 bg-indigo-100 rounded-full opacity-40"></div>
-      </div>
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center">
-          <div className="lg:w-1/2 lg:pr-12 mb-10 lg:mb-0">
-            <div className="inline-block bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium mb-6">
-              Our Services
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Elevate Your Brand with Video That Works
-            </h1>
-            <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-              At Social Launch Labs, we help growth-minded businesses create professional video and audio content that elevates your brand authority, earns trust, and drives real results. We act as your end-to-end content partner – from strategic planning and scriptwriting to production and multi-platform distribution – making content creation simple and effective.
-            </p>
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <a 
-                href="#core-packages" 
-                className="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-4 rounded-xl text-base font-medium hover:bg-blue-700 transition duration-300"
-              >
-                View Our Packages
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-              </a>
-              <a 
-                href="#contact" 
-                className="inline-flex items-center justify-center px-8 py-4 border border-blue-600 text-blue-600 bg-white rounded-xl text-base font-medium hover:bg-blue-50 transition duration-300"
-              >
-                Schedule a Consultation
-              </a>
-            </div>
+    <>
+      {/* Hero section with background and content */}
+      <div className="relative">
+        {/* Background container includes both the gradient background and the wave divider */}
+        <div className="absolute inset-0 overflow-hidden -z-10">
+          {/* Modern gradient background base */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#E8F0FF] via-[#F6F9FF] to-white w-full h-full"></div>
+          
+          {/* Subtle geometric elements */}
+          <div className="absolute top-0 left-0 w-full h-full opacity-[0.07]">
+            <div className="absolute top-[10%] right-[15%] w-[30vw] h-[30vw] max-w-[600px] max-h-[600px] rounded-full border border-[#155DFC]/20"></div>
+            <div className="absolute bottom-[15%] left-[10%] w-[25vw] h-[25vw] max-w-[500px] max-h-[500px] rounded-full border border-[#7394D3]/30"></div>
+            <div className="absolute top-[30%] left-[25%] w-[15vw] h-[15vw] max-w-[300px] max-h-[300px] rounded-full border border-[#155DFC]/10"></div>
           </div>
-          <div className="lg:w-1/2">
-            <div className="relative">
-              <img 
-                src="https://WeaverAndrew55.github.io/SLL-Images/assets/Services/Services-Hero.png" 
-                alt="Professional video production" 
-                className="w-full h-auto rounded-xl shadow-2xl transform hover:scale-105 transition duration-500"
-              />
-              <div className="absolute -bottom-5 -left-5 bg-white p-4 rounded-lg shadow-lg transform rotate-3">
-                <div className="flex items-center space-x-2">
-                  <svg className="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                  <span className="font-bold">Content that drives results</span>
-                </div>
-              </div>
-            </div>
+          
+          {/* Layered blurred elements for depth */}
+          <div className="absolute top-0 right-[10%] w-[40vw] h-[40vw] max-w-[800px] max-h-[800px] bg-[#155DFC] rounded-full mix-blend-multiply filter blur-[120px] opacity-[0.03]"></div>
+          <div className="absolute bottom-0 left-[5%] w-[35vw] h-[35vw] max-w-[700px] max-h-[700px] bg-[#7394D3] rounded-full mix-blend-multiply filter blur-[100px] opacity-[0.04]"></div>
+          
+          {/* Connection lines representing networks and growth - matching HomePage exactly */}
+          <div className="absolute inset-0 w-full h-full opacity-[0.05]" 
+               style={{
+                 backgroundImage: `
+                   linear-gradient(30deg, transparent 49.5%, #155DFC 49.5%, #155DFC 50.5%, transparent 50.5%),
+                   linear-gradient(60deg, transparent 49.5%, #7394D3 49.5%, #7394D3 50.5%, transparent 50.5%),
+                   linear-gradient(120deg, transparent 49.5%, #155DFC 49.5%, #155DFC 50.5%, transparent 50.5%)
+                 `,
+                 backgroundSize: '60px 60px, 70px 70px, 80px 80px'
+               }}>
+          </div>
+          
+          {/* Strategic framework abstract representation - matching HomePage exactly */}
+          <div className="absolute inset-0 opacity-[0.02]"
+               style={{
+                 backgroundImage: `
+                   linear-gradient(0deg, transparent 98%, #155DFC 98%, #155DFC 100%, transparent 100%),
+                   linear-gradient(90deg, transparent 98%, #7394D3 98%, #7394D3 100%, transparent 100%)
+                 `,
+                 backgroundSize: '40px 40px'
+               }}>
+          </div>
+          
+          {/* Subtle diagonal elements depicting growth - matching HomePage exactly */}
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-[0.04]">
+            <div className="absolute -bottom-[10%] -right-[10%] w-[80%] h-[60%] border-t border-l border-[#155DFC]/20 rounded-tl-[100px] transform rotate-[10deg]"></div>
+            <div className="absolute -top-[10%] -left-[10%] w-[70%] h-[50%] border-b border-r border-[#7394D3]/20 rounded-br-[100px] transform rotate-[10deg]"></div>
           </div>
         </div>
+        
+        <EnhancedHeroSection
+          title={heroContent.title}
+          description={heroContent.description}
+          primaryCta={heroContent.primaryCta}
+          secondaryCta={heroContent.secondaryCta}
+          imageSrc={heroContent.imageSrc}
+          aiGeneratedSrc={heroContent.aiGeneratedSrc}
+          announcementText="🔥 Limited Time Offer: Free Video Strategy Session - Schedule Now!"
+          announcementLink="/contact"
+          bgColor="transparent"
+          showPlayButton={true}
+          overlayInfo={heroOverlay}
+        />
       </div>
-    </section>
+      
+      {/* Wave divider as a separate section element */}
+      <div className="bg-white relative">
+        <div className="absolute -top-0 w-full h-16 overflow-hidden">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="absolute w-full h-full">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#155DFC" opacity="0.1"></path>
+          </svg>
+        </div>
+      </div>
+    </>
   );
 };
 

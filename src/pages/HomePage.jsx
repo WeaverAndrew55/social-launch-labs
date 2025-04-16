@@ -4,36 +4,45 @@ import EnhancedHeroSection from '../components/sections/common/EnhancedHeroSecti
 import ProblemSolutionSection from '../components/sections/home/ProblemSolutionSection';
 import ClientIndustriesSection from '../components/sections/home/ClientIndustriesSection';
 import WhatWeOfferSection from '../components/sections/home/WhatWeOfferSection';
-import PackagesCarouselSection from '../components/sections/home/PackagesCarouselSection';
+import HomePackagesSection from '../components/sections/home/HomePackagesSection';
 import TestimonialsSection from '../components/sections/home/TestimonialsSection';
 import PackageFAQSection from '../components/sections/packages/PackageFAQSection';
-import CtaSection from '../components/sections/shared/CtaSection';
+import HomeHero from '../assets/images/Home-Hero.svg';
+// Import the hero image properly
+import heroImage from '../assets/images/hero-image.jpg';
 
 // Import hero content
 const heroContent = {
-  title: "Launch Your Digital Presence With Confidence",
-  description: "We help service-based businesses build strategic social media frameworks that attract high-quality leads and establish genuine authority.",
+  badge: "Welcome To SLL!",
+  title: (
+    <>
+      <span className="font-bold">Content Creation Studio</span>
+      <span className="font-bold"> for </span>
+      <span className="font-bold">Calgary-Based Businesses</span>
+    </>
+  ),
+  description: "Transform your expertise into compelling video content that amplifies your story, establishes market authority, and consistently generates results.",
   primaryCta: {
-    text: "See Our Packages",
-    link: "/packages"
+    text: "Book Your Free Consultation",
+    link: "/contact"
   },
   secondaryCta: {
-    text: "Learn More",
-    link: "#how-it-works"
+    text: "View Our Packages",
+    link: "/packages"
   },
-  imageSrc: "https://picsum.photos/800/450?random=1", // Placeholder image
-  aiGeneratedSrc: null // Set to path of AI-generated image when available
+  imageSrc: heroImage,
+  aiGeneratedSrc: null
 };
 
 // Import problem-solution content
 const problemSolutionContent = {
   problem: {
     title: "The Challenge",
-    description: "Many service providers struggle with inconsistent social media results, wasting time on platforms that don't generate qualified leads or build meaningful authority in their industry."
+    description: "Many businesses struggle with video marketing—juggling multiple tasks, unclear ROI, and inconsistent messaging. Without strategic content, you risk missed opportunities and disengaged audiences."
   },
   solution: {
     title: "Our Solution",
-    description: "We've developed a systematic approach that transforms your social media presence from scattered and ineffective to strategic and results-driven, focusing on the metrics that actually matter for your business growth."
+    description: "Social Launch Labs simplifies video marketing through strategic storytelling, streamlined production, and guided partnership. We handle strategy, scripting, production, and distribution, delivering impactful videos designed to connect, convert, and scale your business."
   }
 };
 
@@ -41,31 +50,30 @@ const problemSolutionContent = {
 const clientIndustriesContent = {
   title: "Who We Work With",
   subtitle: "Our Clients",
-  description: "We create content for businesses looking to grow their brand authority, increase conversions, and build customer trust."
+  description: "We create powerful video content tailored specifically for service-based businesses committed to growth and authority-building:"
 };
 
 // Import testimonials content
 const testimonialsContent = {
   title: "What Our Clients Say",
-  description: "Don't just take our word for it. Here's what our clients have to say about working with Social Launch Labs.",
   testimonials: [
     {
-      quote: "Since implementing Social Launch Labs' framework, we've seen a 43% increase in qualified leads from social media, with a much higher conversion rate than our previous efforts.",
-      author: "Sarah Johnson",
-      title: "Marketing Director, Apex Consulting",
-      image: "https://placehold.co/200x200/eef2ff/3b82f6?text=SJ&font=playfair-display"
+      quote: "Social Launch Labs provided a clear, strategic approach that instantly elevated our brand. We've seen increased leads and credibility almost immediately.",
+      author: "Alex P.",
+      title: "Tech Startup Founder",
+      image: "https://placehold.co/200x200/eef2ff/3b82f6?text=AP&font=playfair-display"
     },
     {
-      quote: "Their systematic approach completely transformed how we view social media. We're now generating consistent leads without the constant guesswork.",
-      author: "Michael Chen",
-      title: "CEO, Growth Partners Agency",
-      image: "https://placehold.co/200x200/f5f3ff/8b5cf6?text=MC&font=playfair-display"
+      quote: "Their guided expertise simplified our content strategy dramatically. Our clients now see us as industry leaders, thanks to their impactful videos.",
+      author: "Maria L.",
+      title: "B2B Consultant",
+      image: "https://placehold.co/200x200/f5f3ff/8b5cf6?text=ML&font=playfair-display"
     },
     {
-      quote: "I finally feel like I have a sustainable social media strategy that actually brings in clients instead of just vanity metrics.",
-      author: "Alicia Rodriguez",
-      title: "Business Coach & Consultant",
-      image: "https://placehold.co/200x200/fef2f2/ef4444?text=AR&font=playfair-display"
+      quote: "We seamlessly scaled our video production capabilities. SLL's white-label services expanded our offerings without any headaches.",
+      author: "Jason M.",
+      title: "Marketing Agency Owner",
+      image: "https://placehold.co/200x200/fef2f2/ef4444?text=JM&font=playfair-display"
     }
   ]
 };
@@ -73,47 +81,32 @@ const testimonialsContent = {
 // Import FAQ content
 const faqContent = {
   title: "Frequently Asked Questions",
-  description: "Have questions about our services? Find answers to commonly asked questions below.",
+  description: "Get answers to common questions about our video marketing services and approach:",
   faqs: [
     {
-      question: "How long before I start seeing results?",
-      answer: "Most clients begin to see measurable improvements within 60-90 days. This includes increased engagement, growing follower counts of qualified prospects, and early lead generation. More substantial results in terms of consistent lead flow and conversions typically develop within 3-6 months, with continued growth beyond that point as we optimize the system based on performance data."
+      question: "How is your approach different from traditional video marketing?",
+      answer: "Unlike traditional video marketing that focuses on generic content, we build strategic frameworks designed specifically to generate leads and establish authority for service-based businesses. Our systems are focused on measurable business outcomes and ROI."
     },
     {
-      question: "Do I need to create all the content myself?",
-      answer: "No. While your expertise and voice are essential, we handle the heavy lifting of content strategy, creation frameworks, and optimization. We'll work with you to establish efficient processes for capturing your insights, then transform them into engaging social media content. Our goal is to minimize your time investment while maximizing your authority and results."
+      question: "What type of businesses do you work with?",
+      answer: "We specialize in working with service-based businesses, including consultants, professional service firms, agencies, and specialized service providers who want to leverage video content to attract high-quality leads and build authority in their industry."
     },
     {
-      question: "Will this work for my industry?",
-      answer: "Our frameworks are specifically designed for service-based businesses and have proven effective across numerous industries including coaching, consulting, professional services, agencies, and specialized service providers. During our initial strategy phase, we adapt our approach to your specific industry dynamics and target audience behaviors."
+      question: "How long does it take to see results?",
+      answer: "Most clients begin seeing increased engagement and lead flow within 30-60 days. More substantial results, like consistent lead generation and authority positioning, typically develop over 90-120 days as your content library grows and your audience expands."
     },
     {
-      question: "How is this different from hiring a social media agency?",
-      answer: "Unlike traditional agencies that focus primarily on content creation and posting schedule, we build comprehensive lead generation and conversion systems. Our approach integrates strategy, content, audience building, engagement, and conversion optimization into a cohesive framework designed to deliver measurable business results, not just vanity metrics."
-    },
-    {
-      question: "What social media platforms do you work with?",
-      answer: "We focus on the platforms where your ideal clients are most active and receptive. For most service-based businesses, this typically includes LinkedIn, Instagram, and/or Twitter, but may also include others depending on your specific audience. Rather than trying to be everywhere, we concentrate efforts on 2-3 platforms for maximum ROI."
+      question: "Do you handle all aspects of video production?",
+      answer: "Yes, we provide end-to-end video marketing solutions. This includes strategy development, professional video production, content optimization, and strategic distribution across your key marketing channels - all aligned with your business goals."
     }
   ]
 };
 
-// Import CTA content
-const ctaContent = {
-  title: "Ready to Elevate Your Social Media Strategy?",
-  description: "Take your brand's social presence to the next level with our proven strategies tailored specifically for your business goals.",
-  primaryButtonText: "Book a Free Strategy Call",
-  primaryButtonLink: "/contact",
-  secondaryButtonText: "Browse All Services",
-  secondaryButtonLink: "/services",
-  bgColor: "gray"
-};
-
-// Packages Carousel content
-const packagesCarouselContent = {
-  title: 'Strategic Growth Solutions',
-  subtitle: 'OUR PACKAGES',
-  description: "We've developed three signature social media packages based on real business outcomes, each designed to solve a specific challenge in your growth journey."
+// Packages content
+const packagesContent = {
+  title: "Strategic Growth Solutions",
+  subtitle: "OUR PACKAGES",
+  description: "Select the perfect package to achieve your specific business growth objectives, each designed to address a different stage of your marketing funnel."
 };
 
 /**
@@ -121,58 +114,121 @@ const packagesCarouselContent = {
  */
 const HomePage = () => {
   return (
-    <Layout transparentHeader={true}>
-      <EnhancedHeroSection
-        title={heroContent.title}
-        description={heroContent.description}
-        primaryCta={heroContent.primaryCta}
-        secondaryCta={heroContent.secondaryCta}
-        imageSrc={heroContent.imageSrc}
-        aiGeneratedSrc={heroContent.aiGeneratedSrc}
-      />
-      <ProblemSolutionSection
-        problem={problemSolutionContent.problem}
-        solution={problemSolutionContent.solution}
-        spacingClass="section-spacing-md"
-      />
-      <ClientIndustriesSection
-        title={clientIndustriesContent.title}
-        subtitle={clientIndustriesContent.subtitle}
-        description={clientIndustriesContent.description}
-        spacingClass="section-spacing-md"
-      />
-      <WhatWeOfferSection spacingClass="section-spacing-md" />
-      <div id="packages-section">
-        <PackagesCarouselSection
-          title={packagesCarouselContent.title}
-          subtitle={packagesCarouselContent.subtitle}
-          description={packagesCarouselContent.description}
-          spacingClass=""
-        />
+    <Layout transparentHeader={false}>
+      {/* Full-page background wrapper */}
+      <div className="relative min-h-screen">
+        {/* Global background with subtle gradient - keeping this for the rest of the page */}
+        <div className="fixed inset-0 w-full h-full -z-20">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#f8f9fa] via-white to-[#f8f9fa] w-full h-full"></div>
+        </div>
+
+        {/* Hero section */}
+        <div className="relative">
+          {/* Hero-specific background */}
+          <div className="absolute inset-0 w-full h-full overflow-hidden -z-10">
+            {/* Modern gradient background base */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#E8F0FF] via-[#F6F9FF] to-white w-full h-full"></div>
+            
+            {/* Mesh gradient overlay */}
+            <div className="absolute inset-0">
+              <div className="absolute inset-0 bg-gradient-radial from-[#155DFC]/[0.02] via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#155DFC]/[0.03] via-transparent to-[#f8f9fa]/30"></div>
+            </div>
+            
+            {/* Soft blurred orbs */}
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#155DFC]/[0.02] rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute top-2/3 right-1/4 w-64 h-64 bg-blue-100/[0.03] rounded-full blur-2xl"></div>
+            
+            {/* Subtle dot pattern */}
+            <div className="absolute inset-0 opacity-[0.03]" 
+                 style={{
+                   backgroundImage: `radial-gradient(#155DFC 1px, transparent 1px)`,
+                   backgroundSize: '24px 24px'
+                 }}>
+            </div>
+          </div>
+
+          <EnhancedHeroSection
+            badge={heroContent.badge}
+            title={heroContent.title}
+            description={heroContent.description}
+            primaryCta={heroContent.primaryCta}
+            secondaryCta={heroContent.secondaryCta}
+            imageSrc={heroContent.imageSrc}
+            aiGeneratedSrc={heroContent.aiGeneratedSrc}
+            announcementText="🔥 Free Video Marketing Strategy Blueprint - Schedule Now!"
+            announcementLink="/contact"
+            bgColor="transparent"
+            overlayInfo={null}
+          />
+        </div>
+        
+        {/* Section divider - wave pattern */}
+        <div className="relative h-8 overflow-hidden z-10 -mt-0">
+          <div className="absolute w-full h-8 opacity-[0.08]">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="absolute w-full h-full">
+              <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#155DFC"></path>
+            </svg>
+          </div>
+        </div>
+      
+        {/* Other sections */}
+        <div className="relative">
+          <ClientIndustriesSection
+            title={clientIndustriesContent.title}
+            subtitle={clientIndustriesContent.subtitle}
+            description={clientIndustriesContent.description}
+            spacingClass="section-spacing-md"
+            transparentBg={true}
+          />
+        </div>
+        
+        <div className="relative">
+          <ProblemSolutionSection
+            problem={problemSolutionContent.problem}
+            solution={problemSolutionContent.solution}
+            spacingClass="section-spacing-md"
+            transparentBg={true}
+          />
+        </div>
+        
+        <div className="relative">
+          <WhatWeOfferSection 
+            spacingClass="section-spacing-md"
+            transparentBg={true}
+          />
+        </div>
+        
+        <div id="packages-section" className="relative">
+          <HomePackagesSection
+            title={packagesContent.title}
+            subtitle={packagesContent.subtitle}
+            description={packagesContent.description}
+            spacingClass="section-spacing-md"
+            transparentBg={true}
+          />
+        </div>
+        
+        <div className="relative">
+          <TestimonialsSection
+            title={testimonialsContent.title}
+            description={testimonialsContent.description}
+            testimonials={testimonialsContent.testimonials}
+            spacingClass="section-spacing-md"
+            transparentBg={true}
+          />
+        </div>
+        
+        <div className="relative -mt-8">
+          <PackageFAQSection
+            title={faqContent.title}
+            description={faqContent.description}
+            faqs={faqContent.faqs}
+            transparentBg={true}
+            spacingClass="section-spacing-md"
+          />
+        </div>
       </div>
-      <div className="bg-neutral-50 section-spacing-md">
-        <TestimonialsSection
-          title={testimonialsContent.title}
-          description={testimonialsContent.description}
-          testimonials={testimonialsContent.testimonials}
-          spacingClass=""
-        />
-      </div>
-      <PackageFAQSection
-        title={faqContent.title}
-        description={faqContent.description}
-        faqs={faqContent.faqs}
-      />
-      <CtaSection
-        title={ctaContent.title}
-        description={ctaContent.description}
-        primaryButtonText={ctaContent.primaryButtonText}
-        primaryButtonLink={ctaContent.primaryButtonLink}
-        secondaryButtonText={ctaContent.secondaryButtonText}
-        secondaryButtonLink={ctaContent.secondaryButtonLink}
-        bgColor="gray"
-        spacingClass="section-spacing-md"
-      />
     </Layout>
   );
 };

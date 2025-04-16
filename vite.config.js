@@ -1,10 +1,12 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { resolve } from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   base: '/social-launch-labs/',
+  assetsInclude: ['**/*.JPG', '**/*.jpg', '**/*.jpeg', '**/*.png', '**/*.svg', '**/*.gif'],
   build: {
     rollupOptions: {
       output: {
@@ -14,5 +16,12 @@ export default defineConfig({
         assetFileNames: 'assets/[name]-[hash].[ext]',
       },
     },
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+      '@assets': resolve(__dirname, 'src/assets'),
+      '@images': resolve(__dirname, 'src/assets/images'),
+    }
   },
 })

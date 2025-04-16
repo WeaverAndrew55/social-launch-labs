@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
  * @param {string} [props.className] - Additional CSS classes
  * @param {Object} [props.style] - Additional inline styles
  * @param {boolean} [props.showInstructions=false] - Whether to show AI generation instructions
+ * @param {boolean} [props.showPlayButton=false] - Whether to show a play button overlay
  */
 const AIGeneratedImage = ({
   placeholderSrc,
@@ -20,7 +21,8 @@ const AIGeneratedImage = ({
   isVideo = false,
   className = '',
   style = {},
-  showInstructions = false
+  showInstructions = false,
+  showPlayButton = false
 }) => {
   // Use AI source if available, otherwise use placeholder
   const imageSrc = aiSrc || placeholderSrc;
@@ -46,19 +48,19 @@ const AIGeneratedImage = ({
       )}
       
       {/* Placeholder Indicator */}
-      {!aiSrc && (
+      {!aiSrc && showInstructions && (
         <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white text-sm p-2 text-center">
           AI-generated {isVideo ? 'video' : 'image'} will appear here in production
         </div>
       )}
       
-      {/* Play Button for Video */}
-      {isVideo && !aiSrc && (
+      {/* Play Button Overlay - now shows for both video placeholders and when showPlayButton is true */}
+      {(isVideo || showPlayButton) && (
         <div className="absolute inset-0 flex items-center justify-center cursor-pointer">
-          <div className="bg-white bg-opacity-80 hover:bg-opacity-90 transition-all p-4 rounded-full">
+          <div className="bg-white bg-opacity-50 hover:bg-opacity-70 transition-all p-4 rounded-full shadow-lg">
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
-              className="h-12 w-12 text-primary-700" 
+              className="h-14 w-14 text-[#155DFC]" 
               viewBox="0 0 20 20" 
               fill="currentColor"
             >
@@ -72,7 +74,7 @@ const AIGeneratedImage = ({
         </div>
       )}
       
-      {/* AI Generation Instructions (only visible in development) */}
+      {/* AI Generation Instructions (only visible when explicitly enabled) */}
       {showInstructions && !aiSrc && (
         <div className="absolute top-0 left-0 right-0 bg-blue-600 bg-opacity-90 text-white text-sm p-2">
           <p className="font-bold">INSTRUCTIONS FOR AI-GENERATED {isVideo ? 'VIDEO' : 'IMAGE'}:</p>
@@ -95,7 +97,8 @@ AIGeneratedImage.propTypes = {
   isVideo: PropTypes.bool,
   className: PropTypes.string,
   style: PropTypes.object,
-  showInstructions: PropTypes.bool
+  showInstructions: PropTypes.bool,
+  showPlayButton: PropTypes.bool
 };
 
 export default AIGeneratedImage; 

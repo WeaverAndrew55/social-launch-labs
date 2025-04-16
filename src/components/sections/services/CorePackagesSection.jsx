@@ -1,263 +1,190 @@
 import React, { useState } from 'react';
+import SectionContainer from '../../ui/SectionContainer';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 /**
- * CorePackagesSection component for the Services page
- * Displays the three main packages offered by Social Launch Labs
+ * Core Packages Section
+ * Displays the main service packages offered by Social Launch Labs
+ * 
+ * @param {Object} props - Component props
+ * @param {string} props.spacingClass - Class name for section spacing
+ * @param {boolean} props.transparentBg - Whether the section has a transparent background
+ * @param {boolean} props.reducedHeaderMargin - Whether to reduce the header margin for tighter layouts
  */
-const CorePackagesSection = () => {
-  // State to track which package is currently focused
-  const [focusedPackage, setFocusedPackage] = useState(null);
+const CorePackagesSection = ({ 
+  spacingClass, 
+  transparentBg = true, 
+  reducedHeaderMargin = false 
+}) => {
+  const [hoverTab, setHoverTab] = useState(null);
+  
+  // Core package data with color themes
+  const packages = [
+    {
+      id: 'lead-generation',
+      name: 'Lead Generation',
+      subtitle: 'Attract Qualified Prospects',
+      price: '$1,997/mo',
+      description: 'Perfect for businesses looking to attract new leads with powerful video content optimized for acquisition.',
+      included: [
+        'Strategic content planning',
+        'Custom video creation (2/month)',
+        'Paid ad placement strategy',
+        'Social channel optimization',
+        'Performance analytics dashboard',
+        'Lead tracking integration'
+      ],
+      image: 'https://WeaverAndrew55.github.io/SLL-Images/assets/Services/lead-gen-package.jpg',
+      badge: 'Most Popular',
+      ctaLink: '/packages/lead-generation-sales',
+      color: {
+        border: 'border-blue-400/30',
+        badge: 'bg-blue-500',
+        gradient: 'from-blue-600 to-blue-400',
+        highlight: 'text-blue-600',
+        checkmark: 'text-blue-500',
+        topAccent: 'bg-gradient-to-r from-blue-500 to-blue-400'
+      }
+    },
+    {
+      id: 'conversion-booster',
+      name: 'Conversion Booster',
+      subtitle: 'Convert Prospects to Clients',
+      price: '$3,000/mo',
+      description: 'Designed for businesses with traffic but need help turning prospects into paying customers.',
+      included: [
+        'Conversion-focused video strategy',
+        'Custom video creation (3/month)',
+        'Sales page video integration',
+        'Video email sequence creation',
+        'A/B testing of different approaches',
+        'Conversion rate optimization'
+      ],
+      image: 'https://WeaverAndrew55.github.io/SLL-Images/assets/Services/conversion-package.jpg',
+      badge: 'High ROI',
+      ctaLink: '/packages/conversion-booster-sales',
+      color: {
+        border: 'border-green-400/30',
+        badge: 'bg-green-500',
+        gradient: 'from-green-600 to-green-400',
+        highlight: 'text-green-600',
+        checkmark: 'text-green-500',
+        topAccent: 'bg-gradient-to-r from-green-500 to-green-400'
+      }
+    },
+    {
+      id: 'authority-builder',
+      name: 'Authority Builder',
+      subtitle: 'Establish Industry Leadership',
+      price: '$4,000/mo',
+      description: 'Premium package for businesses looking to position themselves as the go-to authority in their industry.',
+      included: [
+        'Thought leadership strategy',
+        'Custom video creation (4/month)',
+        'Interview series production',
+        'Content distribution to major platforms',
+        'Industry partnership facilitation',
+        'PR opportunities & placements'
+      ],
+      image: 'https://WeaverAndrew55.github.io/SLL-Images/assets/Services/authority-package.jpg',
+      badge: 'Premium',
+      ctaLink: '/packages/authority-building-sales',
+      color: {
+        border: 'border-purple-400/30',
+        badge: 'bg-purple-600',
+        gradient: 'from-purple-700 to-purple-500',
+        highlight: 'text-purple-600',
+        checkmark: 'text-purple-500',
+        topAccent: 'bg-gradient-to-r from-purple-600 to-purple-400'
+      }
+    }
+  ];
 
   return (
-    <section id="core-packages" className="bg-gradient-to-b from-white to-blue-50 py-20 md:py-28 relative overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="hidden lg:block absolute right-0 top-40 w-64 h-64 bg-blue-50 rounded-full opacity-50 blur-3xl"></div>
-      <div className="hidden lg:block absolute -left-20 bottom-40 w-48 h-48 bg-blue-50 rounded-full opacity-50 blur-2xl"></div>
-      
-      <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-20 relative">
-            <div className="inline-block bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4 shadow-sm">
-              Our Solutions
-            </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-5">Our Core Packages</h2>
-            <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              For a straightforward path to results, we offer three signature packages tailored to the key stages of your marketing funnel. Whether you need to generate new leads, convert those leads into customers, or establish yourself as an industry authority, we have a package designed for that goal.
+    <div className="relative">
+      <SectionContainer id="core-packages" className={`${spacingClass} relative`} transparentBg={transparentBg}>
+        <div className="relative z-10 max-w-6xl mx-auto">
+          {/* Section header */}
+          <div className="text-center mb-10">
+            <span className="inline-block px-3 py-1 bg-[#7394D3]/20 text-[#155DFC] text-sm font-medium rounded-full mb-4">
+              Our Core Packages
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1E293C] mb-4">
+              Strategic Service Packages
+            </h2>
+            <div className="w-20 h-1 bg-[#155DFC] mx-auto mb-6"></div>
+            <p className="text-lg text-[#455064] max-w-2xl mx-auto">
+              Tailored solutions designed to meet your specific marketing objectives. Choose the package that aligns with your current business goals.
             </p>
           </div>
-
-          {/* Core Packages */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 mb-16 relative z-10">
-            {/* Lead Generation Package */}
-            <div 
-              className={`bg-white rounded-2xl shadow-xl transition-all duration-500 overflow-hidden border border-gray-100 group flex flex-col transform ${focusedPackage === 'lead' ? 'scale-105 shadow-2xl z-20' : focusedPackage ? 'scale-95 opacity-75' : ''}`}
-              onMouseEnter={() => setFocusedPackage('lead')}
-              onMouseLeave={() => setFocusedPackage(null)}
-            >
-              <div className="relative">
-                <img 
-                  src="https://WeaverAndrew55.github.io/SLL-Images/assets/LeadGenMaster/LeadGenMaster-1.png" 
-                  alt="Lead Generation Package" 
-                  className="w-full h-52 md:h-60 object-cover transition-transform duration-700 group-hover:scale-105" 
-                />
-                <div className="absolute top-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-bl-lg text-sm font-medium">
-                  Top of Funnel
-                </div>
-              </div>
-              <div className="p-8 flex flex-col flex-grow">
-                <div className="mb-2 flex items-center">
-                  <div className="h-8 w-1.5 bg-blue-600 rounded mr-3"></div>
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">Lead Generation Mastery</h3>
-                </div>
-                <p className="text-gray-700 mb-6 leading-relaxed">Fill the top of your funnel with qualified leads through strategic video content that captures attention and sparks interest in your brand.</p>
-                
-                <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-                  <span className="bg-blue-50 text-blue-700 rounded-full p-1 mr-2">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                  </span>
-                  Perfect For:
-                </h4>
-                <ul className="mb-8 space-y-3">
-                  <li className="flex items-start">
-                    <svg className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    <span className="text-gray-700">Increasing brand awareness</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    <span className="text-gray-700">Building a lead pipeline</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    <span className="text-gray-700">Introducing core values</span>
-                  </li>
-                </ul>
-                
-                <div className="mt-auto">
-                  <a href="/packages/lead-generation" className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 group">
-                    <span className="border-b border-transparent group-hover:border-blue-600 pb-0.5">Learn More</span>
-                    <svg className="w-4 h-4 ml-1.5 transform group-hover:translate-x-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-            
-            {/* Conversion Booster Package */}
-            <div 
-              className={`bg-white rounded-2xl shadow-xl transition-all duration-500 overflow-hidden border border-gray-100 group flex flex-col transform ${focusedPackage === 'conversion' ? 'scale-105 shadow-2xl z-20' : focusedPackage ? 'scale-95 opacity-75' : ''}`}
-              onMouseEnter={() => setFocusedPackage('conversion')}
-              onMouseLeave={() => setFocusedPackage(null)}
-            >
-              <div className="relative">
-                <img 
-                  src="https://WeaverAndrew55.github.io/SLL-Images/assets/Services/Services-2.png" 
-                  alt="Conversion Booster Package" 
-                  className="w-full h-52 md:h-60 object-cover transition-transform duration-700 group-hover:scale-105" 
-                />
-                <div className="absolute top-0 right-0 bg-green-600 text-white px-4 py-2 rounded-bl-lg text-sm font-medium">
-                  Middle of Funnel
-                </div>
-              </div>
-              <div className="p-8 flex flex-col flex-grow">
-                <div className="mb-2 flex items-center">
-                  <div className="h-8 w-1.5 bg-green-600 rounded mr-3"></div>
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">Conversion Booster</h3>
-                </div>
-                <p className="text-gray-700 mb-6 leading-relaxed">Turn prospects into paying customers with compelling mid-funnel content that builds trust, addresses objections, and encourages the decision to buy.</p>
-                
-                <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-                  <span className="bg-green-50 text-green-700 rounded-full p-1 mr-2">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                  </span>
-                  Perfect For:
-                </h4>
-                <ul className="mb-8 space-y-3">
-                  <li className="flex items-start">
-                    <svg className="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    <span className="text-gray-700">Optimizing sales process</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg className="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    <span className="text-gray-700">Demonstrating solutions</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg className="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    <span className="text-gray-700">Increasing conversion rates</span>
-                  </li>
-                </ul>
-                
-                <div className="mt-auto">
-                  <a href="/packages/conversion-booster" className="inline-flex items-center text-green-600 font-medium hover:text-green-700 group">
-                    <span className="border-b border-transparent group-hover:border-green-600 pb-0.5">Learn More</span>
-                    <svg className="w-4 h-4 ml-1.5 transform group-hover:translate-x-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-            
-            {/* Authority Builder Package */}
-            <div 
-              className={`bg-white rounded-2xl shadow-xl transition-all duration-500 overflow-hidden border border-gray-100 group flex flex-col transform ${focusedPackage === 'authority' ? 'scale-105 shadow-2xl z-20' : focusedPackage ? 'scale-95 opacity-75' : ''}`}
-              onMouseEnter={() => setFocusedPackage('authority')}
-              onMouseLeave={() => setFocusedPackage(null)}
-            >
-              <div className="relative">
-                <img 
-                  src="https://WeaverAndrew55.github.io/SLL-Images/assets/Services/Services-3.png" 
-                  alt="Authority Builder Package" 
-                  className="w-full h-52 md:h-60 object-cover transition-transform duration-700 group-hover:scale-105" 
-                />
-                <div className="absolute top-0 right-0 bg-purple-600 text-white px-4 py-2 rounded-bl-lg text-sm font-medium">
-                  Bottom of Funnel
-                </div>
-              </div>
-              <div className="p-8 flex flex-col flex-grow">
-                <div className="mb-2 flex items-center">
-                  <div className="h-8 w-1.5 bg-purple-600 rounded mr-3"></div>
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">Authority Builder</h3>
-                </div>
-                <p className="text-gray-700 mb-6 leading-relaxed">Position your brand as an industry leader for long-term growth with thought leadership and brand-building video content.</p>
-                
-                <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-                  <span className="bg-purple-50 text-purple-700 rounded-full p-1 mr-2">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                  </span>
-                  Perfect For:
-                </h4>
-                <ul className="mb-8 space-y-3">
-                  <li className="flex items-start">
-                    <svg className="w-5 h-5 text-purple-600 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    <span className="text-gray-700">Building industry authority</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg className="w-5 h-5 text-purple-600 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    <span className="text-gray-700">Nurturing loyal customers</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg className="w-5 h-5 text-purple-600 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    <span className="text-gray-700">Attracting premium clients</span>
-                  </li>
-                </ul>
-                
-                <div className="mt-auto">
-                  <a href="/packages/authority-builder" className="inline-flex items-center text-purple-600 font-medium hover:text-purple-700 group">
-                    <span className="border-b border-transparent group-hover:border-purple-600 pb-0.5">Learn More</span>
-                    <svg className="w-4 h-4 ml-1.5 transform group-hover:translate-x-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
           
-          {/* Full Funnel Strategy */}
-          <div className="bg-white rounded-2xl p-8 lg:p-10 border border-blue-100 mt-8 shadow-xl relative z-10 transform transition-all duration-500 hover:shadow-2xl">
-            <div className="flex flex-col md:flex-row items-center gap-8 lg:gap-12">
-              <div className="md:w-2/3">
-                <h3 className="text-2xl font-bold text-gray-900 mb-5 flex items-center">
-                  <div className="h-8 w-1.5 bg-blue-600 rounded mr-3"></div>
-                  Full-Funnel Strategy
-                </h3>
-                <p className="text-lg text-gray-700 mb-5 leading-relaxed">
-                  You can combine all three packages for a comprehensive approach, or start with the stage that makes the most sense for your business.
-                </p>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  Learn more about what each package includes on our Packages page, or reach out for guidance – we're here to help you choose the best path.
-                </p>
-                <div className="mt-8">
-                  <a 
-                    href="/packages" 
-                    className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-xl text-base font-medium hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg"
-                  >
-                    View All Packages
-                    <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-                  </a>
+          {/* Package cards grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {packages.map((pkg, index) => (
+              <div 
+                key={pkg.id}
+                className={`relative bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl ${pkg.color.border} hover:border-opacity-50 group flex flex-col`}
+                onMouseEnter={() => setHoverTab(index)}
+                onMouseLeave={() => setHoverTab(null)}
+              >
+                {/* Top accent bar */}
+                <div className={`h-1.5 w-full ${pkg.color.topAccent}`}></div>
+                
+                {/* Content */}
+                <div className="p-8 flex flex-col flex-grow text-center">
+                  <div className="mb-4">
+                    <h3 className="text-xl font-bold text-[#1E293C] mb-1">{pkg.name}</h3>
+                    <p className={`${pkg.color.highlight} font-medium`}>{pkg.subtitle}</p>
+                  </div>
+                  
+                  <p className="text-[#333945] mb-5 leading-relaxed">{pkg.description}</p>
+                  
+                  <div className="mt-auto">
+                    <div className="mb-4">
+                      <span className={`text-2xl font-bold ${pkg.color.highlight}`}>{pkg.price}</span>
+                    </div>
+                    
+                    <h4 className="font-semibold text-[#1E293C] mb-3">What's Included:</h4>
+                    <ul className="space-y-2 mb-6 flex flex-col items-center">
+                      {pkg.included.map((item, i) => (
+                        <li key={i} className="flex items-start text-left w-full max-w-[240px]">
+                          <svg className={`w-5 h-5 ${pkg.color.checkmark} mr-2 mt-0.5 flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span className="text-[#333945] text-sm">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    <Link 
+                      to={pkg.ctaLink} 
+                      className={`w-full inline-block text-center bg-gradient-to-r ${pkg.color.gradient} text-white font-medium py-3 px-6 rounded-md transition-all duration-300 hover:shadow-lg`}
+                    >
+                      Get Started
+                    </Link>
+                  </div>
                 </div>
               </div>
-              <div className="md:w-1/3">
-                <img 
-                  src="https://WeaverAndrew55.github.io/SLL-Images/assets/Services/Services-Funnel.png" 
-                  alt="Full funnel marketing strategy" 
-                  className="w-full h-auto rounded-xl shadow-lg transform transition-all duration-500 hover:scale-105" 
-                />
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-      </div>
-    </section>
+      </SectionContainer>
+      
+      {/* Horizontal Line Separator - only show if header margin is not reduced */}
+      {!reducedHeaderMargin && (
+        <div className="relative h-px w-full my-10 overflow-hidden">
+          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-[#155DFC]/10 to-transparent"></div>
+        </div>
+      )}
+    </div>
   );
+};
+
+CorePackagesSection.propTypes = {
+  spacingClass: PropTypes.string,
+  transparentBg: PropTypes.bool,
+  reducedHeaderMargin: PropTypes.bool
 };
 
 export default CorePackagesSection; 

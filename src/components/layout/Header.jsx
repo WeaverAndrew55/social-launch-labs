@@ -17,7 +17,6 @@ const Header = ({ transparent = false }) => {
     packages: false
   });
   
-  const servicesDropdownRef = useRef(null);
   const packagesDropdownRef = useRef(null);
   
   // Add scroll event listener
@@ -44,9 +43,6 @@ const Header = ({ transparent = false }) => {
   // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(event.target)) {
-        setActiveDropdowns(prev => ({ ...prev, services: false }));
-      }
       if (packagesDropdownRef.current && !packagesDropdownRef.current.contains(event.target)) {
         setActiveDropdowns(prev => ({ ...prev, packages: false }));
       }
@@ -110,12 +106,12 @@ const Header = ({ transparent = false }) => {
     }));
   };
   
-  // Header styles
-  let headerClasses = "bg-white shadow-sm sticky-header";
+  // Header styles - Reverted to original light theme
+  let headerClasses = "bg-white/95 backdrop-blur-sm shadow-sm sticky-header border-b border-[#155DFC]/5";
   if (transparent && !isScrolled) {
     headerClasses = "bg-transparent sticky-header";
   } else if (isScrolled) {
-    headerClasses = "bg-white shadow-md sticky-header";
+    headerClasses = "bg-white/95 backdrop-blur-sm shadow-md sticky-header border-b border-[#155DFC]/10";
   }
   
   return (
@@ -124,14 +120,14 @@ const Header = ({ transparent = false }) => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold text-gray-900">Social Launch Labs</span>
+            <span className="text-xl font-bold bg-gradient-to-r from-[#155DFC] to-[#7394D3] bg-clip-text text-transparent">Social Launch Labs</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex lg:items-center lg:space-x-1">
             <Link 
               to="/" 
-              className="px-4 py-2 text-gray-700 rounded hover:bg-gray-100 hover:text-blue-600 transition duration-200"
+              className="px-4 py-2 text-[#1E293C] rounded hover:bg-[#155DFC]/5 hover:text-[#155DFC] transition duration-200"
             >
               Home
             </Link>
@@ -139,17 +135,15 @@ const Header = ({ transparent = false }) => {
             {/* Services Main Link */}
             <Link 
               to="/services" 
-              className="px-4 py-2 text-gray-700 rounded hover:bg-gray-100 hover:text-blue-600 transition duration-200"
+              className="px-4 py-2 text-[#1E293C] rounded hover:bg-[#155DFC]/5 hover:text-[#155DFC] transition duration-200"
             >
               Services
             </Link>
             
-
-
             {/* Packages Dropdown */}
             <div className="relative dropdown-container" ref={packagesDropdownRef}>
               <button 
-                className="dropdown-toggle px-4 py-2 text-gray-700 rounded hover:bg-gray-100 hover:text-blue-600 transition duration-200 flex items-center"
+                className="dropdown-toggle px-4 py-2 text-[#1E293C] rounded hover:bg-[#155DFC]/5 hover:text-[#155DFC] transition duration-200 flex items-center"
                 onClick={(e) => {
                   e.preventDefault();
                   toggleDropdown('packages');
@@ -157,7 +151,7 @@ const Header = ({ transparent = false }) => {
               >
                 Packages
                 <svg 
-                  className={`w-4 h-4 ml-1 dropdown-arrow transition-transform duration-200 ${activeDropdowns.packages ? 'rotate-180' : ''}`} 
+                  className={`w-4 h-4 ml-1 dropdown-arrow transition-transform duration-200 transform rotate-0`} 
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24" 
@@ -166,59 +160,64 @@ const Header = ({ transparent = false }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </button>
-              <div 
-                className={`dropdown-menu absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg ${activeDropdowns.packages ? 'block' : 'hidden'}`}
-                style={{ zIndex: 100 }}
+              <Transition
+                show={activeDropdowns.packages}
+                as={React.Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
               >
-                <div className="py-1 rounded-md bg-white shadow-xs">
-                  <Link 
-                    to="/packages" 
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 font-medium border-b border-gray-100"
-                    onClick={closeDropdowns}
-                  >
-                    All Packages
-                  </Link>
-                  <Link 
-                    to="/packages/lead-generation" 
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600"
-                    onClick={closeDropdowns}
-                  >
-                    Lead Generation
-                  </Link>
-                  <Link 
-                    to="/packages/conversion-booster" 
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600"
-                    onClick={closeDropdowns}
-                  >
-                    Conversion Booster
-                  </Link>
-                  <Link 
-                    to="/packages/authority-building" 
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600"
-                    onClick={closeDropdowns}
-                  >
-                    Authority Building
-                  </Link>
+                <div 
+                  className={`dropdown-menu absolute left-0 mt-2 w-48 bg-white/95 backdrop-blur-sm rounded-md shadow-lg border border-[#155DFC]/5`}
+                  style={{ zIndex: 100 }}
+                >
+                  <div className="py-1 rounded-md bg-white/95 shadow-xs">
+                    <Link 
+                      to="/packages" 
+                      className="block px-4 py-2 text-[#1E293C] font-medium border-b border-[#155DFC]/10"
+                      onClick={closeDropdowns}
+                    >
+                      All Packages
+                    </Link>
+                    <Link 
+                      to="/packages/lead-generation-sales" 
+                      className="block px-4 py-2 text-[#1E293C] hover:bg-blue-600/10 hover:text-blue-700"
+                      onClick={closeDropdowns}
+                    >
+                      Lead Generation
+                    </Link>
+                    <Link 
+                      to="/packages/conversion-booster-sales" 
+                      className="block px-4 py-2 text-[#1E293C] hover:bg-green-600/10 hover:text-green-700"
+                      onClick={closeDropdowns}
+                    >
+                      Conversion Booster
+                    </Link>
+                    <Link 
+                      to="/packages/authority-building-sales" 
+                      className="block px-4 py-2 text-[#1E293C] hover:bg-purple-600/10 hover:text-purple-700"
+                      onClick={closeDropdowns}
+                    >
+                      Authority Building
+                    </Link>
+                  </div>
                 </div>
-              </div>
+              </Transition>
             </div>
 
             {/* Regular Nav Items */}
             <Link 
               to="/about" 
-              className="px-4 py-2 text-gray-700 rounded hover:bg-gray-100 hover:text-blue-600 transition duration-200"
+              className="px-4 py-2 text-[#1E293C] rounded hover:bg-[#155DFC]/5 hover:text-[#155DFC] transition duration-200"
             >
               About Us
             </Link>
             <Link 
-              to="/contact" 
-              className="px-4 py-2 text-gray-700 rounded hover:bg-gray-100 hover:text-blue-600 transition duration-200"
-            >
-              Contact
-            </Link>
-            <Link 
               to="/faq" 
-              className="px-4 py-2 text-gray-700 rounded hover:bg-gray-100 hover:text-blue-600 transition duration-200"
+              className="px-4 py-2 text-[#1E293C] rounded hover:bg-[#155DFC]/5 hover:text-[#155DFC] transition duration-200"
             >
               FAQ
             </Link>
@@ -226,16 +225,16 @@ const Header = ({ transparent = false }) => {
             {/* CTA Button */}
             <Link 
               to="/contact" 
-              className="ml-4 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition duration-300 text-base font-medium"
+              className="ml-4 px-6 py-2.5 bg-gradient-to-r from-[#155DFC] to-[#7394D3] text-white rounded-xl hover:shadow-md hover:from-[#155DFC] hover:to-[#155DFC] transition duration-300 text-base font-medium"
             >
-              Get Started
+              Contact Us
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden">
             <button 
-              className="text-gray-600 hover:text-blue-600 focus:outline-none transition duration-200"
+              className="text-[#1E293C] hover:text-[#155DFC] focus:outline-none transition duration-200"
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
@@ -260,7 +259,7 @@ const Header = ({ transparent = false }) => {
           <div className="flex flex-col space-y-1">
             <Link 
               to="/" 
-              className="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded font-medium"
+              className="px-4 py-2 text-[#1E293C] hover:bg-[#155DFC]/5 hover:text-[#155DFC] transition duration-200 rounded font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               Home
@@ -269,7 +268,7 @@ const Header = ({ transparent = false }) => {
             {/* Mobile Services Link */}
             <Link 
               to="/services" 
-              className="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded font-medium"
+              className="px-4 py-2 text-[#1E293C] hover:bg-[#155DFC]/5 hover:text-[#155DFC] transition duration-200 rounded font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               Services
@@ -278,12 +277,12 @@ const Header = ({ transparent = false }) => {
             {/* Mobile Services Dropdown */}
             <div className="mobile-dropdown">
               <button 
-                className="mobile-dropdown-toggle w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 font-medium flex justify-between items-center rounded"
+                className="mobile-dropdown-toggle w-full text-left px-4 py-2 text-[#1E293C] hover:bg-[#155DFC]/5 hover:text-[#155DFC] transition duration-200 font-medium flex justify-between items-center rounded"
                 onClick={(e) => handleMobileDropdownClick(e, 'services')}
               >
                 For
                 <svg 
-                  className={`w-4 h-4 mobile-dropdown-icon transition-transform duration-200 ${activeDropdowns.services ? 'rotate-180' : ''}`} 
+                  className={`w-4 h-4 mobile-dropdown-icon transition-transform duration-200 transform ${activeDropdowns.services ? 'rotate-180' : 'rotate-0'}`} 
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24" 
@@ -298,7 +297,7 @@ const Header = ({ transparent = false }) => {
               >
                 <Link 
                   to="/services/for-businesses" 
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded"
+                  className="block px-4 py-2 text-[#1E293C] hover:bg-[#155DFC]/5 hover:text-[#155DFC] transition duration-200 rounded"
                   onClick={() => {
                     closeDropdowns();
                     setIsMenuOpen(false);
@@ -308,7 +307,7 @@ const Header = ({ transparent = false }) => {
                 </Link>
                 <Link 
                   to="/services/for-agencies" 
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded"
+                  className="block px-4 py-2 text-[#1E293C] hover:bg-[#155DFC]/5 hover:text-[#155DFC] transition duration-200 rounded"
                   onClick={() => {
                     closeDropdowns();
                     setIsMenuOpen(false);
@@ -322,12 +321,12 @@ const Header = ({ transparent = false }) => {
             {/* Mobile Packages Dropdown */}
             <div className="mobile-dropdown">
               <button 
-                className="mobile-dropdown-toggle w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 font-medium flex justify-between items-center rounded"
+                className="mobile-dropdown-toggle w-full text-left px-4 py-2 text-[#1E293C] hover:bg-[#155DFC]/5 hover:text-[#155DFC] transition duration-200 font-medium flex justify-between items-center rounded"
                 onClick={(e) => handleMobileDropdownClick(e, 'packages')}
               >
                 Packages
                 <svg 
-                  className={`w-4 h-4 mobile-dropdown-icon transition-transform duration-200 ${activeDropdowns.packages ? 'rotate-180' : ''}`} 
+                  className={`w-4 h-4 mobile-dropdown-icon transition-transform duration-200 transform rotate-0`} 
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24" 
@@ -342,7 +341,7 @@ const Header = ({ transparent = false }) => {
               >
                 <Link 
                   to="/packages" 
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded font-medium"
+                  className="block px-4 py-2 text-[#1E293C] transition duration-200 rounded font-medium"
                   onClick={() => {
                     closeDropdowns();
                     setIsMenuOpen(false);
@@ -351,8 +350,8 @@ const Header = ({ transparent = false }) => {
                   All Packages
                 </Link>
                 <Link 
-                  to="/packages/lead-generation" 
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded"
+                  to="/packages/lead-generation-sales" 
+                  className="block px-4 py-2 text-[#1E293C] hover:bg-blue-600/10 hover:text-blue-700 transition duration-200 rounded"
                   onClick={() => {
                     closeDropdowns();
                     setIsMenuOpen(false);
@@ -361,8 +360,8 @@ const Header = ({ transparent = false }) => {
                   Lead Generation
                 </Link>
                 <Link 
-                  to="/packages/conversion-booster" 
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded"
+                  to="/packages/conversion-booster-sales" 
+                  className="block px-4 py-2 text-[#1E293C] hover:bg-green-600/10 hover:text-green-700 transition duration-200 rounded"
                   onClick={() => {
                     closeDropdowns();
                     setIsMenuOpen(false);
@@ -371,8 +370,8 @@ const Header = ({ transparent = false }) => {
                   Conversion Booster
                 </Link>
                 <Link 
-                  to="/packages/authority-building" 
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded"
+                  to="/packages/authority-building-sales" 
+                  className="block px-4 py-2 text-[#1E293C] hover:bg-purple-600/10 hover:text-purple-700 transition duration-200 rounded"
                   onClick={() => {
                     closeDropdowns();
                     setIsMenuOpen(false);
@@ -386,29 +385,27 @@ const Header = ({ transparent = false }) => {
             {/* Mobile Regular Nav Items */}
             <Link 
               to="/about" 
-              className="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded font-medium"
+              className="px-4 py-2 text-[#1E293C] hover:bg-[#155DFC]/5 hover:text-[#155DFC] transition duration-200 rounded font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               About Us
             </Link>
             <Link 
-              to="/contact" 
-              className="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition duration-200 rounded font-medium"
+              to="/faq" 
+              className="px-4 py-2 text-[#1E293C] hover:bg-[#155DFC]/5 hover:text-[#155DFC] transition duration-200 rounded font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
-              Contact
+              FAQ
             </Link>
             
-            {/* Mobile CTA */}
-            <div className="mt-4 px-4">
-              <Link 
-                to="/contact" 
-                className="block text-center px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition duration-300 text-base font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Get Started
-              </Link>
-            </div>
+            {/* Mobile CTA Button */}
+            <Link 
+              to="/contact" 
+              className="mt-4 px-6 py-3 bg-gradient-to-r from-[#155DFC] to-[#7394D3] text-white rounded-xl hover:shadow-md hover:from-[#155DFC] hover:to-[#155DFC] transition duration-300 text-center text-base font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact Us
+            </Link>
           </div>
         </Transition>
       </div>

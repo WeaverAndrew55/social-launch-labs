@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
  * @param {'sm'|'md'|'lg'} [props.size='md'] - Button size
  * @param {Function} props.onClick - Click handler function
  * @param {React.ReactNode} props.children - Button content
- * @param {string} [props.className] - Additional CSS classes
+ * @param {string} [props.className] - Additional CSS classes (can include custom color classes that will override the defaults)
  * @param {string} [props.type='button'] - Button type attribute
  * @param {boolean} [props.disabled=false] - Disabled state
  * @param {string} [props.ariaLabel] - Accessibility label
@@ -28,12 +28,34 @@ const Button = ({
   // Base styles for all buttons
   const baseStyles = 'font-body font-medium transition-all rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2';
   
+  // Check if className includes any custom color class
+  const hasCustomBgColor = /bg-\w+-\d+/.test(className);
+  const hasCustomHoverBgColor = /hover:bg-\w+-\d+/.test(className);
+  
   // Variant specific styles
-  const variantStyles = {
+  let variantStyles = {
     primary: 'bg-primary-600 hover:bg-primary-700 text-white focus:ring-primary-500',
     secondary: 'bg-secondary-600 hover:bg-secondary-700 text-white focus:ring-secondary-500',
     outline: 'bg-transparent border-2 border-primary-600 text-primary-600 hover:bg-primary-50 focus:ring-primary-500'
   };
+  
+  // If custom background color is provided, remove the default background colors
+  if (hasCustomBgColor) {
+    variantStyles = {
+      primary: variantStyles.primary.replace(/bg-\w+-\d+/, '') + ' text-white focus:ring-primary-500',
+      secondary: variantStyles.secondary.replace(/bg-\w+-\d+/, '') + ' text-white focus:ring-secondary-500',
+      outline: 'bg-transparent border-2 border-primary-600 text-primary-600 focus:ring-primary-500'
+    };
+  }
+  
+  // If custom hover background color is provided, remove the default hover
+  if (hasCustomHoverBgColor) {
+    variantStyles = {
+      primary: variantStyles.primary.replace(/hover:bg-\w+-\d+/, ''),
+      secondary: variantStyles.secondary.replace(/hover:bg-\w+-\d+/, ''),
+      outline: variantStyles.outline.replace(/hover:bg-\w+-\d+/, '')
+    };
+  }
   
   // Size specific styles
   const sizeStyles = {

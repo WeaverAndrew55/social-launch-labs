@@ -1,0 +1,89 @@
+Cursor, please do the following:
+
+1. Create three separate toggles or accordions—one for each tier: “Essentials,” “Growth,” and “Authority.”
+
+2. Within each tier’s toggle:
+   - **Show the tier name** (e.g., “Essentials”).
+   - **Display the starting price**.
+   - **List the videos included** under that tier.
+   - **Add each video’s short excerpt** so users see a brief explanation of what the video accomplishes.
+
+Below are all the details to include exactly as stated:
+
+======================================================================
+
+TIER 1: Essentials
+------------------
+**Starting Price**: $1,125 + tax
+
+**Videos Included**:
+1. **Core Value Proposition Video**
+   - Short Excerpt: “A concise video highlighting your brand’s unique value, mission, and the primary benefit you bring to clients. Ideal length is 1–2 minutes to quickly hook viewers.”
+
+2. **Product/Service Overview Video**
+   - Short Excerpt: “An in-depth look at your key product or service, showcasing features, benefits, and results. It addresses customer pain points and can include B-roll or more advanced production if available.”
+
+
+TIER 2: Growth
+--------------
+**Starting Price**: $3,750 + tax
+
+**Videos Included**:
+1. **Core Value Proposition Video**
+   - Short Excerpt: “A concise video highlighting your brand’s unique value, mission, and the primary benefit you bring to clients. Ideal length is 1–2 minutes to quickly hook viewers.”
+
+2. **Product/Service Overview Video**
+   - Short Excerpt: “An in-depth look at your key product or service, showcasing features, benefits, and results. It addresses customer pain points and can include B-roll or more advanced production if available.”
+
+3. **Lead Magnet Explainer Video**
+   - Short Excerpt: “A short explainer covering your free resource or giveaway, clearly stating its immediate benefit and how to opt in.”
+
+4. **Educational Webinar Video**
+   - Short Excerpt: “A longer, training-style video delivering authoritative content (industry insights, best practices) to nurture leads and demonstrate expertise.”
+
+5. **Client Testimonials (3 total)**
+   - Short Excerpt: “Authentic social proof via short interviews showing real clients’ positive outcomes. Ideal for addressing objections with real-world results.”
+
+
+TIER 3: Authority
+-----------------
+**Starting Price**: $5,100 + tax
+
+**Videos Included**:
+1. **Core Value Proposition Video**
+   - Short Excerpt: “A concise video highlighting your brand’s unique value, mission, and the primary benefit you bring to clients. Ideal length is 1–2 minutes to quickly hook viewers.”
+
+2. **Product/Service Overview Video**
+   - Short Excerpt: “An in-depth look at your key product or service, showcasing features, benefits, and results. It addresses customer pain points and can include B-roll or more advanced production if available.”
+
+3. **Lead Magnet Explainer Video**
+   - Short Excerpt: “A short explainer covering your free resource or giveaway, clearly stating its immediate benefit and how to opt in.”
+
+4. **Educational Webinar Video**
+   - Short Excerpt: “A longer, training-style video delivering authoritative content (industry insights, best practices) to nurture leads and demonstrate expertise.”
+
+5. **Client Testimonials (3 total)**
+   - Short Excerpt: “Authentic social proof via short interviews showing real clients’ positive outcomes. Ideal for addressing objections with real-world results.”
+
+6. **Email Nurture Video** (multiple short videos)
+   - Short Excerpt: “Short, targeted videos for email campaigns, used to address common challenges or questions and move leads toward conversion.”
+
+7. **Retargeting Ad Video**
+   - Short Excerpt: “A short ad designed for retargeting those who’ve interacted with your brand but haven’t converted—strong CTA and sense of urgency.”
+
+8. **Lead Magnet Reminder Video**
+   - Short Excerpt: “A brief follow-up or reminder video reinforcing the value of your lead magnet and nudging viewers who haven’t yet signed up.”
+
+9. **FAQ Video**
+   - Short Excerpt: “Addresses frequently asked questions in a longer format, which can also be cut into short clips. Reduces uncertainty by tackling top concerns.”
+
+======================================================================
+
+Implementation Tips:
+- In each tier’s toggle, list the videos under it. For each video, display the name and excerpt from above.
+- Use only the tier names ‘Essentials,’ ‘Growth,’ and ‘Authority,’ exactly as shown.
+- Make sure to use the updated starting prices. 
+- Remove any placeholder text or old references from the page. 
+- Ensure the final layout is clear and user-friendly, so prospects can compare tiers at a glance.
+
+That’s all. Please implement these changes exactly. Thank you!

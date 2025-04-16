@@ -2,44 +2,74 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * Section Container component for consistent section styling
- * 
- * @param {Object} props - Component props
- * @param {React.ReactNode} props.children - Section content
- * @param {string} [props.className] - Additional CSS classes
- * @param {string} [props.id] - Section ID for navigation/anchors
- * @param {string} [props.bgColor] - Background color (if not specified by parent)
- * @param {boolean} [props.fullWidth=false] - Whether section is full width
+ * Container component for sections with consistent spacing and max-width
+ * Now forwards refs to the underlying section element.
  */
-const SectionContainer = ({
-  children,
-  className = '',
-  id,
-  bgColor,
-  fullWidth = false,
-  ...rest
-}) => {
-  const bgColorClass = bgColor ? bgColor : '';
-
+// Wrap component with React.forwardRef
+const SectionContainer = React.forwardRef((
+  { 
+    children, 
+    maxWidth = "max-w-7xl", 
+    className = "", 
+    containerClassName = "",
+    bgColor = "",
+    transparentBg = false,
+    id // Accept id prop explicitly if needed
+  },
+  ref // Accept the forwarded ref
+) => {
+  // Get background color class based on the input
+  const getBgColorClass = () => {
+    // If transparent is specified, return empty string
+    if (transparentBg || bgColor === 'transparent') {
+      return '';
+    }
+    
+    // If it starts with bg-, it's already a tailwind class
+    if (bgColor.startsWith('bg-') || bgColor.startsWith('from-')) {
+      return bgColor;
+    }
+    
+    // Otherwise map to our premium color palette
+    switch (bgColor) {
+      case 'blue':
+        return 'bg-gradient-to-b from-[#7394D3]/20 to-white';
+      case 'blue-light':
+        return 'bg-[#7394D3]/15';
+      case 'dark':
+        return 'bg-[#1E293C]';
+      case 'gray':
+        return 'bg-[#B5BCC9]/15';
+      case 'white':
+        return 'bg-white';
+      default:
+        return '';
+    }
+  };
+  
+  const bgColorClass = getBgColorClass();
+  
   return (
-    <div
-      id={id}
-      className={`relative ${bgColorClass} ${className}`}
-      {...rest}
-    >
-      <div className={`mx-auto px-4 sm:px-6 lg:px-8 ${fullWidth ? 'w-full' : 'max-w-7xl'}`}>
+    // Attach the ref and id to the section element
+    <section ref={ref} id={id} className={`${bgColorClass} ${className}`}>
+      <div className={`${maxWidth} mx-auto px-4 md:px-6 lg:px-8 ${containerClassName}`}>
         {children}
       </div>
-    </div>
+    </section>
   );
-};
+});
+
+// Add display name for better debugging
+SectionContainer.displayName = 'SectionContainer';
 
 SectionContainer.propTypes = {
   children: PropTypes.node.isRequired,
+  maxWidth: PropTypes.string,
   className: PropTypes.string,
-  id: PropTypes.string,
+  containerClassName: PropTypes.string,
   bgColor: PropTypes.string,
-  fullWidth: PropTypes.bool
+  transparentBg: PropTypes.bool,
+  id: PropTypes.string // Add id prop type
 };
 
 export default SectionContainer; 

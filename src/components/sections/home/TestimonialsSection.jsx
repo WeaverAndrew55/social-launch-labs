@@ -22,17 +22,14 @@ const TestimonialsSection = ({
 }) => {
   return (
     <section className={`${spacingClass || ''}`}>
-      <SectionContainer>
-        <div className="text-center mb-10 max-w-3xl mx-auto">
-          <span className="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-sm font-medium rounded-full mb-3">
+      <SectionContainer className="pb-12">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <span className="inline-block px-3 py-1 bg-[#7394D3]/20 text-[#155DFC] text-sm font-medium rounded-full mb-4">
             {subtitle}
           </span>
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-gray-900">
-            {title}
-          </h2>
-          <p className="text-lg text-gray-600">
-            {description}
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#1E293C]">{title}</h2>
+          <div className="w-20 h-1 bg-[#155DFC] mx-auto mb-6"></div>
+          <p className="text-lg text-[#333945] font-medium">{description}</p>
         </div>
 
         {/* Desktop & tablet layout: Grid */}
@@ -47,29 +44,6 @@ const TestimonialsSection = ({
               rating={testimonial.rating || 5}
             />
           ))}
-        </div>
-
-        {/* Stats section - simplified */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="bg-white rounded-lg p-5 text-center shadow-sm">
-            <p className="text-2xl font-bold text-blue-600 mb-1">300+</p>
-            <p className="text-gray-600 text-sm">Happy Clients</p>
-          </div>
-          
-          <div className="bg-white rounded-lg p-5 text-center shadow-sm">
-            <p className="text-2xl font-bold text-blue-600 mb-1">98%</p>
-            <p className="text-gray-600 text-sm">Client Retention</p>
-          </div>
-          
-          <div className="bg-white rounded-lg p-5 text-center shadow-sm">
-            <p className="text-2xl font-bold text-blue-600 mb-1">43%</p>
-            <p className="text-gray-600 text-sm">Avg. Engagement Increase</p>
-          </div>
-          
-          <div className="bg-white rounded-lg p-5 text-center shadow-sm">
-            <p className="text-2xl font-bold text-blue-600 mb-1">4.9</p>
-            <p className="text-gray-600 text-sm">Average Rating</p>
-          </div>
         </div>
       </SectionContainer>
     </section>

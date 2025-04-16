@@ -67,10 +67,12 @@
   transition: transform 0.2s ease-in-out;
 }
 
+/*
 .dropdown-toggle:hover .dropdown-arrow,
 .mobile-dropdown-toggle:hover .mobile-dropdown-icon {
   transform: rotate(180deg);
 }
+*/
 
 /* Mobile menu styles */
 .mobile-dropdown-content {
